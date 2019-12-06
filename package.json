@@ -1,0 +1,24 @@
+{
+  "name": "nextremcliente",
+  "version": "1.0.0",
+  "description": "Cada vez que se clone el proyecto deberas introducir el comando **npm install** para obtener el directorio node_modules",
+  "main": "index.js",
+  "scripts": {
+    "build":".\\scripts\\build.sh",
+    "deploy":"npm run build && .\\scripts\\deploy.sh",
+    "serve":"onchange .\\src\\**\\* -- npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nextrem2-0/nextremCliente.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nextrem2-0/nextremCliente/issues"
+  },
+  "homepage": "https://github.com/nextrem2-0/nextremCliente#readme",
+  "dependencies": {
+    "onchange": "^6.1.0"
+  }
+}
