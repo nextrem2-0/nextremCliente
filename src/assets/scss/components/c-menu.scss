@@ -1,0 +1,31 @@
+.c-menu {
+  display: flex;
+  margin: auto;
+  /*  background: rgb(252, 250, 225); */
+  background: rgb(223, 218, 195);
+  height: 70px;
+  width: 100%;
+  transition-duration: 0.4s;
+  position: fixed;
+  z-index: 99;
+
+
+  &__opcion {
+    padding-right: 2%;
+    padding-left: 1%;
+    padding-top: 1.7%;
+    display: inline;
+    color: black;
+    height: 70px;
+    text-decoration: none;
+    &--right {
+      margin-left: auto;
+    }
+  }
+  &:hover {
+    height: 150px;
+  }
+}
+.l-page{
+    padding-top: 70px;
+}

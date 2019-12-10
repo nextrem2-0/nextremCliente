@@ -4,9 +4,9 @@
   "description": "Cada vez que se clone el proyecto deberas introducir el comando **npm install** para obtener el directorio node_modules",
   "main": "index.js",
   "scripts": {
-    "build":".\\scripts\\build.sh",
-    "deploy":"npm run build && .\\scripts\\deploy.sh",
-    "serve":"onchange .\\src\\**\\* -- npm run deploy"
+    "build": ".\\scripts\\build.sh",
+    "deploy": "npm run build && .\\scripts\\deploy.sh",
+    "serve": "onchange .\\src\\**\\* -- npm run deploy"
   },
   "repository": {
     "type": "git",
