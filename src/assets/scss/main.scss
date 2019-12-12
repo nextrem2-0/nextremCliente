@@ -1,9 +1,15 @@
 @import "base/reset.scss";
 
-@import "components/c-menu.scss";
+@import "layout/l-columns.scss";
+
+@import "../components/menu/c-menu.scss";
+@import "../components/section/c-section.scss";
+@import "../components/slider/c-slider.scss";
+@import "../components/card/c-card.scss";
+@import "../components/information-pin/c-information-pin.scss";
 
 
 body{
     margin: 0px;
-    
+
 }

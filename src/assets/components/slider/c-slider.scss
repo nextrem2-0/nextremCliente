@@ -1,0 +1,10 @@
+.c-slider{
+    background: white;
+    height: 950px;
+    background-size: cover;
+    background-image: url("../img/banner.jpg");
+    filter: grayscale(100%);
+    &:hover{
+      filter: grayscale(0%);
+    }
+}
