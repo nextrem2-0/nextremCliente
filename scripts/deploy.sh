@@ -1,5 +1,5 @@
 SPATH="./dist/*"
-DPATH="C:/xampp/htdocs/NextremCliente"
+DPATH="C:/xampp/htdocs/nextrem/site/"
 rm -rf ${DPATH}
 mkdir ${DPATH}
-cp ${SPATH} ${DPATH}
+cp -r ${SPATH} ${DPATH}
