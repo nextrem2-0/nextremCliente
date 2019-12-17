@@ -1,5 +1,5 @@
 class Section {
-  constructor(layout,modifier, innerComponents,title) {
+  constructor(layout, innerComponents,title,modifier=null) {
     this.layout=layout;
     this.innerComponents=innerComponents;
     this.modifier=modifier;
@@ -21,10 +21,18 @@ class Section {
       "class":"c-section__mask"
     });
     let $layout=$("<div>",{
-      "class":this.layout+" "+this.modifier
+      "class":this.layout
     });
+    if(this.modifier!=null){
+      $layout=$("<div>",{
+        "class":this.layout+" "+this.modifier
+      });
+    }
+    
 
-    for (let component of this.innerComponents) {      
+    for (let component of this.innerComponents) { 
+      console.log(this.innerComponents);
+           
       let $litem=$("<div>",{
         "class":this.layout+"__item"
       });

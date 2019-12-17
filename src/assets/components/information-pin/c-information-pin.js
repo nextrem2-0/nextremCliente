@@ -18,10 +18,12 @@ class InformationPin {
       });
     }
 
-    $base.append($('<img>', {
-        'href' : '../../img/' + this.image,
+    $base.append($('<div>', {
         'class' : 'c-information-pin__image',
-    }));
+    }).append($("<i>",{
+      "class":this.image,
+      "style":"color:#539400"
+    })));
     $base.append($('<div>', {
         'html' : this.title,
         'class' : 'c-information-pin__title',
