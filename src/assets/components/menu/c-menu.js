@@ -16,6 +16,12 @@ class Menu {
           'html' : this.categories[i],
           'class' : 'c-menu__opcion c-menu__opcion--right',
         });
+      }else if(this.categories[i]=="indice"){
+        $option=$('<img>', {
+          //"src":"http://localhost/nextrem/api/",
+          "src":"assets/img/nextrem.png",
+          'class' : 'c-menu__opcion',
+        });
       }else{
         $option=$('<div>', {
           'html' : this.categories[i],

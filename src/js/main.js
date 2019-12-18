@@ -22,13 +22,9 @@ window.onload = function () {
             for (let key of dataResult) {
                 categories.push(key.nombre);
             }
-<<<<<<< HEAD
-            menu=new Menu(categories);
-            $("#menu").append(menu.draw());
 
             let footer = new Footer(categories);
             $("#footer").append(footer.draw());
-=======
             $.ajax({
                 url:"http://localhost/nextrem/api/public/api/getDeportes",
                 success: function(dataResult){
@@ -40,7 +36,6 @@ window.onload = function () {
                     $(".c-submenu").hide();
                 }
             });
->>>>>>> develop
         }
     });
 
