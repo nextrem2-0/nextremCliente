@@ -13,7 +13,7 @@ window.onload = function () {
     listaCards=new Array();
     listaPins=new Array();
     imgSlider=new Array();
-    sports=["aaaaa","aaaaa","aaaaa","aaaaa","aaaaa"];
+    sports=new Array();
     events=["bbbbb","bbbbb","bbbbb","bbbbb","bbbbb"];
 
     $.ajax({
@@ -22,9 +22,17 @@ window.onload = function () {
             for (let key of dataResult) {
                 categories.push(key.nombre);
             }
-            menu=new Menu(categories,sports,events);
-            $("#menu").append(menu.draw());
-            $(".c-submenu").hide();
+            $.ajax({
+                url:"http://localhost/nextrem/api/public/api/getDeportes",
+                success: function(dataResult){
+                    for (let key of dataResult) {
+                        sports.push(key.nombre);
+                    }
+                    menu=new Menu(categories,sports,events);
+                    $("#menu").append(menu.draw());
+                    $(".c-submenu").hide();
+                }
+            });
         }
     });
 

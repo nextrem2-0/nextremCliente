@@ -25,27 +25,34 @@ class Menu {
       }
       if($option.html()=="deportes"){
         $base.append(this.drawSports($base));
-        $option.on("mouseover",function(){
-          $(".c-submenu--sports").show();
-          $base.toggleClass("c-menu--extended");
+        
+        $option.on("mouseenter",function(){
+          
+            $(".c-submenu--sports").show();
+          
+          $base.addClass("c-menu--extended");
         });
-        $option.on("mouseout",function(){
+
+        $base.on("mouseleave",function(){
+          $base.removeClass("c-menu--extended");
           $(".c-submenu--sports").hide();
-          $base.toggleClass("c-menu--extended");
         });
         
-      }else if($option.html()=="eventos"){
-        $base.append(this.drawEvents($base));
-        $option.on("mouseover",function(){
-          $(".c-submenu--events").show();
-          $base.toggleClass("c-menu--extended");
-        });
-        $option.on("mouseout",function(){
-          $(".c-submenu--events").hide();
-          $base.toggleClass("c-menu--extended");
-        });
         
-      }
+        
+        
+       }//else if($option.html()=="eventos"){
+      //   $base.append(this.drawEvents($base));
+      //   $option.on("mouseover",function(){
+      //     $(".c-submenu--events").show();
+      //     $base.toggleClass("c-menu--extended");
+      //   });
+      //   $option.on("mouseout",function(){
+      //     $(".c-submenu--events").hide();
+      //     $base.toggleClass("c-menu--extended");
+      //   });
+        
+      // }
       
       $base.append($option);
     }
