@@ -21,6 +21,11 @@
       margin-left: auto;
     }
   }
+
+  &__opcion:hover{
+    cursor: pointer;
+  }
+
   &--extended {
     height: 130px;
     background: rgb(255,255,255);

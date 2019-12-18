@@ -9,10 +9,9 @@ class Menu {
     let $base=$('<div>', {
       'class' : 'c-menu',
     });
-    for(let i=0;i<this.categories.length;i++){
-      var $option;
-      
-      if(i==1){
+    for(let i=0;i<this.categories.length;i++){ 
+      let $option;
+      if(i==1){ 
         $option=$('<div>', {
           'html' : this.categories[i],
           'class' : 'c-menu__opcion c-menu__opcion--right',

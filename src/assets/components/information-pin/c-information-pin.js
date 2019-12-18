@@ -7,7 +7,7 @@ class InformationPin {
   }
 
   draw(){
-    let $base;
+    let $base; 
     if(this.modifier==null){
       $base=$('<div>', {
           'class' : 'c-information-pin',
@@ -22,7 +22,7 @@ class InformationPin {
         'class' : 'c-information-pin__image',
     }).append($("<i>",{
       "class":this.image,
-      "style":"color:#539400"
+      "style":"color:#518f7f"
     })));
     $base.append($('<div>', {
         'html' : this.title,
@@ -32,6 +32,14 @@ class InformationPin {
         'html' : this.content,
         'class' : 'c-information-pin__content',
     }));
+
+    $(".c-information-pin").mouseover(function(){
+      $(".c-information-pin").removeClass("resaltarAnimation");
+      setTimeout(function(){
+        $(".c-information-pin").addClass("resaltarAnimation");
+      },100
+      )
+    })
 
     return $base;
   }

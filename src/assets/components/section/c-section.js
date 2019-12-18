@@ -30,8 +30,7 @@ class Section {
     }
     
 
-    for (let component of this.innerComponents) { 
-           
+    for (let component of this.innerComponents) {           
       let $litem=$("<div>",{
         "class":this.layout+"__item"
       });

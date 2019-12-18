@@ -1,0 +1,21 @@
+.l-footer {
+  
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "izq der";
+}
+
+.l-footer__item{
+    &--left{
+         grid-area: izq;
+         display:flex;
+         justify-content: center; 
+    }
+    &--right{
+        grid-area: der;
+        display:flex;
+        justify-content: center; 
+   }
+}
