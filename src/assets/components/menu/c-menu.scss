@@ -2,7 +2,7 @@
   display: flex;
   margin: auto;
   background: rgba(255,255,255,0.7);
-  height: 70px;
+  height: fit-content;
   width: 100%;
   transition-duration: 0.4s;
   position: fixed;
@@ -21,6 +21,11 @@
     }
   }
   &--extended {
-    height: 150px;
+    height: 130px;
+  }
+  &__suboption{
+    display: inline-block;
+    justify-content: space-between;
+    padding:20px;
   }
 }

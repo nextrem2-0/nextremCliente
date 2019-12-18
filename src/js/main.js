@@ -5,12 +5,16 @@ let listaPins;
 let categories;
 let imgSlider;
 let slider;
+let sports;
+let events;
 
 window.onload = function () {
     categories= new Array();
     listaCards=new Array();
     listaPins=new Array();
     imgSlider=new Array();
+    sports=["aaaaa","aaaaa","aaaaa","aaaaa","aaaaa"];
+    events=["bbbbb","bbbbb","bbbbb","bbbbb","bbbbb"];
 
     $.ajax({
         url:"http://localhost/nextrem/api/public/api/categoria",
@@ -18,8 +22,9 @@ window.onload = function () {
             for (let key of dataResult) {
                 categories.push(key.nombre);
             }
-            menu=new Menu(categories);
+            menu=new Menu(categories,sports,events);
             $("#menu").append(menu.draw());
+            $(".c-submenu").hide();
         }
     });
 

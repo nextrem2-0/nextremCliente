@@ -7,7 +7,7 @@ class Section {
   }
 
   draw(){
-    let $card=$("<div>",{
+    let $base=$("<div>",{
       "class":"c-section"
     });
     let $title=$("<div>",{
@@ -31,7 +31,6 @@ class Section {
     
 
     for (let component of this.innerComponents) { 
-      console.log(this.innerComponents);
            
       let $litem=$("<div>",{
         "class":this.layout+"__item"
@@ -41,10 +40,12 @@ class Section {
     }
     $content.append($layout);
 
-    $card.append($title);
-    $card.append($content);
-    $card.append($mask);
+    $base.append($title);
+    $base.append($content);
+    $base.append($mask);
 
-    return $card;
+    return $base;
   }
+
+  
 }

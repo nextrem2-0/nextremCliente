@@ -1,14 +1,17 @@
 class Menu {
-  constructor() {
+  constructor(categories,sports,events) {
     this.categories=categories;
+    this.sp=sports;
+    this.events=events;
   }
 
   draw(){
-    let $card=$('<div>', {
-        'class' : 'c-menu',
+    let $base=$('<div>', {
+      'class' : 'c-menu',
     });
-    for(i=0;i<this.categories.length;i++){
-      let $option;
+    for(let i=0;i<this.categories.length;i++){
+      var $option;
+      
       if(i==1){
         $option=$('<div>', {
           'html' : this.categories[i],
@@ -17,20 +20,67 @@ class Menu {
       }else{
         $option=$('<div>', {
           'html' : this.categories[i],
-          'class' : 'c-menu__opcion',
+          'class' : 'c-menu__opcion', 
         });
       }
-      $option.on("mouseover",function(){
-        $card.toggleClass("c-menu--extended");
-      });
-      $option.on("mouseout",function(){
-        $card.toggleClass("c-menu--extended");
-      });
-      $card.append($option);
-    }
-    for (var category of this.categories) {
+      if($option.html()=="deportes"){
+        $base.append(this.drawSports($base));
+        $option.on("mouseover",function(){
+          $(".c-submenu--sports").show();
+          $base.toggleClass("c-menu--extended");
+        });
+        $option.on("mouseout",function(){
+          $(".c-submenu--sports").hide();
+          $base.toggleClass("c-menu--extended");
+        });
+        
+      }else if($option.html()=="eventos"){
+        $base.append(this.drawEvents($base));
+        $option.on("mouseover",function(){
+          $(".c-submenu--events").show();
+          $base.toggleClass("c-menu--extended");
+        });
+        $option.on("mouseout",function(){
+          $(".c-submenu--events").hide();
+          $base.toggleClass("c-menu--extended");
+        });
+        
+      }
       
+      $base.append($option);
     }
-    return $card;
+    $(".c-submenu--sports").hide();
+    $(".c-submenu--events").hide();
+    return $base;
+  }
+
+  drawSports($base){
+    let $submenu=$("<div>",{
+      "class":"c-submenu c-submenu--sports"
+    });
+    for (const key of this.sp) {
+      let $subOpt=$("<div>",{
+        "html":key,
+        "class":"c-menu__suboption"
+      });
+      $submenu.append($subOpt);
+    }
+    
+    return $submenu;
+  }
+
+  drawEvents($base){
+    let $submenu=$("<div>",{
+      "class":"c-submenu c-submenu--events"
+    });
+    for (const key of this.events) {
+      let $subOpt=$("<div>",{
+        "html":key,
+        "class":"c-menu__suboption"
+      });
+      $submenu.append($subOpt);
+    }
+    
+    return $submenu;
   }
 }
