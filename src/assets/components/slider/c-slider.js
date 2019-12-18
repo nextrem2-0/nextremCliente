@@ -4,7 +4,7 @@ class Slider {
   }
 
   draw(){
-    let $base=$("<div>",{
+    let $card=$("<div>",{
       "class":"c-slider"
     });
     let $carousel=$("<div>",{
@@ -61,8 +61,8 @@ class Slider {
     $carousel.append($controlPrev);
     $carousel.append($controlNext);
 
-    $base.append($carousel);
+    $card.append($carousel);
 
-    return $base;
+    return $card;
   }
 }

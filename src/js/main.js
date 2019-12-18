@@ -55,7 +55,7 @@ function cargarInicio() {
         "class":"l-columns--1-column"});
     
     $item1=$("<div>",{
-        "class":"l-columns__item"
+        "class":"l-columns__item" 
     });
     
 
@@ -111,25 +111,16 @@ function cargarPins(){
 }
 
 function cargarCards(){
-    for(i=0;i<3;i++){
-        listaCards.push(new Card("image","title","summary"));
-    }
+    var descrip = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.";
+    var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
+    listaCards.push(new Card("evento1.jpg","Liga de escuelas", "Escalada", descrip, iconos, 3, 'escalada'));
+    listaCards.push(new Card("evento2.jpg","Torneo de Surf", "Surf", descrip, iconos, 3, 'surf'));
+    listaCards.push(new Card("evento3.jpg","Clases de ski", "Snow", descrip, iconos, 3, 'nieve'));
 
 }
 
 function cargarSlider(){
 
-    
-
     slider=new Slider(imgSlider);
-
-    // imgSlider.forEach(function (img) {
-    //     $('.carousel-inner').append(
-    //         "<div class='carousel-item'>" +
-    //             "<img class='d-block w-100' src= http://localhost/nextrem/api/"+img  + ">" +
-    //         "</div>"
-    //     );
-    // });
-
-    
 }
+

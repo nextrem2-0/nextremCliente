@@ -1,6 +1,7 @@
 @import "base/reset.scss";
 
 @import "layout/l-columns.scss";
+@import "layout/l-card.scss";
 @import "layout/l-horizontal.scss";
 
 @import "../components/menu/c-menu.scss";
@@ -13,5 +14,4 @@
 
 body{
     margin: 0px;
-
 }

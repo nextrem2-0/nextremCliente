@@ -4,7 +4,7 @@ class Menu {
   }
 
   draw(){
-    let $base=$('<div>', {
+    let $card=$('<div>', {
         'class' : 'c-menu',
     });
     for(i=0;i<this.categories.length;i++){
@@ -21,16 +21,16 @@ class Menu {
         });
       }
       $option.on("mouseover",function(){
-        $base.toggleClass("c-menu--extended");
+        $card.toggleClass("c-menu--extended");
       });
       $option.on("mouseout",function(){
-        $base.toggleClass("c-menu--extended");
+        $card.toggleClass("c-menu--extended");
       });
-      $base.append($option);
+      $card.append($option);
     }
     for (var category of this.categories) {
       
     }
-    return $base;
+    return $card;
   }
 }

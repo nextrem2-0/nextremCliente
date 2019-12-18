@@ -7,13 +7,13 @@ class InformationPin {
   }
 
   draw(){
-    let $base;
+    let $card;
     if(this.modifier==null){
-      $base=$('<div>', {
+      $card=$('<div>', {
           'class' : 'c-information-pin',
       });
     }else{
-      $base=$('<div>', {
+      $card=$('<div>', {
           'class' : 'c-information-pin'+this.modifier,
       });
     }
@@ -28,11 +28,11 @@ class InformationPin {
         'html' : this.title,
         'class' : 'c-information-pin__title',
     }));
-    $base.append($('<div>', {
+    $card.append($('<div>', {
         'html' : this.content,
         'class' : 'c-information-pin__content',
     }));
 
-    return $base;
+    return $card;
   }
 }

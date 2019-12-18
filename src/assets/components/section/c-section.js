@@ -7,7 +7,7 @@ class Section {
   }
 
   draw(){
-    let $base=$("<div>",{
+    let $card=$("<div>",{
       "class":"c-section"
     });
     let $title=$("<div>",{
@@ -41,10 +41,10 @@ class Section {
     }
     $content.append($layout);
 
-    $base.append($title);
-    $base.append($content);
-    $base.append($mask);
+    $card.append($title);
+    $card.append($content);
+    $card.append($mask);
 
-    return $base;
+    return $card;
   }
 }
