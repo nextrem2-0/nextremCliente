@@ -16,8 +16,7 @@ class Menu {
           'html' : this.categories[i],
           'class' : 'c-menu__opcion c-menu__opcion--right',
         });
-      }else if(this.categories[i]=="indice"){
-        
+      }else if(this.categories[i]=="Inicio"){
         $option=$('<img>', {
           //"src":"http://localhost/nextrem/api/",
           "src":"assets/img/nextrem.png",
@@ -29,12 +28,12 @@ class Menu {
           'class' : 'c-menu__opcion', 
         });
       }
-      if($option.html()=="deportes"){
+      if($option.html()=="Deportes"){
         $base.append(this.drawSports($base));
         
         $option.on("mouseenter",function(){
           
-            $(".c-submenu--sports").show();
+            $(".c-submenu--sports").show( "fast" );
           
           $base.addClass("c-menu--extended");
         });

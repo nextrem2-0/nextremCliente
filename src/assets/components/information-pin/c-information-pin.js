@@ -23,6 +23,7 @@ class InformationPin {
     }).append($("<i>",{
       "class":this.image,
       "style":"color:#518f7f"
+      /* "style":"color:#7f0707" */
     })));
     $base.append($('<div>', {
         'html' : this.title,
@@ -33,13 +34,21 @@ class InformationPin {
         'class' : 'c-information-pin__content',
     }));
 
-    $(".c-information-pin").mouseover(function(){
-      $(".c-information-pin").removeClass("resaltarAnimation");
-      setTimeout(function(){
-        $(".c-information-pin").addClass("resaltarAnimation");
-      },100
-      )
-    })
+   
+
+    $(document).on("mouseover", ".c-information-pin", function () {
+      var pin = $(".c-information-pin");
+      pin.addClass("blurAnimation");
+      $(this).addClass("resaltarAnimation");
+      $(this).removeClass("blurAnimation");
+        
+    });
+
+    $(document).on("mouseout", ".c-information-pin", function () {
+      var pin = $(".c-information-pin");
+      pin.removeClass("resaltarAnimation");
+      pin.removeClass("blurAnimation");
+    });
 
     return $base;
   }
