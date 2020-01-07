@@ -1,0 +1,26 @@
+.c-load {
+  /* background-color: rgb(165, 165, 165); */
+  background-color: white;
+  height: 100vh;
+  transition-duration: 0.5s;
+
+  &__img {
+    margin-top: -50px;
+    margin-bottom: -10px;
+    animation-duration: 0.5s;
+    animation-name: apareceLogo;
+  }
+  &__gif {
+    margin-top: -150px;
+    transition-duration: 0.5s;
+  }
+}
+
+@keyframes apareceLogo {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 55%;
+    }
+  }

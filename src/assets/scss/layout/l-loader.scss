@@ -1,0 +1,21 @@
+.l-loader {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "gif";   
+      align-items: center;
+}
+
+.l-load__item{
+    &--logo{
+         grid-area: logo;
+         display:flex;
+         justify-content: center; 
+    }
+    &--gif{
+        grid-area: gif;
+        display:flex;
+        justify-content: center; 
+   }
+}
