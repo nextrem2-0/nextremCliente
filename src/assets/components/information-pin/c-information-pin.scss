@@ -32,11 +32,11 @@
     color:#536069;
     line-height: 26px; 
   }
-}
 
-.c-information-pin:hover{
-  cursor: pointer;
-}
+  &:hover{
+    cursor: pointer;
+  }
+} 
 
 .resaltarAnimation{
   transition-duration: 0.5s;

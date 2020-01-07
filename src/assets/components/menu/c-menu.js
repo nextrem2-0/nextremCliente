@@ -11,24 +11,30 @@ class Menu {
     });
     for(let i=0;i<this.categories.length;i++){ 
       let $option;
+      
       if(i==1){ 
         $option=$('<div>', {
           'html' : this.categories[i],
-          'class' : 'c-menu__opcion c-menu__opcion--right',
+          'class' : 'c-menu__option c-menu__option--right',
         });
-      }else if(this.categories[i]=="Inicio"){
+      }else if(this.categories[i].toLowerCase()=="indice"){
         $option=$('<img>', {
           //"src":"http://localhost/nextrem/api/",
           "src":"assets/img/nextrem.png",
-          'class' : 'c-menu__opcion',
+          'class' : 'c-menu__option',
+        });
+      }else if(this.categories[i].toLowerCase()=="registrar"){
+        $option=$('<div>', {
+          'html' : this.categories[i],
+          'class' : 'c-menu__option c-menu__option--register',
         });
       }else{
         $option=$('<div>', {
           'html' : this.categories[i],
-          'class' : 'c-menu__opcion', 
+          'class' : 'c-menu__option', 
         });
       }
-      if($option.html()=="Deportes"){
+      if($option.html().toLowerCase()=="deportes"){
         $base.append(this.drawSports($base));
         
         $option.on("mouseenter",function(){
@@ -73,7 +79,7 @@ class Menu {
     for (const key of this.sp) {
       let $subOpt=$("<div>",{
         "html":key,
-        "class":"c-menu__suboption"
+        "class":"c-submenu__option"
       });
       $submenu.append($subOpt);
     }
@@ -88,7 +94,7 @@ class Menu {
     for (const key of this.events) {
       let $subOpt=$("<div>",{
         "html":key,
-        "class":"c-menu__suboption"
+        "class":"c-submenu__option"
       });
       $submenu.append($subOpt);
     }
