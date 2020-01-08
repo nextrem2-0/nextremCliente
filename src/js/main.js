@@ -50,24 +50,6 @@ $.ajax({
 
 cargarInicio();
 
-/* function paginaCarga() {
-    $(".l-page").hide();
-    let $page = $("<div>", { "class": "l-carga" }).append(
-        $("<div>", {
-            "class": "c-carga"
-        })
-    )
-    $("body").prepend($page);
-    $(".c-carga").append([
-        $('<div>', { "class": "l-carga__item l-carga__item--logo" }).append(
-            $('<img>', { "class": "c-carga__img", "src": "assets/img/nextrem.png" })
-        ),
-        $('<div>', { "class": "l-carga__item l-carga__item--gif" }).append(
-            $('<img>', { "class": "c-carga__gif", "src": "assets/img/load.gif" })
-        )
-    ]);
-} */
-
 function finPaginaCarga() { 
     $(".c-load").hide("slow");
     setTimeout(function () {

@@ -14,7 +14,7 @@ class Footer {
 
     this.categories.forEach(function (categ) {
       $links.append(
-        $('<a>', { "html": categ })
+        $('<a>', { "html": categ + "&nbsp" })
       );
     });
     /* for (let categ of this.categories) {
