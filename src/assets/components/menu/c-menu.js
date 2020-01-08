@@ -17,7 +17,7 @@ class Menu {
           'html' : this.categories[i],
           'class' : 'c-menu__option c-menu__option--right',
         });
-      }else if(this.categories[i].toLowerCase()=="indice"){
+      }else if(this.categories[i].toLowerCase()=="inicio"){
         $option=$('<img>', {
           //"src":"http://localhost/nextrem/api/",
           "src":"assets/img/nextrem.png",

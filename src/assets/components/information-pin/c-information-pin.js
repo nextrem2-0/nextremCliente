@@ -22,8 +22,8 @@ class InformationPin {
         'class' : 'c-information-pin__image',
     }).append($("<i>",{
       "class":this.image,
-      "style":"color:#518f7f"
-      /* "style":"color:#7f0707" */
+      // "style":"color:#518f7f",
+      "style":"color:#7f0707" 
     })));
     $base.append($('<div>', {
         'html' : this.title,

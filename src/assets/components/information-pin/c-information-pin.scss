@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
   padding:34px;
   width: 390px;
   transition-duration: 0.5s;
@@ -40,8 +40,9 @@
 
 .resaltarAnimation{
   transition-duration: 0.5s;
-  transform: scale(1.1);
+  transform: scale(1.03);
   background-color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .blurAnimation{
