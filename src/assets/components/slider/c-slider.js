@@ -16,17 +16,25 @@ class Slider {
       "class":"carousel-inner"
     });
 
-    this.images.forEach(function (img) {
+    for (let i = 0; i < this.images.length; i++) {
       let $item=$("<div>",{
         "class":"carousel-item"
       });
+      
+      if(i==0){
+        $item=$("<div>",{
+          "class":"carousel-item active"
+        });
+      }
+      
       let $img=$("<img>",{
         "class":'d-block w-100',
-        "src":"http://localhost/nextrem/api/"+ img
+        "src":"http://localhost/nextrem/api/"+ this.images[i]
       });
       $item.append($img);
       $carouselInner.append($item);
-    });
+      
+    }
 
     let $controlPrev=$("<a>",{
       "class":'carousel-control-prev',

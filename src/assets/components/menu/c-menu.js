@@ -30,24 +30,33 @@ class Menu {
           "src": "assets/img/nextrem.png",
           'class': 'c-menu__option',
         });
+        $option.on("click",function(){
+          cargarInicio();
+        });
       } else if (this.categories[i].toLowerCase() == "entrar") {
         $option = $('<div>', {
           'html': this.categories[i],
           'class': 'c-menu__option c-menu__option--login',
         });
-      } else if (this.categories[i].toLowerCase() == "registrar") {
-        $option = $('<div>', {
-          'html': this.categories[i],
-          'class': 'c-menu__option c-menu__option--register',
+        $option.on("click",function(){
+          goToAccount("login");
         });
-      } else {
-        $option = $('<div>', {
-          'html': this.categories[i],
-          'class': 'c-menu__option',
+      }else if(this.categories[i].toLowerCase()=="registrar"){
+        $option=$('<div>', {
+          'html' : this.categories[i],
+          'class' : 'c-menu__option c-menu__option--register',
+        });
+        $option.on("click",function(){
+          goToAccount("register");
+        });
+      }else{
+        $option=$('<div>', {
+          'html' : this.categories[i],
+          'class' : 'c-menu__option',
         });
       }
 
-      if ($option.html().toLowerCase() == "deportes") {
+      if($option.html().toLowerCase()=="deportes"){
         $base.append(this.drawSports($base));
 
         $option.on("mouseenter", function () {
