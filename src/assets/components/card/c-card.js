@@ -68,7 +68,7 @@ class Card {
     );
 
 
-    $(document).on("click", ".c-card__btn", function () {
+    $(".l-page").on("click", ".c-card__btn", function () {
       var todasCartas = $(".c-card");
 
       var card = $(this).parent(".c-card");

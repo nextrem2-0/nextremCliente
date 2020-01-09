@@ -1,0 +1,27 @@
+.l-sport {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "escalada buceo esqui rafting surf";
+  margin: 3%;
+  margin-top: 12%;
+}
+
+.c-sport-pin{
+    &--escalada{
+        grid-area: escalada;
+    }
+    &--buceo{
+        grid-area: buceo;
+    }
+    &--esqui{
+        grid-area: esqui;
+    }
+    &--rafting{
+        grid-area: rafting;
+    }
+    &--surf{
+        grid-area: surf;
+    }
+}
+
+

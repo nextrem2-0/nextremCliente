@@ -2,6 +2,7 @@
 /* --------- VARIABLES --------- */
 let listaCards = new Array();
 let listaPins = new Array();
+let listaSportPins = new Array();
 let categories = new Array();
 let imgSlider = new Array();
 let imgBanner = new Array();
@@ -28,7 +29,6 @@ function finPaginaCarga() {
     setTimeout(function () {
         $(".l-page").show();
     }, 500);
-
 }
 
 function deleteContenido() {
@@ -53,7 +53,7 @@ function cargarInicio() {
     $item3 = $("<div>", {
         "class": "l-columns__item"
     });
-    
+
     $item3.append($("<div>", {
         "class": "c-section__image"
     }));
@@ -65,7 +65,7 @@ function cargarInicio() {
     cargarCards();
 
     if (Array.isArray(categories) && categories.length && Array.isArray(sports) && sports.length) {
-        
+
     } else {
         $.ajax({
             url: "http://localhost/nextrem/api/public/api/categoria",
@@ -96,34 +96,28 @@ function cargarInicio() {
         $item1.append(slider.draw());
         var rutaBanner = "http://localhost/nextrem/api/" + imgBanner[0];
         $(".c-section__image").css('background-image', 'url(' + rutaBanner + ')');
-       console.log(rutaBanner);
+        console.log(rutaBanner);
     } else {
         $.ajax({
             url: "http://localhost/nextrem/api/public/api/getImages",
             success: function (dataResult) {
-                for (let key of dataResult) { 
-                    if(key.includes("slider")){
-                        imgSlider.push(key); 
-                    }else{
+                for (let key of dataResult) {
+                    if (key.includes("slider")) {
+                        imgSlider.push(key);
+                    } else {
                         imgBanner.push(key);
                     }
                 }
-    
+
                 var rutaBanner = "http://localhost/nextrem/api/" + imgBanner[0];
                 $(".c-section__image").css('background-image', 'url(' + rutaBanner + ')');
-               
+
                 let slider = new Slider(imgSlider);
                 $item1.append(slider.draw());
                 $('.carousel-item:first-child').addClass("carousel-item active");
             }
         });
     }
-
-   
-
-    
-
-    
 
     $item4.append(s2.draw());
 
@@ -139,7 +133,7 @@ function cargarInicio() {
 
 }
 
-function cargarDeportes(){
+function cargarDeportes() {
     deleteContenido();
 
     $layout = $("<div>", {
@@ -150,13 +144,14 @@ function cargarDeportes(){
         "class": "l-columns__item"
     });
 
-    s1 = new Section("l-columns", listaCards, "RECOMENDACIONES", "l-columns--5-columns");
-    $item1.append(s1.draw());
+    cargarSportPins();
 
     $layout.append($item1);
 
     $("#content").append($layout);
 }
+
+
 
 function cargarPins() {
     if (Array.isArray(listaPins) && listaPins.length) {
@@ -194,5 +189,18 @@ function cargarCards() {
         listaCards.push(new Card("evento3.jpg", "Clases de ski", "Snow", descrip, iconos, 3, 'nieve'));
     }
     s2 = new Section("l-columns", listaCards, "RECOMENDADOS", "l-columns--3-columns");
+
+}
+
+function cargarSportPins() {
+    if (Array.isArray(listaSportPins) && listaSportPins.length) {
+
+    } else {
+        for (let i = 0; i < sports.length; i++) {
+            listaSportPins.push(new SportPin(sports[i]));
+        }
+    }
+    s1 = new Section("l-sport", listaSportPins, null);
+    $item1.append(s1.draw());
 
 }

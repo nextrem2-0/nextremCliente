@@ -1,7 +1,9 @@
 @import "base/reset.scss";
+@import "abstract/variables.scss";
 
 @import "layout/l-columns.scss";
 @import "layout/l-card.scss";
+@import "layout/l-sport.scss";
 @import "layout/l-footer.scss";
 @import "layout/l-horizontal.scss";
 @import "layout/l-loader.scss";
@@ -14,6 +16,7 @@
 @import "../components/information-pin/c-information-pin.scss";
 @import "../components/submenu/c-submenu.scss";
 @import "../components/footer/c-footer.scss";
+@import "../components/sport-pin/c-sport-pin.scss";
 @import "../components/form/c-form.scss";
 
 body{
