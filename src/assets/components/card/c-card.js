@@ -107,7 +107,7 @@ class Card {
       }, 800);
     }
 
-    $card.append(
+    $card.append( 
       $('<div>', { 'class': 'c-card__footer', }).append([
         $('<div>', { "class": "footer" }).append([
           $('<h4>', { "class": 'footer__titulo', "html": 'Features' }),

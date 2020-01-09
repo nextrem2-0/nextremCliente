@@ -5,6 +5,7 @@ class Footer {
 
   draw() {
     let $base;
+    let currentYear = (new Date).getFullYear();
 
     $base = $('<div>', {
       'class': 'c-footer'
@@ -43,7 +44,7 @@ class Footer {
         $('<div>', { 'class': 'l-footer__item--left', }).append([
           $('<div>', { 'class': 'c-footer__left', }).append([
             $links,
-            $('<p>', { "class": "copyright", "html": "&nbsp Nextrem © 2019" })
+            $('<p>', { "class": "copyright", "html": "&nbsp Nextrem © " + currentYear })
           ])
         ])
       ])

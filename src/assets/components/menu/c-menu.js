@@ -66,6 +66,8 @@ class Menu {
           $base.addClass("c-menu--extended");
         });
 
+        $option.on("click", cargarDeportes);
+
         $base.on("mouseleave", function () {
           $base.removeClass("c-menu--extended");
           $(".c-submenu--sports").hide();

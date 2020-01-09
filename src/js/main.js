@@ -4,6 +4,7 @@ let listaCards = new Array();
 let listaPins = new Array();
 let categories = new Array();
 let imgSlider = new Array();
+let imgBanner = new Array();
 let sports = new Array();
 let events = ["bbbbb", "bbbbb", "bbbbb", "bbbbb", "bbbbb"];
 
@@ -52,7 +53,7 @@ function cargarInicio() {
     $item3 = $("<div>", {
         "class": "l-columns__item"
     });
-
+    
     $item3.append($("<div>", {
         "class": "c-section__image"
     }));
@@ -60,6 +61,8 @@ function cargarInicio() {
     $item4 = $("<div>", {
         "class": "l-columns__item"
     });
+    cargarPins();
+    cargarCards();
 
     if (Array.isArray(categories) && categories.length && Array.isArray(sports) && sports.length) {
         
@@ -91,25 +94,34 @@ function cargarInicio() {
     if (Array.isArray(imgSlider) && imgSlider.length) {
         let slider = new Slider(imgSlider);
         $item1.append(slider.draw());
-       
+        var rutaBanner = "http://localhost/nextrem/api/" + imgBanner[0];
+        $(".c-section__image").css('background-image', 'url(' + rutaBanner + ')');
+       console.log(rutaBanner);
     } else {
         $.ajax({
             url: "http://localhost/nextrem/api/public/api/getImages",
             success: function (dataResult) {
-                for (let key of dataResult) {
-
-                    imgSlider.push(key);
+                for (let key of dataResult) { 
+                    if(key.includes("slider")){
+                        imgSlider.push(key); 
+                    }else{
+                        imgBanner.push(key);
+                    }
                 }
+    
+                var rutaBanner = "http://localhost/nextrem/api/" + imgBanner[0];
+                $(".c-section__image").css('background-image', 'url(' + rutaBanner + ')');
+               
                 let slider = new Slider(imgSlider);
                 $item1.append(slider.draw());
+                $('.carousel-item:first-child').addClass("carousel-item active");
             }
         });
     }
 
    
 
-    cargarPins();
-    cargarCards();
+    
 
     
 
@@ -127,6 +139,25 @@ function cargarInicio() {
 
 }
 
+function cargarDeportes(){
+    deleteContenido();
+
+    $layout = $("<div>", {
+        "class": "l-columns--1-column"
+    });
+
+    $item1 = $("<div>", {
+        "class": "l-columns__item"
+    });
+
+    s1 = new Section("l-columns", listaCards, "RECOMENDACIONES", "l-columns--5-columns");
+    $item1.append(s1.draw());
+
+    $layout.append($item1);
+
+    $("#content").append($layout);
+}
+
 function cargarPins() {
     if (Array.isArray(listaPins) && listaPins.length) {
         // array exists and is not empty   
@@ -142,7 +173,7 @@ function cargarPins() {
                 listaPins.push(new InformationPin(dataResult[key].imagen, dataResult[key].titulo, dataResult[key].texto));
 
             }
-            s1 = new Section("l-horizontal", listaPins, "WHAT NEXTREM IS?");
+            s1 = new Section("l-horizontal", listaPins, "¿QUÉ ES NEXTREM?");
             $item2.append(s1.draw());
         },
         error: function (error) {
@@ -162,6 +193,6 @@ function cargarCards() {
         listaCards.push(new Card("evento2.jpg", "Torneo de Surf", "Surf", descrip, iconos, 2, 'surf'));
         listaCards.push(new Card("evento3.jpg", "Clases de ski", "Snow", descrip, iconos, 3, 'nieve'));
     }
-    s2 = new Section("l-columns", listaCards, "RECOMMENDED", "l-columns--3-columns");
+    s2 = new Section("l-columns", listaCards, "RECOMENDADOS", "l-columns--3-columns");
 
 }
