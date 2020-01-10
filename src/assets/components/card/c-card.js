@@ -60,41 +60,69 @@ class Card {
       ])
     );
 
-    $card.append(
-      $('<div>', { 'class': 'c-card__btn', }).append([
-        $('<i>', { "class": 'fa fa-bars' })
+    let $btn=$('<div>', { 'class': 'c-card__btn', });
+    $btn.append($('<i>', { "class": 'fa fa-bars' }));
+    $card.append($btn);
 
-      ])
-    );
-
-
-    $(".l-page").on("click", ".c-card__btn", function () {
-      var todasCartas = $(".c-card");
-
+    $btn.on("click", function(){
       var card = $(this).parent(".c-card");
       var icon = $(this).children("i");
-      var estaActivado = false; 
+      var todasCartas = $(".c-card");
 
-      if (card.hasClass("c-card--active")) {
-        estaActivado = true;
-      }
-      cerrarCard(todasCartas, $(".c-card__btn"));
+      if(card.hasClass("c-card--active")){
+        cerrarCard(card,$(this));
 
-      if (!card.hasClass("c-card--active")) {
-
+      }else{
+        cerrarCard(todasCartas, $(".c-card__btn"));
         card.addClass("c-card--active");
 
-        window.setTimeout(function () {
-          icon
-            .removeClass("fa-bars")
-            .addClass("fa-arrow-left");
-        }, 800);
-      }
-
-      if(estaActivado == true){
-        cerrarCard(card, $(this));
+      window.setTimeout(function () {
+        icon
+          .removeClass("fa-bars")
+          .addClass("fa-arrow-left");
+      }, 800);
       }
     });
+
+    // $card.append(
+    //   $('<div>', { 'class': 'c-card__btn', }).append([
+    //     $('<i>', { "class": 'fa fa-bars' })
+
+    //   ])
+    // );
+
+    
+    // $(document).on("click", ".c-card__btn", function () {
+    //   var todasCartas = $(".c-card");
+
+    //   var card = $(this).parent(".c-card");
+    //   var icon = $(this).children("i");
+    //   var estaActivado = false;
+       
+
+    //   if (card.hasClass("c-card--active")) {
+    //     estaActivado = true;
+    //   }
+    //   cerrarCard(todasCartas, $(".c-card__btn"));
+
+    //   if (!card.hasClass("c-card--active")) {
+    //     console.log("activo");
+        
+    //     card.addClass("c-card--active");
+
+    //     window.setTimeout(function () {
+    //       icon
+    //         .removeClass("fa-bars")
+    //         .addClass("fa-arrow-left");
+    //     }, 800);
+    //   }
+
+    //   if(estaActivado == true){
+    //     console.log("cerrar");
+        
+    //     cerrarCard(card, $(this));
+    //   }
+    // });
 
     function cerrarCard(carta, icono) {
       carta.removeClass("c-card--active");
