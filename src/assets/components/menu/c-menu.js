@@ -76,18 +76,18 @@ class Menu {
 
 
 
-      }//else if($option.html()=="eventos"){
-      //   $base.append(this.drawEvents($base));
-      //   $option.on("mouseover",function(){
-      //     $(".c-submenu--events").show();
-      //     $base.toggleClass("c-menu--extended");
-      //   });
-      //   $option.on("mouseout",function(){
-      //     $(".c-submenu--events").hide();
-      //     $base.toggleClass("c-menu--extended");
-      //   });
-
-      // }
+      }else if($option.html().toLowerCase()=="eventos"){
+        // $base.append(this.drawEvents($base));
+        // $option.on("mouseover",function(){
+        //   $(".c-submenu--events").show();
+        //   $base.toggleClass("c-menu--extended");
+        // });
+        // $option.on("mouseout",function(){
+        //   $(".c-submenu--events").hide();
+        //   $base.toggleClass("c-menu--extended");
+        // });
+        $option.on("click", cargarEventos);
+      }
 
       $base.append($option);
     }

@@ -29,11 +29,7 @@ class Slider {
       
       let $img=$("<img>",{
         "class":'d-block w-100',
-<<<<<<< HEAD
-        "src":"http://localhost/nextrem/api/"+ this.images[i]
-=======
         "src":"http://localhost/nextrem/api/"+ this.images[i] + "?v=1"
->>>>>>> develop
       });
       $item.append($img);
       $carouselInner.append($item);

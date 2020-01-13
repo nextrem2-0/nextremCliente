@@ -1,6 +1,7 @@
 
 /* --------- VARIABLES --------- */
 let listaCards = new Array();
+let recomendedCards = new Array();
 let listaPins = new Array();
 let listaSportPins = new Array();
 let categories = new Array();
@@ -62,13 +63,13 @@ function cargarInicio() {
         "class": "l-columns__item"
     });
     cargarPins();
-    cargarCards();
+    s2 = cargarCards("recomended");
 
     if (Array.isArray(categories) && categories.length && Array.isArray(sports) && sports.length) {
 
     } else {
         $.ajax({
-            url: "http://localhost/nextrem/api/public/api/categoria",
+            url: "http://localhost/nextrem/api/public/categorias",
             success: function (dataResult) {
                 for (let key of dataResult) {
                     categories.push(key.nombre);
@@ -77,7 +78,7 @@ function cargarInicio() {
                 let footer = new Footer(categories);
                 $("#footer").append(footer.draw());
                 $.ajax({
-                    url: "http://localhost/nextrem/api/public/api/getDeportes",
+                    url: "http://localhost/nextrem/api/public/deportes",
                     success: function (dataResult) {
                         for (let key of dataResult) {
                             sports.push(key.nombre);
@@ -99,7 +100,7 @@ function cargarInicio() {
         console.log(rutaBanner);
     } else {
         $.ajax({
-            url: "http://localhost/nextrem/api/public/api/getImages",
+            url: "http://localhost/nextrem/api/public/images",
             success: function (dataResult) {
                 for (let key of dataResult) {
                     if (key.includes("slider")) {
@@ -114,10 +115,11 @@ function cargarInicio() {
 
                 let slider = new Slider(imgSlider);
                 $item1.append(slider.draw());
-                $('.carousel-item:first-child').addClass("carousel-item active");
+
             }
         });
     }
+
 
     $item4.append(s2.draw());
 
@@ -137,7 +139,7 @@ function cargarDeportes() {
     deleteContenido();
 
     $layout = $("<div>", {
-        "class": "l-columns--1-column"
+        "class": "l-columns--1-columns"
     });
 
     $item1 = $("<div>", {
@@ -151,8 +153,6 @@ function cargarDeportes() {
     $("#content").append($layout);
 }
 
-
-
 function cargarPins() {
     if (Array.isArray(listaPins) && listaPins.length) {
         // array exists and is not empty   
@@ -160,7 +160,7 @@ function cargarPins() {
     }
 
     $.ajax({
-        url: "http://localhost/nextrem/api/public/api/textInicio",
+        url: "http://localhost/nextrem/api/public/textInicio",
         success: function (dataResult) {
 
             for (let key in dataResult) {
@@ -178,18 +178,41 @@ function cargarPins() {
     });
 }
 
-function cargarCards() {
-    if (Array.isArray(listaCards) && listaCards.length) {
+function cargarCards(type) {
+    let section;
 
-    } else {
-        var descrip = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.";
-        var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
-        listaCards.push(new Card("evento1.jpg", "Liga de escuelas", "Escalada", descrip, iconos, 3, 'escalada'));
-        listaCards.push(new Card("evento2.jpg", "Torneo de Surf", "Surf", descrip, iconos, 2, 'surf'));
-        listaCards.push(new Card("evento3.jpg", "Clases de ski", "Snow", descrip, iconos, 3, 'nieve'));
+    if (type == "recomended") {
+        if (Array.isArray(recomendedCards) && recomendedCards.length) {
+
+        } else {
+            var descrip = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.";
+            var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
+            recomendedCards.push(new Card("evento1.jpg", "Liga de escuelas", "Escalada", descrip, iconos, 3, 'escalada'));
+            recomendedCards.push(new Card("evento2.jpg", "Torneo de Surf", "Surf", descrip, iconos, 2, 'surf'));
+            recomendedCards.push(new Card("evento3.jpg", "Clases de ski", "Snow", descrip, iconos, 3, 'nieve'));
+        }
+        section = new Section("l-columns", recomendedCards, "RECOMENDADOS", "l-columns--3-columns");
+    } else if (type == "todas") {
+        if (Array.isArray(listaCards) && listaCards.length) {
+
+        } else {
+
+            var descrip = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.";
+            var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
+            listaCards.push(new Card("evento1.jpg", "Liga de escuelas", "Escalada", descrip, iconos, 3, 'escalada'));
+            listaCards.push(new Card("evento2.jpg", "Torneo de Surf", "Surf", descrip, iconos, 2, 'surf'));
+            listaCards.push(new Card("evento3.jpg", "Clases de ski", "Snow", descrip, iconos, 3, 'nieve'));
+            listaCards.push(new Card("evento1.jpg", "Liga de buceo", "buceo", descrip, iconos, 3, 'escalada'));
+            listaCards.push(new Card("evento2.jpg", "Torneo de Rafting", "Rafting", descrip, iconos, 2, 'surf'));
+            listaCards.push(new Card("evento3.jpg", "Clases de snow", "Snow", descrip, iconos, 3, 'nieve'));
+            listaCards.push(new Card("evento1.jpg", "Liga de buceo", "buceo", descrip, iconos, 3, 'escalada'));
+            listaCards.push(new Card("evento2.jpg", "Torneo de Rafting", "Rafting", descrip, iconos, 2, 'surf'));
+            listaCards.push(new Card("evento3.jpg", "Clases de snow", "Snow", descrip, iconos, 3, 'nieve'));
+        }
+        section = new Section("l-columns", listaCards, null, "l-columns--3-columns","l-columns--long");
     }
-    s2 = new Section("l-columns", listaCards, "RECOMENDADOS", "l-columns--3-columns");
-
+    
+    return section;
 }
 
 function cargarSportPins() {
@@ -203,4 +226,22 @@ function cargarSportPins() {
     s1 = new Section("l-sport", listaSportPins, null);
     $item1.append(s1.draw());
 
+}
+
+function cargarEventos() {
+    deleteContenido();
+
+    $layout = $("<div>", {
+        "class": "l-columns--1-columns"
+    });
+
+    $item1 = $("<div>", {
+        "class": "l-columns__item"
+    });
+
+    $item1.append(cargarCards("todas").draw());
+
+    $layout.append($item1);
+
+    $("#content").append($layout);
 }

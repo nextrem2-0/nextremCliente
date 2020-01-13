@@ -1,5 +1,5 @@
 class Section {
-  constructor(layout, innerComponents,title,modifier=null) {
+  constructor(layout, innerComponents,title,...modifier) {
     this.layout=layout;
     this.innerComponents=innerComponents;
     this.modifier=modifier;
@@ -23,9 +23,14 @@ class Section {
     let $layout=$("<div>",{
       "class":this.layout
     });
-    if(this.modifier!=null){
+    if(this.modifier.length!=0){
+      let clas=this.layout;
+      this.modifier.forEach(mod => {
+        clas+=" "+mod;
+      });
+
       $layout=$("<div>",{
-        "class":this.layout+" "+this.modifier
+        "class":clas
       });
     }
     

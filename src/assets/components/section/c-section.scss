@@ -1,9 +1,11 @@
+
 .c-section{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 500px;
+    height: fit-content;
+    min-height: 590px;
     position: relative;
 
   &__content{
@@ -40,6 +42,7 @@
     font-size: 2.4rem;
     white-space:nowrap;
     overflow: hidden;
+    
   }
   @keyframes example {
     0%{width:0%}
@@ -52,4 +55,11 @@
     width: calc(100%+100px);
     filter: grayscale(100%);
   }
+
+  
 }
+
+
+
+
+
