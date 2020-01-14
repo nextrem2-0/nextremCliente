@@ -14,7 +14,7 @@ class Card {
     let $base;
     let $card;
     let nivel;
-    $base = $('<div>', {
+    $base = $('<div>', { 
       'class': 'l-card col-md-10 col-sm-6 col-xs-12',
     });
 
@@ -34,7 +34,7 @@ class Card {
 
     $base.append($card);
 
-    $card.append(
+    $card.append( 
       $('<h2>', { 'class': 'c-card__encabezado', }).append([
         $('<div>', { "class": "encabezado" }).append([
           $('<span>', { "class": "encabezado__titulo", "html": this.title }),
@@ -54,6 +54,10 @@ class Card {
           ]),
           $('<div>', { "class": "content__description" }).append([
             $('<div>', { "html": this.summary })
+          ]),
+          $('<div>', { "class": "content__button content__button--" + this.sport }).append([
+            $('<i>', { "class": 'fas fa-plus button__icono', }),
+            $('<p>', { "class": "button-text", "html": '&nbsp Add cart', })
           ])
         ])
 
@@ -83,47 +87,7 @@ class Card {
       }, 800);
       }
     });
-
-    // $card.append(
-    //   $('<div>', { 'class': 'c-card__btn', }).append([
-    //     $('<i>', { "class": 'fa fa-bars' })
-
-    //   ])
-    // );
-
     
-    // $(document).on("click", ".c-card__btn", function () {
-    //   var todasCartas = $(".c-card");
-
-    //   var card = $(this).parent(".c-card");
-    //   var icon = $(this).children("i");
-    //   var estaActivado = false;
-       
-
-    //   if (card.hasClass("c-card--active")) {
-    //     estaActivado = true;
-    //   }
-    //   cerrarCard(todasCartas, $(".c-card__btn"));
-
-    //   if (!card.hasClass("c-card--active")) {
-    //     console.log("activo");
-        
-    //     card.addClass("c-card--active");
-
-    //     window.setTimeout(function () {
-    //       icon
-    //         .removeClass("fa-bars")
-    //         .addClass("fa-arrow-left");
-    //     }, 800);
-    //   }
-
-    //   if(estaActivado == true){
-    //     console.log("cerrar");
-        
-    //     cerrarCard(card, $(this));
-    //   }
-    // });
-
     function cerrarCard(carta, icono) {
       carta.removeClass("c-card--active");
 

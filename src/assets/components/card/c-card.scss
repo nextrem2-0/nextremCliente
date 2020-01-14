@@ -80,6 +80,8 @@
   }
 }
 
+// ------------- CARTA ACTIVA
+
 .c-card--active {
   .c-card__encabezado {
     top: 0;
@@ -100,6 +102,7 @@
     padding-top: 5.6em;
 
     .content {
+      height: 200px;
       &__img {
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
@@ -116,6 +119,16 @@
         padding-top: 5.6em;
         opacity: 1;
         filter: alpha(opacity=100);
+      }
+
+      &__button {
+        display: flex;
+        top: 50px;
+        padding: 1.1em;
+        opacity: 1;
+        filter: alpha(opacity=100);
+        margin-top: 50%;
+        margin-left: 50%;
       }
 
       @media screen and (max-width: 767px) {
@@ -162,6 +175,7 @@
     }
   }
 }
+// ACABA CARTA ACTIVA
 
 .encabezado {
   &__titulo {
@@ -200,6 +214,54 @@
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
+  }
+
+  &__button {
+    $sportsColor: (
+      Escalada: $colorEscalada,
+      Buceo: $colorBuceo,
+      Rafting: $colorRafting,
+      Esqui: $colorEsqui,
+      Surf: $colorSurf,
+    );
+
+    @each $sport, $color in $sportsColor {
+      &--#{$sport} {
+        background-color: $color;
+      }
+    }
+    border: 1px solid black;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin: 10px;
+    display: inline-block;
+    transition: all 1.4s;
+
+    position: absolute;
+    top: 100%;
+    overflow: hidden;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transition: all 1.2s;
+
+    transform: skewX(-10deg);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .button__icono {
+      color: white;
+      transform: skewX(10deg);
+      display: inline-block;
+    }
+
+    .button-text {
+      color: white;
+      text-transform: capitalize;
+      transform: skewX(10deg);
+    }
   }
 
   &__img img {
@@ -263,179 +325,312 @@
 
 //--------------------------------------------
 
-// --------------COLORES SURF--------------
+// --------------COLORES ESQUI--------------
 
-.c-card--surf .c-card__encabezado {
-  background-color: #009688;
+.c-card--esqui .c-card__encabezado {
+  background-color: $colorEsqui;
+
+  &:after {
+    border-top-color: $colorEsqui;
+    border-right-color: $colorEsqui;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorEsqui__secundary;
+    border-bottom-color: $colorEsqui__secundary;
+    border-left-color: transparent;
+  }
 }
 
-.c-card--surf .c-card__encabezado:after {
-  border-top-color: #009688;
-  border-right-color: #009688;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
+.c-card--esqui.card--active .c-card__encabezado {
+  &:after {
+    border-top-color: $colorEsqui__secundary;
+    border-right-color: $colorEsqui__secundary;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorEsqui;
+    border-bottom-color: $colorEsqui;
+    border-left-color: transparent;
+  }
 }
 
-.c-card--surf .c-card__encabezado:before {
-  border-top-color: transparent;
-  border-right-color: #004d40;
-  border-bottom-color: #004d40;
-  border-left-color: transparent;
-}
-
-.c-card--surf.c-card--active .c-card__encabezado:before {
-  border-top-color: transparent;
-  border-right-color: #009688;
-  border-bottom-color: #009688;
-  border-left-color: transparent;
-}
-
-.c-card--surf.c-card--active .c-card__encabezado:after {
-  border-top-color: #004d40;
-  border-right-color: #004d40;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
-
-.c-card--surf .c-card__btn {
-  background-color: #009688;
+.c-card--esqui .c-card__btn {
+  background-color: $colorEsqui;
   border-color: #e0f2f1;
+
+  &:hover {
+    background-color: $colorEsqui__secundary;
+  }
 }
 
-.c-card--surf .c-card__btn:hover {
-  background-color: #004d40;
+.c-card--esqui .c-card__footer .footer {
+  &__titulo {
+    color: $colorEsqui__secundary;
+  }
+  &__iconos a {
+    background-color: $colorEsqui__secundary;
+  }
 }
 
-.c-card--surf .c-card__footer .footer__titulo {
-  color: #004d40;
+.c-card--esqui.c-card--active {
+  .c-card__contenido {
+    background-color: $colorEsqui__contenido;
+  }
+  .c-card__footer {
+    background-color: $colorEsqui__footer;
+  }
 }
 
-.c-card--surf .c-card__footer .footer__iconos a {
-  background-color: #004d40;
+// --------------COLORES BUCEO--------------
+
+.c-card--buceo .c-card__encabezado {
+  background-color: $colorBuceo;
+
+  &:after {
+    border-top-color: $colorBuceo;
+    border-right-color: $colorBuceo;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorBuceo__secundary;
+    border-bottom-color: $colorBuceo__secundary;
+    border-left-color: transparent;
+  }
 }
 
-.c-card--surf.c-card--active .c-card__contenido {
-  background-color: #e0f2f1;
+.c-card--buceo.card--active .c-card__encabezado {
+  &:after {
+    border-top-color: $colorBuceo__secundary;
+    border-right-color: $colorBuceo__secundary;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorBuceo;
+    border-bottom-color: $colorBuceo;
+    border-left-color: transparent;
+  }
 }
 
-.c-card--surf.c-card--active .c-card__footer {
-  background-color: #b2dfdb;
+.c-card--buceo .c-card__btn {
+  background-color: $colorBuceo;
+  border-color: #e0f2f1;
+
+  &:hover {
+    background-color: $colorBuceo__secundary;
+  }
+}
+
+.c-card--buceo .c-card__footer .footer {
+  &__titulo {
+    color: $colorBuceo__secundary;
+  }
+  &__iconos a {
+    background-color: $colorBuceo__secundary;
+  }
+}
+
+.c-card--buceo.c-card--active {
+  .c-card__contenido {
+    background-color: $colorBuceo__contenido;
+  }
+  .c-card__footer {
+    background-color: $colorBuceo__footer;
+  }
 }
 
 // --------------COLORES ESCALADA--------------
 
 .c-card--escalada .c-card__encabezado {
-  background-color: #ff9800;
+  background-color: $colorEscalada;
+
+  &:after {
+    border-top-color: $colorEscalada;
+    border-right-color: $colorEscalada;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorEscalada__secundary;
+    border-bottom-color: $colorEscalada__secundary;
+    border-left-color: transparent;
+  }
 }
 
-.c-card--escalada .c-card__encabezado:after {
-  border-top-color: #ff9800;
-  border-right-color: #ff9800;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
+.c-card--escalada.card--active .c-card__encabezado {
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorEscalada;
+    border-bottom-color: $colorEscalada;
+    border-left-color: transparent;
+  }
 
-.c-card--escalada .c-card__encabezado:before {
-  border-top-color: transparent;
-  border-right-color: #e65100;
-  border-bottom-color: #e65100;
-  border-left-color: transparent;
-}
-
-.c-card--escalada.c-card--active .c-card__encabezado:before {
-  border-top-color: transparent;
-  border-right-color: #ff9800;
-  border-bottom-color: #ff9800;
-  border-left-color: transparent;
-}
-
-.c-card--escalada.c-card--active .c-card__encabezado:after {
-  border-top-color: #e65100;
-  border-right-color: #e65100;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
+  &:after {
+    border-top-color: $colorEscalada__secundary;
+    border-right-color: $colorEscalada__secundary;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
 }
 
 .c-card--escalada .c-card__btn {
-  background-color: #ff9800;
+  background-color: $colorEscalada;
   border-color: #e0f2f1;
+
+  &:hover {
+    background-color: $colorEscalada__secundary;
+  }
 }
 
-.c-card--escalada .c-card__btn:hover {
-  background-color: #e65100;
+.c-card--escalada .c-card__footer .footer {
+  &__titulo {
+    color: $colorEscalada__secundary;
+  }
+  &__iconos a {
+    background-color: $colorEscalada__secundary;
+  }
 }
 
-.c-card--escalada .c-card__footer .footer__titulo {
-  color: #e65100;
+.c-card--escalada.c-card--active {
+  .c-card__contenido {
+    background-color: $colorEscalada__contenido;
+  }
+  .c-card__footer {
+    background-color: $colorEscalada__footer;
+  }
 }
 
-.c-card--escalada .c-card__footer .footer__iconos a {
-  background-color: #e65100;
+// --------------COLORES RAFTING--------------
+
+.c-card--rafting .c-card__encabezado {
+  background-color: $colorRafting;
+
+  &:after {
+    border-top-color: $colorRafting;
+    border-right-color: $colorRafting;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorRafting__secundary;
+    border-bottom-color: $colorRafting__secundary;
+    border-left-color: transparent;
+  }
 }
 
-.c-card--escalada.c-card--active .c-card__contenido {
-  background-color: #ffe0b2;
+.c-card--rafting.card--active .c-card__encabezado {
+  &:after {
+    border-top-color: $colorRafting__secundary;
+    border-right-color: $colorRafting__secundary;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorRafting;
+    border-bottom-color: $colorRafting;
+    border-left-color: transparent;
+  }
 }
 
-.c-card--escalada.c-card--active .c-card__footer {
-  background-color: #fff3e0;
-}
-
-// --------------COLORES NIEVE--------------
-
-.c-card--nieve .c-card__encabezado {
-  background-color: #607d8b;
-}
-
-.c-card--nieve .c-card__encabezado:after {
-  border-top-color: #607d8b;
-  border-right-color: #607d8b;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
-
-.c-card--nieve .c-card__encabezado:before {
-  border-top-color: transparent;
-  border-right-color: #263238;
-  border-bottom-color: #263238;
-  border-left-color: transparent;
-}
-
-.c-card--nieve.c-card--active .c-card__encabezado:before {
-  border-top-color: transparent;
-  border-right-color: #607d8b;
-  border-bottom-color: #607d8b;
-  border-left-color: transparent;
-}
-
-.c-card--nieve.c-card--active .c-card__encabezado:after {
-  border-top-color: #263238;
-  border-right-color: #263238;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
-
-.c-card--nieve .c-card__btn {
-  background-color: #607d8b;
+.c-card--rafting .c-card__btn {
+  background-color: $colorRafting;
   border-color: #e0f2f1;
+
+  &:hover {
+    background-color: $colorRafting__secundary;
+  }
 }
 
-.c-card--nieve .c-card__btn:hover {
-  background-color: #263238;
+.c-card--rafting .c-card__footer .footer {
+  &__titulo {
+    color: $colorRafting__secundary;
+  }
+  &__iconos a {
+    background-color: $colorRafting__secundary;
+  }
 }
 
-.c-card--nieve .c-card__footer .footer__titulo {
-  color: #263238;
+.c-card--rafting.c-card--active {
+  .c-card__contenido {
+    background-color: $colorRafting__contenido;
+  }
+  .c-card__footer {
+    background-color: $colorRafting__footer;
+  }
 }
 
-.c-card--nieve .c-card__footer .footer__iconos a {
-  background-color: #263238;
+// --------------COLORES SURF--------------
+
+.c-card--surf .c-card__encabezado {
+  background-color: $colorSurf;
+
+  &:after {
+    border-top-color: $colorSurf;
+    border-right-color: $colorSurf;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorSurf__secundary;
+    border-bottom-color: $colorSurf__secundary;
+    border-left-color: transparent;
+  }
 }
 
-.c-card--nieve.c-card--active .c-card__contenido {
-  background-color: #eceff1;
+.c-card--surf.card--active .c-card__encabezado {
+  &:after {
+    border-top-color: $colorSurf__secundary;
+    border-right-color: $colorSurf__secundary;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  &:before {
+    border-top-color: transparent;
+    border-right-color: $colorSurf;
+    border-bottom-color: $colorSurf;
+    border-left-color: transparent;
+  }
 }
 
-.c-card--nieve.c-card--active .c-card__footer {
-  background-color: #cfd8dc;
+.c-card--surf .c-card__btn {
+  background-color: $colorSurf;
+  border-color: #e0f2f1;
+
+  &:hover {
+    background-color: $colorSurf__secundary;
+  }
+}
+
+.c-card--surf .c-card__footer .footer {
+  &__titulo {
+    color: $colorSurf__secundary;
+  }
+  &__iconos a {
+    background-color: $colorSurf__secundary;
+  }
+}
+
+.c-card--surf.c-card--active {
+  .c-card__contenido {
+    background-color: $colorSurf__contenido;
+  }
+  .c-card__footer {
+    background-color: $colorSurf__footer;
+  }
 }
