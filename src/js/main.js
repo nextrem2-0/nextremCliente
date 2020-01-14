@@ -55,9 +55,11 @@ function cargarInicio() {
         "class": "l-columns__item"
     });
 
-    $item3.append($("<div>", {
+    $ban=$("<div>", {
         "class": "c-section__image"
-    }));
+    });
+
+    $item3.append($ban);
 
     $item4 = $("<div>", {
         "class": "l-columns__item"
@@ -81,7 +83,7 @@ function cargarInicio() {
                     url: "http://localhost/nextrem/api/public/deportes",
                     success: function (dataResult) {
                         for (let key of dataResult) {
-                            sports.push(key.nombre);
+                            sports.push(key);
                         }
                         let menu = new Menu(categories, sports, events);
                         $("#menu").append(menu.draw());
@@ -96,7 +98,7 @@ function cargarInicio() {
         let slider = new Slider(imgSlider);
         $item1.append(slider.draw());
         var rutaBanner = "http://localhost/nextrem/api/" + imgBanner[0];
-        $(".c-section__image").css('background-image', 'url(' + rutaBanner + ')');
+        $ban.css('background-image', 'url(' + rutaBanner + ')');
         console.log(rutaBanner);
     } else {
         $.ajax({
@@ -111,7 +113,7 @@ function cargarInicio() {
                 }
 
                 var rutaBanner = "http://localhost/nextrem/api/" + imgBanner[0];
-                $(".c-section__image").css('background-image', 'url(' + rutaBanner + ')');
+                $ban.css('background-image', 'url(' + rutaBanner + ')');
 
                 let slider = new Slider(imgSlider);
                 $item1.append(slider.draw());
@@ -196,20 +198,38 @@ function cargarCards(type) {
         if (Array.isArray(listaCards) && listaCards.length) {
 
         } else {
+            $.ajax({
+                url: "http://localhost/nextrem/api/public/eventos",
+                success: function (dataResult) {
+                    var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
+                    for (let key in dataResult) {
+                        let deporte=sports[dataResult[key].deporte_id];
+                        
+                        listaCards.push(new Card("evento1.jpg", dataResult[key].nombre, deporte,dataResult[key].resumen, iconos, dataResult[key].dificultad, deporte.toLowerCase()));
+        
+                    }
+                    section = new Section("l-columns", listaCards, null, "l-columns--3-columns","l-columns--long");
+                    $item1.append(section.draw());
+                },
+                error: function (error) {
+                    console.log(error);
+        
+                }
+            });
 
-            var descrip = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.";
-            var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
-            listaCards.push(new Card("evento1.jpg", "Liga de escuelas", "Escalada", descrip, iconos, 3, 'escalada'));
-            listaCards.push(new Card("evento2.jpg", "Torneo de Surf", "Surf", descrip, iconos, 2, 'surf'));
-            listaCards.push(new Card("evento3.jpg", "Clases de ski", "Snow", descrip, iconos, 3, 'nieve'));
-            listaCards.push(new Card("evento1.jpg", "Liga de buceo", "buceo", descrip, iconos, 3, 'escalada'));
-            listaCards.push(new Card("evento2.jpg", "Torneo de Rafting", "Rafting", descrip, iconos, 2, 'surf'));
-            listaCards.push(new Card("evento3.jpg", "Clases de snow", "Snow", descrip, iconos, 3, 'nieve'));
-            listaCards.push(new Card("evento1.jpg", "Liga de buceo", "buceo", descrip, iconos, 3, 'escalada'));
-            listaCards.push(new Card("evento2.jpg", "Torneo de Rafting", "Rafting", descrip, iconos, 2, 'surf'));
-            listaCards.push(new Card("evento3.jpg", "Clases de snow", "Snow", descrip, iconos, 3, 'nieve'));
+            // var descrip = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.";
+            
+            // listaCards.push(new Card("evento1.jpg", "Liga de escuelas", "Escalada", descrip, iconos, 3, 'escalada'));
+            // listaCards.push(new Card("evento2.jpg", "Torneo de Surf", "Surf", descrip, iconos, 2, 'surf'));
+            // listaCards.push(new Card("evento3.jpg", "Clases de ski", "Snow", descrip, iconos, 3, 'nieve'));
+            // listaCards.push(new Card("evento1.jpg", "Liga de buceo", "buceo", descrip, iconos, 3, 'escalada'));
+            // listaCards.push(new Card("evento2.jpg", "Torneo de Rafting", "Rafting", descrip, iconos, 2, 'surf'));
+            // listaCards.push(new Card("evento3.jpg", "Clases de snow", "Snow", descrip, iconos, 3, 'nieve'));
+            // listaCards.push(new Card("evento1.jpg", "Liga de buceo", "buceo", descrip, iconos, 3, 'escalada'));
+            // listaCards.push(new Card("evento2.jpg", "Torneo de Rafting", "Rafting", descrip, iconos, 2, 'surf'));
+            // listaCards.push(new Card("evento3.jpg", "Clases de snow", "Snow", descrip, iconos, 3, 'nieve'));
         }
-        section = new Section("l-columns", listaCards, null, "l-columns--3-columns","l-columns--long");
+        
     }
     
     return section;
@@ -239,7 +259,7 @@ function cargarEventos() {
         "class": "l-columns__item"
     });
 
-    $item1.append(cargarCards("todas").draw());
+    cargarCards("todas");
 
     $layout.append($item1);
 

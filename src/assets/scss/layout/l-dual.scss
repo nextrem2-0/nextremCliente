@@ -1,0 +1,17 @@
+.l-dual{
+    display: grid;
+    grid-template-areas: "izquierda derecha";
+    grid-template-columns: 1fr 1fr;
+    &__item{
+        &--derecha{
+            grid-area: derecha;
+            width: 200px;
+            height: 200px;
+        }
+        &--izquierda{
+            grid-area: izquierda;
+            width: 200px;
+            height: 200px;
+        }
+    }
+}

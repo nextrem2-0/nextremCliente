@@ -102,7 +102,7 @@ class Menu {
     });
     for (const key of this.sp) {
       let $subOpt = $("<div>", {
-        "html": key,
+        "html": key.nombre,
         "class": "c-submenu__option"
       });
       $submenu.append($subOpt);
