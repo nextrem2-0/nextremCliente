@@ -1,0 +1,71 @@
+.c-modal{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000000, $alpha: 0.7);
+    z-index: 100;
+    &__dialog{
+        position: absolute;
+        //display: flex;
+        // grid-template-areas: 
+        // "head head" 
+        // "body body" 
+        // "footer footer";
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 500px;
+        height: fit-content;
+        background:  #ffffff;
+        
+    }
+    overflow: hidden;
+}
+.content{
+    &__header{
+        display: flex;
+        //grid-area: head;
+        padding: 10px;
+        
+    }
+    &__title{
+        display:block;
+        font-weight: bold;
+        font-size: 24px;
+        text-align: center;
+    }
+    &__body{
+        display: block;
+        width: 100%;
+        padding:30px;
+        line-height: 24px;
+        //grid-area: body;
+    }
+    &__footer{
+        padding:10px;
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        //grid-area: footer;
+    }
+}
+.button--close{
+    margin-left: auto;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.button{
+    display: inline-block;
+    padding:20px 40px;
+    margin:5px;
+    border: 1px solid #7f0707;
+    &--highlight{
+        background-color: #7f0707;
+        color: white;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}

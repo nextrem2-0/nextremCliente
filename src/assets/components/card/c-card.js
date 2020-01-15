@@ -46,12 +46,18 @@ class Card {
 
       var self= this;
 
-    let $cartBtn=$('<div>', { "class": "content__button content__button--" + this.sport });
-    $cartBtn.on("click",function(){
+      let $cartBtn=$('<div>', { "class": "content__button content__button--" + this.sport});
+      $cartBtn.on("click",function(){
+        let modal=new Modal("Resumen producto",self.imprimirProducto(),function(){self.comprar();});
+        
+        let $mod=modal.draw();
+        $("#modal").append($mod);
+        $mod.show();
+        
       
-      if(confirm(self.imprimirProducto())){
-        carrito.anyadirEvento(new Card(self.image, self.title, self.sport, self.summary, self.iconos, self.level, self.modifier));
-      }      
+      // if(confirm(self.imprimirProducto())){
+      //   carrito.anyadirEvento(new Card(self.image, self.title, self.sport, self.summary, self.iconos, self.level, self.modifier));
+      // }      
       
     });
 
@@ -141,7 +147,13 @@ class Card {
     return "Evento: "+this.title+"<br>"+
            "Deporte: "+this.sport+"<br>"
           +"Incluye material: "+this.material+"<br>"
-          +"Precio total: "+this.price;
+          +"Precio total: "+this.price+"€";
+  }
+
+  comprar(){
+    let card=new Card(this.image, this.title, this.sport, this.summary,this.price,this.material, this.iconos, this.level, this.modifier);
+    
+    carrito.anyadirEvento(card);
   }
 
 }

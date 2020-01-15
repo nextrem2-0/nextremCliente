@@ -311,7 +311,12 @@ function cargarEventosDeporte(idDeporte) {
 
 function cargarCarrito(){
     if(carrito instanceof Cart){
-        $("#cart").append(carrito.draw());
+        if($("#cart").children().length > 0){
+
+        }else{
+            $("#cart").append(carrito.draw());
+        }
+        
     }else{
         carrito= new Cart();
         $("#cart").append(carrito.draw());
