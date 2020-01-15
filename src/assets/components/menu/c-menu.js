@@ -34,15 +34,7 @@ class Menu {
           cargarInicio();
         });
       } else if (this.categories[i].toLowerCase() == "entrar") {
-        if (localStorage.getItem('user_token') != null) {
-          $option = $('<div>', {
-            'html': "Desconectar",
-            'class': 'c-menu__option c-menu__option--login',
-          });
-          $option.on("click", function () {
-            logoutAction();
-          });
-        } else {
+        if (localStorage.getItem('user_token') == null) {
           $option = $('<div>', {
             'html': this.categories[i],
             'class': 'c-menu__option c-menu__option--login',
@@ -51,12 +43,19 @@ class Menu {
             goToAccount("login");
           });
         }
+
+
       } else if (this.categories[i].toLowerCase() == "registrar") {
         if (localStorage.getItem('user_token') != null) {
+          //this.cambiarDropTitulosPerfil($option);
           $option = $('<div>', {
             'html': 'Perfil',
             'class': 'c-menu__option c-menu__option--register dropdown',
-          });
+          });;
+
+          let drop = new DropDown("profile");
+          $option.append(drop.draw());
+
           $option.on("click", function () {
             profileDropDown("profile");
           });
@@ -150,5 +149,11 @@ class Menu {
     }
 
     return $submenu;
+  }
+
+  cambiarDropTitulosPerfil($option) {
+    let username = localStorage.getItem('username');
+    console.log(username);
+
   }
 }

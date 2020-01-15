@@ -26,11 +26,13 @@ class Form {
 
         let $username = $("<input>", {
             "type": "text",
+            "id": "user_login",
             "class": "textbox",
-            "placeholder": "user name"
+            "placeholder": "user name or email"
         });
         let $password = $("<input>", {
             "type": "password",
+            "id": "pass_login",
             "class": "textbox",
             "placeholder": "password"
         });
@@ -64,17 +66,7 @@ class Form {
         $base.append($undertext);
 
         $(function () {
-            $('.c-form__button').click(function () {
-                $.ajax({
-                    url: "http://localhost/nextrem/api/public/login",
-                    data: { login: $("#user").val(), password: $("#pass").val() },
-                    success: function (dataResult) {
-                        localStorage.setItem('user_token', dataResult.token);
-                        location.reload();
-                    }
-                });
-
-            })
+            $('.c-form__button').on("click",loginAction);
         })
 
         return $base;
@@ -97,23 +89,31 @@ class Form {
 
         let $username = $("<input>", {
             "type": "text",
+            "id": "user",
             "class": "textbox",
             "placeholder": "User name"
         });
         let $password = $("<input>", {
             "type": "password",
+            "id": "pass_register",
             "class": "textbox",
             "placeholder": "Password"
         });
         let $rePassword = $("<input>", {
             "type": "password",
+            "id": "pass_confirm_register",
             "class": "textbox",
             "placeholder": "Confirm password"
+        });
+        let $email = $("<input>", {
+            "type": "text",
+            "id": "email",
+            "class": "textbox",
+            "placeholder": "Email"
         });
         let $business = $("<input>", {
             "id": "cbIsbusiness",
             "type": "checkbox",
-            "value": "true",
             "name": "isbusiness",
         });
         let $cb = $("<div>", {
@@ -168,6 +168,7 @@ class Form {
         $textbox.append($username);
         $textbox.append($password);
         $base.append($textbox);
+        $base.append($email);
         $base.append($rePassword);
         $base.append($cb);
         $base.append($submit);
@@ -176,10 +177,10 @@ class Form {
         $(function () {
 
             $('.c-form__button').click(function () {
-                var boolBusiness = $("#cbbusiness:checkbox:checked").length > 0 == true ? 1 : 0;
+                var boolBusiness = $("#cbIsbusiness:checkbox:checked").length > 0 == true ? 1 : 0;
                 $.ajax({
                     url: "http://localhost/nextrem/api/public/register",
-                    data: { isbusiness: boolBusiness, username: $("#user").val(), email: $("#email").val(), password: $("#pass").val(), password_confirmation: $("#pass_confirm").val() },
+                    data: { isbusiness: boolBusiness, username: $("#user").val(), email: $("#email").val(), password: $("#pass_register").val(), password_confirmation: $("#pass_confirm_register").val() },
                     headers: { 'Content-Type': 'application/json' },
                     success: function (dataResult) {
                         localStorage.setItem('user_token', dataResult.token);

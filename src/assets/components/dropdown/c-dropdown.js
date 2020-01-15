@@ -1,24 +1,21 @@
 class DropDown {
-
     constructor(type) {
         this.type = type;
     }
 
     draw() {
-        let func = this[this.type + "DropDown"];
-
+        let func = this[this.type + "Drop"];
         return func.apply();
     }
 
-    profileDropDown() {
-        console.log("AAASDAS");
+    profileDrop() {
 
         let $base = $("<div>", {
             "class": "c-dropdown-content",
             "id": "dropDownProfile"
         });
         let $link1 = $("<a>", {
-            "html": "Perfil"
+            "html": localStorage.getItem('username')
         });
         let $link2 = $("<a>", {
             "html": "Config"
@@ -26,15 +23,11 @@ class DropDown {
         let $link3 = $("<a>", {
             "html": "Desconectar"
         });
-
+        $link3.on("click",logoutAction);
         $base.append($link1);
         $base.append($link2);
         $base.append($link3);
-        $(function () {
-            $("#dropDownProfile").classList.toggle("show");
-        })
-
-        console.log($base);
+        
         return $base;
     }
 }
