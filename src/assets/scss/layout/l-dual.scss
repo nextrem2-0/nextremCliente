@@ -2,16 +2,20 @@
     display: grid;
     grid-template-areas: "izquierda derecha";
     grid-template-columns: 1fr 1fr;
+    margin-top:70px;
     &__item{
         &--derecha{
             grid-area: derecha;
-            width: 200px;
-            height: 200px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
         }
         &--izquierda{
+            display:flex;
+            align-items: center;
+            justify-content: center;
             grid-area: izquierda;
-            width: 200px;
-            height: 200px;
+            
         }
     }
 }

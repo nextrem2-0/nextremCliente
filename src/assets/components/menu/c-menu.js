@@ -30,7 +30,7 @@ class Menu {
           "src": "assets/img/nextrem.png",
           'class': 'c-menu__option',
         });
-        $option.on("click",function(){
+        $option.on("click", function () {
           cargarInicio();
         });
       } else if (this.categories[i].toLowerCase() == "entrar") {
@@ -38,25 +38,25 @@ class Menu {
           'html': this.categories[i],
           'class': 'c-menu__option c-menu__option--login',
         });
-        $option.on("click",function(){
+        $option.on("click", function () {
           goToAccount("login");
         });
-      }else if(this.categories[i].toLowerCase()=="registrar"){
-        $option=$('<div>', {
-          'html' : this.categories[i],
-          'class' : 'c-menu__option c-menu__option--register',
+      } else if (this.categories[i].toLowerCase() == "registrar") {
+        $option = $('<div>', {
+          'html': this.categories[i],
+          'class': 'c-menu__option c-menu__option--register',
         });
-        $option.on("click",function(){
+        $option.on("click", function () {
           goToAccount("register");
         });
-      }else{
-        $option=$('<div>', {
-          'html' : this.categories[i],
-          'class' : 'c-menu__option',
+      } else {
+        $option = $('<div>', {
+          'html': this.categories[i],
+          'class': 'c-menu__option',
         });
       }
 
-      if($option.html().toLowerCase()=="deportes"){
+      if ($option.html().toLowerCase() == "deportes") {
         $base.append(this.drawSports($base));
 
         $option.on("mouseenter", function () {
@@ -76,7 +76,7 @@ class Menu {
 
 
 
-      }else if($option.html().toLowerCase()=="eventos"){
+      } else if ($option.html().toLowerCase() == "eventos") {
         // $base.append(this.drawEvents($base));
         // $option.on("mouseover",function(){
         //   $(".c-submenu--events").show();
@@ -101,10 +101,16 @@ class Menu {
       "class": "c-submenu c-submenu--sports"
     });
     for (const key of this.sp) {
+      let $sportId = key.id;
       let $subOpt = $("<div>", {
         "html": key.nombre,
         "class": "c-submenu__option"
       });
+
+      $subOpt.on("click", function () {
+        cargarEventosDeporte($sportId);
+      });
+
       $submenu.append($subOpt);
     }
 

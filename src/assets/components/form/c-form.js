@@ -14,21 +14,37 @@ class Form {
             "class": "c-form",
             "id": "login"
         });
+
+        let $title = $("<div>", {
+            "class": "c-form__title",
+            "html": "ACCOUNT LOGIN"
+        });
+
+        let $textbox = $("<div>", {
+            "class": "c-form__textbox"
+        });
+
         let $username = $("<input>", {
             "type": "text",
-            "class": "c-form__textbox",
-            "placeholder": "username"
+            "class": "textbox",
+            "placeholder": "user name"
         });
         let $password = $("<input>", {
             "type": "password",
-            "class": "c-form__textbox",
+            "class": "textbox",
             "placeholder": "password"
         });
         let $submit = $("<div>", {
             "class": "c-form__button",
-            "html": "ok"
+            "html": "sign in"
         });
-        $submit.on("click", function () {
+
+        let $undertext = $("<p>", {
+            "class": "c-form__undertext",
+            "html": "sign up ⏵"
+        });
+
+        $undertext.on("click", function () {
             let $item1 = $(".l-dual__item--izquierda");
             let $item2 = $(".l-dual__item--derecha");
 
@@ -40,9 +56,12 @@ class Form {
 
         });
 
-        $base.append($username);
-        $base.append($password);
+        $base.append($title);
+        $textbox.append($username);
+        $textbox.append($password);
+        $base.append($textbox);
         $base.append($submit);
+        $base.append($undertext);
 
         return $base;
     }
@@ -52,20 +71,30 @@ class Form {
             "class": "c-form",
             "id": "register"
         });
+
+        let $title = $("<div>", {
+            "class": "c-form__title",
+            "html": "ACCOUNT REGISTER"
+        });
+
+        let $textbox = $("<div>", {
+            "class": "c-form__textbox"
+        });
+
         let $username = $("<input>", {
             "type": "text",
-            "class": "c-form__textbox",
-            "placeholder": "username"
+            "class": "textbox",
+            "placeholder": "User name"
         });
         let $password = $("<input>", {
             "type": "password",
-            "class": "c-form__textbox",
-            "placeholder": "password"
+            "class": "textbox",
+            "placeholder": "Password"
         });
         let $rePassword = $("<input>", {
             "type": "password",
-            "class": "c-form__textbox",
-            "placeholder": "password"
+            "class": "textbox",
+            "placeholder": "Confirm password"
         });
         let $business = $("<input>", {
             "id": "cbIsbusiness",
@@ -79,18 +108,34 @@ class Form {
         $cb.append($business);
         $cb.append($("<label>", {
             "for": "cbIsbusiness",
-            "text": "Empresa"
+            "html": '&nbsp' + "Cuenta de empresa"
         }));
-        let $avatar = $("<input>", {
-            "type": "text",
-            "class": "c-form__textbox",
+
+        let $avatar = $("<div>", {
+            "class": "c-form__avatar"
+        });
+
+        let $btnAvatar = $("<button>", {
+            "class": "btn-avatar",
+            "html": "Upload a file"
+        });
+
+        let $inputAvatar = $("<input>", {
+            "type": "file",
+            "class": "input-avatar",
             "placeholder": "avatar"
         });
         let $submit = $("<div>", {
             "class": "c-form__button",
-            "html": "ok"
+            "html": "Sign up"
         });
-        $submit.on("click", function () {
+
+        let $undertext = $("<p>", {
+            "class": "c-form__undertext",
+            "html": "sign in ⏵"
+        });
+
+        $undertext.on("click", function () {
             let $item1 = $(".l-dual__item--izquierda");
             let $item2 = $(".l-dual__item--derecha");
 
@@ -102,12 +147,17 @@ class Form {
 
         });
 
-        $base.append($username);
-        $base.append($password);
+        $avatar.append($inputAvatar)
+        $avatar.append($btnAvatar);
+        $base.append($avatar);
+        $base.append($title);
+        $textbox.append($username);
+        $textbox.append($password);
+        $base.append($textbox);
         $base.append($rePassword);
         $base.append($cb);
-        $base.append($avatar);
         $base.append($submit);
+        $base.append($undertext);
 
         return $base;
     }

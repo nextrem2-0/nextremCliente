@@ -1,3 +1,5 @@
+$colorCorporativo:          #7f0707;
+
 $colorEscalada:             #E9BD37;
 $colorEscalada__secundary:  #FF6F00;
 $colorEscalada__contenido:  #FFF8E1;
@@ -22,4 +24,8 @@ $colorSurf:                 #00BCD4;
 $colorSurf__secundary:      #006064;
 $colorSurf__contenido:      #E0F7FA;
 $colorSurf__footer:         #B2EBF2;
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
+
+$fuente : 'poppins-bold', sans-serif !important;
 

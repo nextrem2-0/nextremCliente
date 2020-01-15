@@ -10,10 +10,14 @@ class Section {
     let $base = $("<div>", {
       "class": "c-section"
     });
-    let $title = $("<div>", {
-      "html": this.title,
-      "class": "c-section__title"
-    });
+    let $title;
+    if (this.title != null) {
+      $title = $("<div>", {
+        "html": this.title,
+        "class": "c-section__title"  
+      });
+    } 
+
     let $content = $("<div>", {
       "class": "c-section__content"
     });
@@ -48,18 +52,18 @@ class Section {
         $item1.append(comp1);
       } else {
         $item1.append(comp1.draw());
-        
+
       }
 
       let comp2 = this.innerComponents[1];
-      if ( comp2 instanceof jQuery) {
+      if (comp2 instanceof jQuery) {
         $item2.append(comp2);
-        
+
       } else {
         $item2.append(comp2.draw());
       }
 
-      $layout.append($item1,$item2);
+      $layout.append($item1, $item2);
 
     } else {
       for (let component of this.innerComponents) {
@@ -67,13 +71,13 @@ class Section {
           "class": this.layout + "__item"
         });
 
-        if ( component instanceof jQuery) {
+        if (component instanceof jQuery) {
           $litem.append(component);
-          
+
         } else {
           $litem.append(component.draw());
         }
-        
+
         $layout.append($litem);
       }
     }

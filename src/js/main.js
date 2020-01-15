@@ -197,26 +197,22 @@ function cargarCards(type) {
         section = new Section("l-columns", recomendedCards, "RECOMENDADOS", "l-columns--3-columns");
     } else if (type == "todas") {
         if (Array.isArray(listaCards) && listaCards.length) {
-
+            section = new Section("l-columns", listaCards, null, "l-columns--3-columns", "l-columns--long");
+            $item1.append(section.draw());
         } else {
             $.ajax({
                 url: "http://localhost/nextrem/api/public/eventos",
                 success: function (dataResult) {
                     var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
-                    console.log(dataResult);
 
                     for (let key of dataResult) {
-                        console.log(key.deporte_id);
-                        console.log(sports);
-
-                        // let deporteNombre = sports[key.deporte_id].nombre;
 
                         let deporte = sports.filter(function (sport) {
                             return sport.id == key.deporte_id;
                         }) [0];
 
 
-                        listaCards.push(new Card("evento1.jpg", key.nombre, deporte.nombre, key.resumen, iconos, key.dificultad, deporte.nombre.toLowerCase()));
+                        listaCards.push(new Card("logo.jpg", key.nombre, deporte.nombre, key.resumen, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                     }
                     section = new Section("l-columns", listaCards, null, "l-columns--3-columns", "l-columns--long");

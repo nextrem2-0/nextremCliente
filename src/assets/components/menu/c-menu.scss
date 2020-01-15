@@ -22,7 +22,7 @@
       margin-left: auto;
     }
     &--login{
-      border: 1px solid #7f0707;
+      border: 1px solid $colorCorporativo;
       // background: rgba($color: #7f0707, $alpha: 0.7);
       color: rgb(83, 83, 83);
       height: 50px;
@@ -33,7 +33,7 @@
       font-weight: 600;
     }
     &--register{
-      background: rgba($color: #7f0707, $alpha: 0.7);
+      background: rgba($color: $colorCorporativo, $alpha: 0.7);
       color: white;
       height: 50px;
       line-height: 50px;

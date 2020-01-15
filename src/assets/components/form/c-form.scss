@@ -1,0 +1,117 @@
+.form-image {
+  width: 100%;
+  &__img {
+    width: 100%;
+  }
+}
+
+.c-form {
+  width: 75%;
+  margin-top: 25%;
+
+  &__avatar {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+
+    .btn-avatar {
+      border: 1px solid #b9b9b9;
+      color: #666;
+      padding: 8px 20px;
+      font-size: 18px;
+
+      
+    }
+
+    .input-avatar {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    font-family: $fuente;
+    font-size: 20px;
+    color: #555;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: -50%;
+    margin-bottom: 4%;
+  }
+
+  &__textbox {
+    display: flex;
+  }
+
+  .textbox {
+    height: 65px;
+    width: 100%;
+    border: 1px solid #b9b9b9;
+    display: block;
+    background: 0 0;
+    font-family: $fuente;
+    font-size: 18px;
+    color: #666;
+    line-height: 1.2;
+    padding: 0 25px;
+    margin-bottom: 2%;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    background: $colorCorporativo;
+    font-family: $fuente;
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s;
+    font-weight: bold;
+    margin-top: 12%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__undertext {
+    margin-top: 2%;
+    margin-left: 2%;
+    font-family: $fuente;
+    font-size: 15px;
+    line-height: 1.4;
+    color: $colorCorporativo;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+#login{
+  .c-form__button{
+    margin-top: 2%;
+  }
+}
+#register{
+  .c-form__button{
+    margin-top: 12%;
+  }
+}

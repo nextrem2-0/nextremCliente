@@ -14,6 +14,10 @@
     height: 150px;
     border-radius: 50%;
     text-align: center;
+
+    & i{
+      color: $colorCorporativo;
+    }
   }
   &__title{
     width:fit-content;
