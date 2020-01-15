@@ -34,21 +34,41 @@ class Menu {
           cargarInicio();
         });
       } else if (this.categories[i].toLowerCase() == "entrar") {
-        $option = $('<div>', {
-          'html': this.categories[i],
-          'class': 'c-menu__option c-menu__option--login',
-        });
-        $option.on("click", function () {
-          goToAccount("login");
-        });
+        if (localStorage.getItem('user_token') != null) {
+          $option = $('<div>', {
+            'html': "Desconectar",
+            'class': 'c-menu__option c-menu__option--login',
+          });
+          $option.on("click", function () {
+            logoutAction();
+          });
+        } else {
+          $option = $('<div>', {
+            'html': this.categories[i],
+            'class': 'c-menu__option c-menu__option--login',
+          });
+          $option.on("click", function () {
+            goToAccount("login");
+          });
+        }
       } else if (this.categories[i].toLowerCase() == "registrar") {
-        $option = $('<div>', {
-          'html': this.categories[i],
-          'class': 'c-menu__option c-menu__option--register',
-        });
-        $option.on("click", function () {
-          goToAccount("register");
-        });
+        if (localStorage.getItem('user_token') != null) {
+          $option = $('<div>', {
+            'html': 'Perfil',
+            'class': 'c-menu__option c-menu__option--register dropdown',
+          });
+          $option.on("click", function () {
+            profileDropDown("profile");
+          });
+        } else {
+          $option = $('<div>', {
+            'html': this.categories[i],
+            'class': 'c-menu__option c-menu__option--register',
+          });
+          $option.on("click", function () {
+            goToAccount("register");
+          });
+        }
       } else {
         $option = $('<div>', {
           'html': this.categories[i],

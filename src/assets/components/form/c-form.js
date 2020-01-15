@@ -63,6 +63,20 @@ class Form {
         $base.append($submit);
         $base.append($undertext);
 
+        $(function () {
+            $('.c-form__button').click(function () {
+                $.ajax({
+                    url: "http://localhost/nextrem/api/public/login",
+                    data: { login: $("#user").val(), password: $("#pass").val() },
+                    success: function (dataResult) {
+                        localStorage.setItem('user_token', dataResult.token);
+                        location.reload();
+                    }
+                });
+
+            })
+        })
+
         return $base;
     }
 
@@ -158,6 +172,24 @@ class Form {
         $base.append($cb);
         $base.append($submit);
         $base.append($undertext);
+
+        $(function () {
+
+            $('.c-form__button').click(function () {
+                var boolBusiness = $("#cbbusiness:checkbox:checked").length > 0 == true ? 1 : 0;
+                $.ajax({
+                    url: "http://localhost/nextrem/api/public/register",
+                    data: { isbusiness: boolBusiness, username: $("#user").val(), email: $("#email").val(), password: $("#pass").val(), password_confirmation: $("#pass_confirm").val() },
+                    headers: { 'Content-Type': 'application/json' },
+                    success: function (dataResult) {
+                        localStorage.setItem('user_token', dataResult.token);
+                        location.reload();
+                    }
+                });
+
+            })
+        })
+
 
         return $base;
     }
