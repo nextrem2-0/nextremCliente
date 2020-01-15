@@ -213,7 +213,7 @@ function cargarCards(type) {
                         }) [0];
 
 
-                        listaCards.push(new Card("logo.jpg", key.nombre, deporte.nombre, key.resumen, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
+                        listaCards.push(new Card("evento3.jpg", key.nombre, deporte.nombre, key.resumen, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                     }
                     section = new Section("l-columns", listaCards, null, "l-columns--3-columns", "l-columns--long");
@@ -243,7 +243,7 @@ function cargarCards(type) {
                     }) [0];
 
 
-                    listaDeportesCards.push(new Card("logo.jpg", key.nombre, deporte.nombre, key.resumen, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
+                    listaDeportesCards.push(new Card("evento3.jpg", key.nombre, deporte.nombre, key.resumen, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                 }
                 /* for (let key of dataResult) {

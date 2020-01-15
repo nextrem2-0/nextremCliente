@@ -161,16 +161,16 @@ class Form {
 
         });
 
-        $avatar.append($inputAvatar)
-        $avatar.append($btnAvatar);
-        $base.append($avatar);
         $base.append($title);
         $textbox.append($username);
         $textbox.append($password);
         $base.append($textbox);
+        $base.append($rePassword); 
         $base.append($email);
-        $base.append($rePassword);
         $base.append($cb);
+        $avatar.append($inputAvatar)
+        $avatar.append($btnAvatar);
+        $base.append($avatar);
         $base.append($submit);
         $base.append($undertext);
 

@@ -42,6 +42,10 @@ class Menu {
           $option.on("click", function () {
             goToAccount("login");
           });
+        }else{
+          $option = $('<div>', {
+            'html': ""
+          });
         }
 
 

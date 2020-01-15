@@ -13,14 +13,13 @@
     position: relative;
     overflow: hidden;
     display: inline-block;
+    margin-top: 2%;
 
     .btn-avatar {
       border: 1px solid #b9b9b9;
       color: #666;
       padding: 8px 20px;
       font-size: 18px;
-
-      
     }
 
     .input-avatar {
@@ -84,7 +83,7 @@
     letter-spacing: 1px;
     transition: all 0.4s;
     font-weight: bold;
-    margin-top: 12%;
+    margin-top: 2%;
 
     &:hover {
       cursor: pointer;
@@ -103,16 +102,5 @@
     &:hover {
       cursor: pointer;
     }
-  }
-}
-
-#login{
-  .c-form__button{
-    margin-top: 2%;
-  }
-}
-#register{
-  .c-form__button{
-    margin-top: 12%;
   }
 }
