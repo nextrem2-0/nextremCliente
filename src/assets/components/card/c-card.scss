@@ -323,7 +323,7 @@
   }
 }
 
-//--------------------------------------------
+//------------------------------------------------------------------------
 
 // --------------COLORES ESQUI--------------
 
@@ -344,7 +344,7 @@
   }
 }
 
-.c-card--esqui.card--active .c-card__encabezado {
+.c-card--esqui.c-card--active .c-card__encabezado {
   &:after {
     border-top-color: $colorEsqui__secundary;
     border-right-color: $colorEsqui__secundary;
@@ -406,7 +406,7 @@
   }
 }
 
-.c-card--buceo.card--active .c-card__encabezado {
+.c-card--buceo.c-card--active .c-card__encabezado {
   &:after {
     border-top-color: $colorBuceo__secundary;
     border-right-color: $colorBuceo__secundary;
@@ -468,7 +468,7 @@
   }
 }
 
-.c-card--escalada.card--active .c-card__encabezado {
+.c-card--escalada.c-card--active .c-card__encabezado {
   &:before {
     border-top-color: transparent;
     border-right-color: $colorEscalada;
@@ -530,7 +530,7 @@
   }
 }
 
-.c-card--rafting.card--active .c-card__encabezado {
+.c-card--rafting.c-card--active .c-card__encabezado {
   &:after {
     border-top-color: $colorRafting__secundary;
     border-right-color: $colorRafting__secundary;
@@ -592,7 +592,7 @@
   }
 }
 
-.c-card--surf.card--active .c-card__encabezado {
+.c-card--surf.c-card--active .c-card__encabezado {
   &:after {
     border-top-color: $colorSurf__secundary;
     border-right-color: $colorSurf__secundary;
