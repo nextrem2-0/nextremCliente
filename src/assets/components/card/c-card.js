@@ -1,5 +1,5 @@
 class Card {
-  constructor(image, title, sport, summary, iconos, level, modifier = null) {
+  constructor(image, title, sport, summary,price,material, iconos, level, modifier = null) {
     this.image = image;
     this.title = title;
     this.sport = sport;
@@ -7,20 +7,18 @@ class Card {
     this.iconos = iconos;
     this.level = level;
     this.modifier = modifier;
+    this.price=price;
+    this.material=material;
   }
 
   draw() {
 
     let $base;
     let $card;
-    let nivel;
+
     $base = $('<div>', { 
       'class': 'l-card col-md-10 col-sm-6 col-xs-12',
     });
-
-    for (var i = 0; i < this.level; i++) {
-      nivel += "$('<i>',{ 'class': 'fa fa-skull'})" + "\n";
-    }
 
     if (this.modifier == null) {
       $card = $('<article>', {
@@ -46,6 +44,17 @@ class Card {
       ])
     );
 
+      var self= this;
+
+    let $cartBtn=$('<div>', { "class": "content__button content__button--" + this.sport });
+    $cartBtn.on("click",function(){
+      
+      if(confirm(self.imprimirProducto())){
+        carrito.anyadirEvento(new Card(self.image, self.title, self.sport, self.summary, self.iconos, self.level, self.modifier));
+      }      
+      
+    });
+
     $card.append(
       $('<div>', { 'class': 'c-card__contenido', }).append([
         $('<div>', { "class": "content" }).append([
@@ -55,7 +64,7 @@ class Card {
           $('<div>', { "class": "content__description" }).append([
             $('<div>', { "html": this.summary })
           ]),
-          $('<div>', { "class": "content__button content__button--" + this.sport }).append([
+          $cartBtn.append([
             $('<i>', { "class": 'fas fa-plus button__icono', }),
             $('<p>', { "class": "button-text", "html": '&nbsp Add cart', })
           ])
@@ -99,6 +108,8 @@ class Card {
       }, 800);
     }
 
+    let $level=$('<div>', { "class": "footer__level" });
+
     $card.append( 
       $('<div>', { 'class': 'c-card__footer', }).append([
         $('<div>', { "class": "footer" }).append([
@@ -114,16 +125,23 @@ class Card {
               $('<i>', { "class": "fa fa-hiking" })
             ])
           ]),
-          $('<div>', { "class": "footer__level" }).append([
-            $('<i>', { 'class': 'fa fa-skull' }),
-            $('<i>', { 'class': 'fa fa-skull' }),
-            $('<i>', { 'class': 'fa fa-skull' })
-          ])
+          $level
         ])
       ])
     );
 
+    for (var i = 0; i < this.level; i++) {
+      $level.append($('<i>', { 'class': 'fa fa-skull' }));
+    }
+
     return $base;
+  }
+
+  imprimirProducto(){
+    return "Evento: "+this.title+"<br>"+
+           "Deporte: "+this.sport+"<br>"
+          +"Incluye material: "+this.material+"<br>"
+          +"Precio total: "+this.price;
   }
 
 }
