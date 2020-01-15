@@ -234,9 +234,20 @@ function cargarCards(type) {
             url: "http://localhost/nextrem/api/public/deportes/" + type + "/eventos",
             success: function (dataResult) {
                 var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
+
                 for (let key of dataResult) {
-                    listaDeportesCards.push(new Card("evento3.jpg", key.nombre, "deporte", key.resumen, iconos, 3, 'buceo'));
+
+                    let deporte = sports.filter(function (sport) {
+                        return sport.id == key.deporte_id;
+                    }) [0];
+
+
+                    listaDeportesCards.push(new Card("logo.jpg", key.nombre, deporte.nombre, key.resumen, iconos, key.dificultad, deporte.nombre.toLowerCase()));
+
                 }
+                /* for (let key of dataResult) {
+                    listaDeportesCards.push(new Card("evento3.jpg", key.nombre, "deporte", key.resumen, iconos, 3, 'buceo'));
+                } */
                 section = new Section("l-columns", listaDeportesCards, null, "l-columns--3-columns", "l-columns--long");
                 $item1.append(section.draw());
             }
