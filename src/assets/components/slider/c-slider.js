@@ -10,7 +10,8 @@ class Slider {
     let $carousel=$("<div>",{
       "id":"carouselExampleControls",
       "class":"carousel slide",
-      "data-ride":"carousel"
+      "data-ride":"carousel",
+      "data-pause":"false"
     });
     let $carouselInner=$("<div>",{
       "class":"carousel-inner"

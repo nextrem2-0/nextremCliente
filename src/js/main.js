@@ -119,6 +119,10 @@ function cargarInicio() {
 
                 let slider = new Slider(imgSlider);
                 $item1.append(slider.draw());
+                $('.carousel').carousel({
+                    interval: 5000,
+                    "data-pause":false
+                });
 
             }
         });
