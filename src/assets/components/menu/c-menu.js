@@ -80,21 +80,48 @@ class Menu {
       }
 
       if ($option.html().toLowerCase() == "deportes") {
-        $base.append(this.drawSports($base));
+        let $submenu=this.drawSports();
+        $base.append($submenu);
 
-        $option.on("mouseenter", function () {
+        $option.hover( function () {
+          if(!$base.hasClass("c-menu--extended")){
+            $(".c-submenu--sports").show("fast");
+            $base.addClass("c-menu--extended");
+          }
+        },function () {
+          if(!$(".c-submenu--sports").is(":hover")){
+            $base.removeClass("c-menu--extended");
+            $(".c-submenu--sports").hide();
+          } 
+        });
 
-          $(".c-submenu--sports").show("fast");
-
-          $base.addClass("c-menu--extended");
+        $submenu.hover( function () {
+          if(!$base.hasClass("c-menu--extended")){
+            $(".c-submenu--sports").show("fast");
+            $base.addClass("c-menu--extended");
+          }
+        },function () {
+          if(!$option.is(":hover")){
+            $base.removeClass("c-menu--extended");
+            $(".c-submenu--sports").hide();
+          } 
         });
 
         $option.on("click", cargarDeportes);
 
-        $base.on("mouseleave", function () {
-          $base.removeClass("c-menu--extended");
-          $(".c-submenu--sports").hide();
-        });
+        // $submenu.on("mouseleave", function () {
+        //   $base.removeClass("c-menu--extended");
+        //   $(".c-submenu--sports").hide();
+        // });
+        // $(".c-submenu--sports").on("mouseleave", function () {
+        //   //console.log($(".c-submenu--sports").mouseover());
+          
+        //   //if($(".c-submenu--sports").mouseover()){
+        //     $base.removeClass("c-menu--extended");
+        //     $(".c-submenu--sports").hide();
+        //  // }
+         
+        // });
 
 
 
@@ -119,7 +146,7 @@ class Menu {
     return $base;
   }
 
-  drawSports($base) {
+  drawSports() {
     let $submenu = $("<div>", {
       "class": "c-submenu c-submenu--sports"
     });
