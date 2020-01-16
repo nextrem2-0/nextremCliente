@@ -140,7 +140,7 @@ function cargarInicio() {
 
     $("#content").append($layout);
 
-
+    window.scrollTo(0,0);
 }
 
 function cargarDeportes() {
@@ -159,6 +159,7 @@ function cargarDeportes() {
     $layout.append($item1);
 
     $("#content").append($layout);
+    window.scrollTo(0,0);
 }
 
 function cargarPins() {
@@ -293,6 +294,7 @@ function cargarEventos() {
     $layout.append($item1);
 
     $("#content").append($layout);
+    window.scrollTo(0,0);
 }
 
 function cargarEventosDeporte(idDeporte) {
@@ -311,6 +313,7 @@ function cargarEventosDeporte(idDeporte) {
     $layout.append($item1);
 
     $("#content").append($layout);
+    window.scrollTo(0,0);
 }
 
 function cargarCarrito(){
@@ -325,8 +328,4 @@ function cargarCarrito(){
         carrito= new Cart();
         $("#cart").append(carrito.draw());
     }
-}
-
-function verCarrito(){
-    
 }

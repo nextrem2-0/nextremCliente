@@ -15,7 +15,10 @@ class DropDown {
             "id": "dropDownProfile"
         });
         let $link1 = $("<a>", {
-            "html": localStorage.getItem('username')
+            "html": localStorage.getItem('username'),
+            "class": "c-dropdown-content__profile",
+            "style": "padding: 0; padding-left:15px"
+
         });
         let $link2 = $("<a>", {
             "html": "Config"

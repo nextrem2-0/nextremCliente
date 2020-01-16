@@ -29,13 +29,27 @@ function loginAction() {
                 success: function (dataResult) {
                     localStorage.setItem('username', dataResult.user.username);
                     location.reload();
-                    
+
                 }
             });
         }
     });
 }
 
+function registerAction() {
+    var boolBusiness = $("#cbIsbusiness:checkbox:checked").length > 0 == true ? 1 : 0;
+    $.ajax({
+        url: "http://localhost/nextrem/api/public/register",
+        data: { isbusiness: boolBusiness, username: $("#user").val(), email: $("#email").val(), password: $("#pass_register").val(), password_confirmation: $("#pass_confirm_register").val() },
+        headers: { 'Content-Type': 'application/json' },
+        success: function (dataResult) {
+            localStorage.setItem('user_token', dataResult.token);
+            localStorage.setItem('username', dataResult.user.username);
+            location.reload();
+        }
+    });
+
+}
 
 function logoutAction() {
     let $token = localStorage.getItem('user_token');
@@ -45,6 +59,7 @@ function logoutAction() {
         headers: { 'Authorization': 'Bearer ' + $token },
         success: function () {
             localStorage.removeItem('user_token');
+            localStorage.removeItem('username');
             location.reload();
         }
     });

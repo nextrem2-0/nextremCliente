@@ -66,7 +66,7 @@ class Form {
         $base.append($undertext);
 
         $(function () {
-            $('.c-form__button').on("click",loginAction);
+            $('.c-form__button').on("click", loginAction);
         })
 
         return $base;
@@ -165,7 +165,7 @@ class Form {
         $textbox.append($username);
         $textbox.append($password);
         $base.append($textbox);
-        $base.append($rePassword); 
+        $base.append($rePassword);
         $base.append($email);
         $base.append($cb);
         $avatar.append($inputAvatar)
@@ -175,22 +175,8 @@ class Form {
         $base.append($undertext);
 
         $(function () {
-
-            $('.c-form__button').click(function () {
-                var boolBusiness = $("#cbIsbusiness:checkbox:checked").length > 0 == true ? 1 : 0;
-                $.ajax({
-                    url: "http://localhost/nextrem/api/public/register",
-                    data: { isbusiness: boolBusiness, username: $("#user").val(), email: $("#email").val(), password: $("#pass_register").val(), password_confirmation: $("#pass_confirm_register").val() },
-                    headers: { 'Content-Type': 'application/json' },
-                    success: function (dataResult) {
-                        localStorage.setItem('user_token', dataResult.token);
-                        location.reload();
-                    }
-                });
-
-            })
-        })
-
+            $('.c-form__button').on("click", registerAction);
+        });
 
         return $base;
     }

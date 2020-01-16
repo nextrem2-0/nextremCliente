@@ -1,22 +1,31 @@
 .c-dropdown {
-
-    &-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        right: 0;
-        z-index: 111;
-        & a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            &:hover {background-color: #ddd;}
-        }
+  &-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    z-index: 111;
+    & a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      &:hover {
+        background-color: #ddd;
+      }
     }
-    
+    &__profile {
+      border-bottom: 1px solid black;
+      &:hover{
+        background-color: #f1f1f1;
+        color:black;
+      }
+    }
+  }
 }
-.show {display: block;}
+.show {
+  display: block;
+}
