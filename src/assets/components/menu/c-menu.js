@@ -1,4 +1,4 @@
-class Menu {
+class Menu { 
   constructor(categories, sports, events) {
     this.categories = categories;
     this.sp = sports;
