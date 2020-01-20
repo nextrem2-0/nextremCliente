@@ -26,7 +26,6 @@ class Menu {
 
       } else if (this.categories[i].toLowerCase() == "inicio") {
         $option = $('<img>', {
-          //"src":"http://localhost/nextrem/api/",
           "src": "assets/img/nextrem.png",
           'class': 'c-menu__option',
         });
@@ -51,7 +50,6 @@ class Menu {
 
       } else if (this.categories[i].toLowerCase() == "registrar") {
         if (localStorage.getItem('user_token') != null) {
-          //this.cambiarDropTitulosPerfil($option);
           $option = $('<div>', {
             'html': 'Perfil',
             'class': 'c-menu__option c-menu__option--register dropdown',
@@ -108,23 +106,6 @@ class Menu {
         });
 
         $option.on("click", cargarDeportes);
-
-        // $submenu.on("mouseleave", function () {
-        //   $base.removeClass("c-menu--extended");
-        //   $(".c-submenu--sports").hide();
-        // });
-        // $(".c-submenu--sports").on("mouseleave", function () {
-        //   //console.log($(".c-submenu--sports").mouseover());
-          
-        //   //if($(".c-submenu--sports").mouseover()){
-        //     $base.removeClass("c-menu--extended");
-        //     $(".c-submenu--sports").hide();
-        //  // }
-         
-        // });
-
-
-
 
       } else if ($option.html().toLowerCase() == "eventos") {
         // $base.append(this.drawEvents($base));

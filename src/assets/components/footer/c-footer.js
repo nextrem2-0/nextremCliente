@@ -18,10 +18,6 @@ class Footer {
         $('<a>', { "html": categ + "&nbsp" })
       );
     });
-    /* for (let categ of this.categories) {
-      console.log(categ);
-    } */
-
 
     $base.append(
       $('<div>', { 'class': 'l-footer', }).append([

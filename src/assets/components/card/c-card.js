@@ -37,7 +37,7 @@ class Card {
         $('<div>', { "class": "encabezado" }).append([
           $('<span>', { "class": "encabezado__titulo", "html": this.title }),
           $('<strong>', { "class": "encabezado__subtitulo" }).append([
-            $('<i>', { "class": "fa fa-fw fa-star" }),
+            $('<i>', { "class": "fa fa-fw fa-star fa--claro" }),
             $('<span>', { "html": "&nbsp" + this.sport })
           ])
         ])
@@ -53,12 +53,6 @@ class Card {
         let $mod=modal.draw();
         $("#modal").append($mod);
         $mod.show();
-        
-      
-      // if(confirm(self.imprimirProducto())){
-      //   carrito.anyadirEvento(new Card(self.image, self.title, self.sport, self.summary, self.iconos, self.level, self.modifier));
-      // }      
-      
     });
 
     $card.append(
@@ -71,7 +65,7 @@ class Card {
             $('<div>', { "html": this.summary })
           ]),
           $cartBtn.append([
-            $('<i>', { "class": 'fas fa-plus button__icono', }),
+            $('<i>', { "class": 'fas fa-plus button__icono fa--claro', }),
             $('<p>', { "class": "button-text", "html": '&nbsp Add cart', })
           ])
         ])
@@ -80,7 +74,7 @@ class Card {
     );
 
     let $btn=$('<div>', { 'class': 'c-card__btn', });
-    $btn.append($('<i>', { "class": 'fa fa-bars' }));
+    $btn.append($('<i>', { "class": 'fa fa-bars fa--claro' }));
     $card.append($btn);
 
     $btn.on("click", function(){
@@ -122,13 +116,13 @@ class Card {
           $('<h4>', { "class": 'footer__titulo', "html": 'Features' }),
           $('<div>', { "class": "footer__iconos" }).append([
             $('<a>', {}).append([
-              $('<i>', { "class": "fa fa-mountain" })
+              $('<i>', { "class": "fa fa-mountain fa--claro" })
             ]),
             $('<a>', {}).append([
-              $('<i>', { "class": "fa fa-users" })
+              $('<i>', { "class": "fa fa-users fa--claro" })
             ]),
             $('<a>', {}).append([
-              $('<i>', { "class": "fa fa-hiking" })
+              $('<i>', { "class": "fa fa-hiking fa--claro" })
             ])
           ]),
           $level
