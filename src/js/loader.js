@@ -3,4 +3,4 @@ function finPaginaCarga() {
     setTimeout(function () {
         $(".l-page").show();
     }, 500);
-}
+} 

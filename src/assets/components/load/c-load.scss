@@ -4,13 +4,15 @@
   transition-duration: 0.5s;
 
   &__img {
-    margin-top: -60px;
+    width: 100px;
+    margin-top: 290px;
     margin-bottom: -10px;
     animation-duration: 0.5s;
     animation-name: apareceLogo;
   }
-  &__gif {
-    margin-top: -160px;
+  &__gif {    
+    width: 40%;
+    margin-top: -345px;
     transition-duration: 0.5s;
   }
 }
@@ -20,6 +22,6 @@
       width: 0;
     }
     100% {
-      width: 55%;
+      width: 100px;
     }
   }
