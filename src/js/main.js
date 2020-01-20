@@ -10,8 +10,14 @@ let imgBanner = new Array();
 let sports = new Array();
 let events = new Array();
 let carrito = new Cart();
+let numPeticiones = 3;
+let numPeticionesHechas = 0;
 
 /* --------- FUNCIONES --------- */
+window.onload = function () {
+    numPeticionesHechas = 0;
+};
+
 $(".l-page").hide();
 cargarInicio();
 
@@ -65,12 +71,14 @@ function cargarInicio() {
                 $.ajax({
                     url: "http://localhost/nextrem/api/public/deportes",
                     success: function (dataResult) {
+                        numPeticionesHechas++;
                         for (let key of dataResult) {
                             sports.push(key);
                         }
                         let menu = new Menu(categories, sports, events);
                         $("#menu").append(menu.draw());
                         $(".c-submenu").hide();
+                        comprobarPeticiones();
                     }
                 });
             }
@@ -87,6 +95,7 @@ function cargarInicio() {
         $.ajax({
             url: "http://localhost/nextrem/api/public/images",
             success: function (dataResult) {
+                numPeticionesHechas++;
                 for (let key of dataResult) {
                     if (key.includes("slider")) {
                         imgSlider.push(key);
@@ -104,7 +113,7 @@ function cargarInicio() {
                     interval: 5000,
                     "data-pause":false
                 });
-
+                comprobarPeticiones();
             }
         });
     }
@@ -124,6 +133,12 @@ function cargarInicio() {
     window.scrollTo(0,0);
 }
 
+function comprobarPeticiones(){
+    if(numPeticiones == numPeticionesHechas){
+        finPaginaCarga();
+    }
+}
+
 function cargarPins() {
     if (Array.isArray(listaPins) && listaPins.length) {
         // array exists and is not empty   
@@ -133,7 +148,7 @@ function cargarPins() {
     $.ajax({
         url: "http://localhost/nextrem/api/public/textInicio",
         success: function (dataResult) {
-
+            numPeticionesHechas++;
             for (let key in dataResult) {
 
                 listaPins.push(new InformationPin(dataResult[key].imagen, dataResult[key].titulo, dataResult[key].texto));
@@ -141,6 +156,7 @@ function cargarPins() {
             }
             s1 = new Section("l-horizontal", listaPins, "¿QUÉ ES NEXTREM?");
             $item2.append(s1.draw());
+            comprobarPeticiones();
         },
         error: function (error) {
             console.log(error);
