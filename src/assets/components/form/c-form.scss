@@ -7,7 +7,16 @@
 
 .c-form {
   width: 75%;
-  margin-top: 25%;
+  // margin-top: 25%;
+
+  &__campos--login {
+    display: flex;
+    align-items: center;
+  }
+
+  &__campos {
+    height: 290px;
+  }
 
   &__avatar {
     position: relative;
@@ -30,7 +39,7 @@
       opacity: 0;
     }
 
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
@@ -45,14 +54,13 @@
     text-align: center;
     width: 100%;
     display: block;
-    margin-top: -50%;
     margin-bottom: 4%;
+    margin-top: -5%;
   }
 
   &__textbox {
     display: flex;
   }
-
   .textbox {
     height: 65px;
     width: 100%;
@@ -65,6 +73,11 @@
     line-height: 1.2;
     padding: 0 25px;
     margin-bottom: 2%;
+  }
+
+  &__textbox--login {
+    display: block;
+    width: 100%;
   }
 
   &__button {
@@ -102,5 +115,11 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__msg{
+    font-size: 12px;
+    color: #6c757d!important;
+    margin-top: .25rem;
   }
 }

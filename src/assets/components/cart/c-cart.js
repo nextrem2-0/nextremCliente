@@ -1,18 +1,18 @@
-class Cart{
-    constructor(){
-        this.listaEventos=new Array();
+class Cart {
+    constructor() {
+        this.listaEventos = new Array(); 
     }
 
-    draw(){
+    draw() {
         var self = this;
-        let $base=$("<div>",{
-            "class":"c-cart"
-            
+        let $base = $("<div>", {
+            "class": "c-cart"
+
         });
-        $base.append($("<div>",{
-            "class":"c-cart__icon"
-        }).append($("<i>",{
-            "class":"fas fa-shopping-cart"
+        $base.append($("<div>", {
+            "class": "c-cart__icon"
+        }).append($("<i>", {
+            "class": "fas fa-shopping-cart"
         })));
 
         $base.on("click",function(){
@@ -28,17 +28,23 @@ class Cart{
             // let $mod=modal.draw();
             // $("#modal").append($mod);
             // $mod.show();
-            verCarrito(self.listaEventos);
+            if (self.listaEventos.length == 0) {
+                let $not = new Notification("info", "Hey!", "El carrito está vacio");
+                $("#notificaciones").append($not.draw());
+            } else {
+                verCarrito(self.listaEventos);
+            }
+            
         });
 
         return $base;
     }
 
-    anyadirEvento(event){
+    anyadirEvento(event) {
         this.listaEventos.push(event);
     }
 
-    eliminarevento(event){
+    eliminarevento(event) {
         this.listaEventos.splice(event);
     }
 }

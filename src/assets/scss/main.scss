@@ -9,12 +9,15 @@
 @import "layout/l-horizontal.scss";
 @import "layout/l-loader.scss";
 @import "layout/l-dual.scss";
+@import "layout/l-notificaciones.scss";
 
 @import "../components/page/c-page.scss";
 @import "../components/load/c-load.scss";
+@import "../components/page-load/c-page-load.scss";
 @import "../components/menu/c-menu.scss";
 @import "../components/section/c-section.scss";
 @import "../components/slider/c-slider.scss";
+@import "../components/notification/c-notification.scss";
 @import "../components/card/c-card.scss";
 @import "../components/information-pin/c-information-pin.scss";
 @import "../components/submenu/c-submenu.scss";

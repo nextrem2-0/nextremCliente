@@ -20,22 +20,33 @@ class Form {
             "html": "ACCOUNT LOGIN"
         });
 
+        let $campos = $("<div>", {
+            "class": "c-form__campos c-form__campos--login",
+        });
+
         let $textbox = $("<div>", {
-            "class": "c-form__textbox"
+            "class": "c-form__textbox c-form__textbox--login"
         });
 
         let $username = $("<input>", {
             "type": "text",
             "id": "user_login",
             "class": "textbox",
-            "placeholder": "user name or email"
+            "placeholder": "User name or Email"
         });
+
         let $password = $("<input>", {
             "type": "password",
             "id": "pass_login",
             "class": "textbox",
-            "placeholder": "password"
+            "placeholder": "Password"
         });
+
+        let $msg = $("<div>", {
+            "class": "c-form__msg",
+            "html": "Welcome back! Ready for your new dare?"
+        });
+
         let $submit = $("<div>", {
             "class": "c-form__button",
             "html": "sign in"
@@ -59,9 +70,14 @@ class Form {
         });
 
         $base.append($title);
+
         $textbox.append($username);
         $textbox.append($password);
-        $base.append($textbox);
+        $textbox.append($msg);
+
+        $campos.append($textbox);
+        
+        $base.append($campos)
         $base.append($submit);
         $base.append($undertext);
 
@@ -81,6 +97,10 @@ class Form {
         let $title = $("<div>", {
             "class": "c-form__title",
             "html": "ACCOUNT REGISTER"
+        });
+
+        let $campos = $("<div>", {
+            "class": "c-form__campos",
         });
 
         let $textbox = $("<div>", {
@@ -162,15 +182,18 @@ class Form {
         });
 
         $base.append($title);
+
         $textbox.append($username);
         $textbox.append($password);
-        $base.append($textbox);
-        $base.append($rePassword);
-        $base.append($email);
-        $base.append($cb);
+        $campos.append($textbox);
+        $campos.append($rePassword);
+        $campos.append($email);
+        $campos.append($cb);
         $avatar.append($inputAvatar)
         $avatar.append($btnAvatar);
-        $base.append($avatar);
+        $campos.append($avatar);
+
+        $base.append($campos);
         $base.append($submit);
         $base.append($undertext);
 

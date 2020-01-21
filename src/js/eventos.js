@@ -1,5 +1,8 @@
+let $load;
+
 function cargarEventos() {
     deleteContenido();
+
 
     $layout = $("<div>", {
         "class": "l-columns--1-columns"
@@ -14,8 +17,35 @@ function cargarEventos() {
     $layout.append($item1);
 
     $("#content").append($layout);
+    if ($load != 0) {
+        $load = new PageLoad();
+        $("#content").append($load.draw());
+    }
     window.scrollTo(0, 0);
 }
+
+function cargarEventosDeporte(idDeporte) {
+    deleteContenido();
+
+    $layout = $("<div>", {
+        "class": "l-columns--1-columns"
+    });
+
+    $item1 = $("<div>", {
+        "class": "l-columns__item"
+    });
+
+    cargarCards(idDeporte);
+
+    $layout.append($item1);
+
+    $("#content").append($layout);
+
+    $load = new PageLoad();
+    $("#content").append($load.draw());
+    window.scrollTo(0, 0);
+}
+
 
 function cargarCards(type) {
     let section;
@@ -33,6 +63,7 @@ function cargarCards(type) {
         section = new Section("l-columns", recomendedCards, "RECOMENDADOS", "l-columns--3-columns");
     } else if (type == "todas") {
         if (Array.isArray(listaCards) && listaCards.length) {
+            $load = 0;
             section = new Section("l-columns", listaCards, null, "l-columns--3-columns", "l-columns--long");
             $item1.append(section.draw());
         } else {
@@ -53,10 +84,11 @@ function cargarCards(type) {
                     }
                     section = new Section("l-columns", listaCards, null, "l-columns--3-columns", "l-columns--long");
                     $item1.append(section.draw());
+
+                    $load.removeLoader();
                 },
                 error: function (error) {
                     console.log(error);
-
                 }
             });
 
@@ -65,6 +97,7 @@ function cargarCards(type) {
     } else if (typeof type == 'number') {
         if (Array.isArray(listaDeportesCards) && listaDeportesCards.length) {
             listaDeportesCards = [];
+            $load = 0;
         }
         $.ajax({
             url: "http://localhost/nextrem/api/public/deportes/" + type + "/eventos",
@@ -86,6 +119,8 @@ function cargarCards(type) {
                 } */
                 section = new Section("l-columns", listaDeportesCards, null, "l-columns--3-columns", "l-columns--long");
                 $item1.append(section.draw());
+
+                $load.removeLoader();
             }
         });
 

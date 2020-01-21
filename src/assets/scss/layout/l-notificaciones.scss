@@ -1,0 +1,11 @@
+.l-notificaciones {
+  z-index: 111;
+  display: scroll;
+  position: fixed;
+  bottom: 5px;
+  left: 15px;
+
+  &__grupo {
+    width: 130%;
+  }
+}

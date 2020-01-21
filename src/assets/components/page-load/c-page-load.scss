@@ -1,0 +1,17 @@
+.c-page-load {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  background: rgba(51, 51, 51, 0.54);;
+  z-index: 99;
+  text-align: center;
+
+  &__img {
+    position: absolute;
+    padding-top:20%;
+    z-index: 100;
+  }
+}

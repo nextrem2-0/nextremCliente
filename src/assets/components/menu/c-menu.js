@@ -1,4 +1,4 @@
-class Menu { 
+class Menu {
   constructor(categories, sports, events) {
     this.categories = categories;
     this.sp = sports;
@@ -41,7 +41,7 @@ class Menu {
           $option.on("click", function () {
             goToAccount("login");
           });
-        }else{
+        } else {
           $option = $('<div>', {
             'html': ""
           });
@@ -58,9 +58,8 @@ class Menu {
           let drop = new DropDown("profile");
           $option.append(drop.draw());
 
-          $option.on("click", function () {
-            profileDropDown("profile");
-          });
+          drop.profileDropDown();
+
         } else {
           $option = $('<div>', {
             'html': this.categories[i],
@@ -78,31 +77,31 @@ class Menu {
       }
 
       if ($option.html().toLowerCase() == "deportes") {
-        let $submenu=this.drawSports();
+        let $submenu = this.drawSports();
         $base.append($submenu);
 
-        $option.hover( function () {
-          if(!$base.hasClass("c-menu--extended")){
+        $option.hover(function () {
+          if (!$base.hasClass("c-menu--extended")) {
             $(".c-submenu--sports").show("fast");
             $base.addClass("c-menu--extended");
           }
-        },function () {
-          if(!$(".c-submenu--sports").is(":hover")){
+        }, function () {
+          if (!$(".c-submenu--sports").is(":hover")) {
             $base.removeClass("c-menu--extended");
             $(".c-submenu--sports").hide();
-          } 
+          }
         });
 
-        $submenu.hover( function () {
-          if(!$base.hasClass("c-menu--extended")){
+        $submenu.hover(function () {
+          if (!$base.hasClass("c-menu--extended")) {
             $(".c-submenu--sports").show("fast");
             $base.addClass("c-menu--extended");
           }
-        },function () {
-          if(!$option.is(":hover")){
+        }, function () {
+          if (!$option.is(":hover")) {
             $base.removeClass("c-menu--extended");
             $(".c-submenu--sports").hide();
-          } 
+          }
         });
 
         $option.on("click", cargarDeportes);

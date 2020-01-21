@@ -90,7 +90,6 @@ function cargarInicio() {
         $item1.append(slider.draw());
         var rutaBanner = "http://localhost/nextrem/api" + imgBanner[0];
         $ban.css('background-image', 'url(' + rutaBanner + ')');
-        console.log(rutaBanner);
     } else {
         $.ajax({
             url: "http://localhost/nextrem/api/public/images",

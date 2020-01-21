@@ -1,0 +1,66 @@
+.c-notification {
+  z-index: 111;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+
+  border-radius: 5px;
+  margin-bottom: 0;
+  width: 110%;
+  padding: 22px 21px;
+  margin: 2px 0px;
+
+  animation-duration: 0.5s;
+  animation-name: fadeIn;
+
+  color: white;
+  &--success {
+    background-color: #55b559e3;
+    border-color: #c3e6cb;
+  }
+  &--info {
+    background-color: #00cae3e3;
+    border-color: #bee5eb;
+  }
+  &--warning {
+    background-color: #ff9e0fe3;
+    border-color: #ffeeba;
+  }
+  &--danger {
+    background-color: #f55145e3;
+    border-color: #f5c6cb;
+  }
+
+  &__content {
+    display: flex;
+    align-items: baseline;
+    font-family: $fuenteNotificacion;
+
+    & i {
+      font-size: 20px;
+    }
+
+    .title {
+      font-weight: bold;
+    }
+  }
+
+  &__btn {
+    margin-left: auto;
+    margin-right: 3%;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}

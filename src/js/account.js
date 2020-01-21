@@ -17,6 +17,7 @@ function goToAccount(action) {
     
     section = new Section("l-dual", components, null, action.toUpperCase());
     $("#content").append(section.draw());
+    window.scrollTo(0, 0);
 }
 
 function loginAction() {
@@ -34,7 +35,6 @@ function loginAction() {
                 success: function (dataResult) {
                     localStorage.setItem('username', dataResult.user.username);
                     location.reload();
-
                 }
             });
         }
@@ -51,6 +51,10 @@ function registerAction() {
             localStorage.setItem('user_token', dataResult.token);
             localStorage.setItem('username', dataResult.user.username);
             location.reload();
+        },
+        error: function(){
+            let $not = new Notification("danger", "Error!", "No se ha podido registrar");
+            $("#notificaciones").append($not.draw());
         }
     });
 
@@ -68,8 +72,4 @@ function logoutAction() {
             location.reload();
         }
     });
-}
-function profileDropDown(action) {
-    var dropdowns = $(".c-dropdown-content");
-    dropdowns.toggleClass("show");
 }

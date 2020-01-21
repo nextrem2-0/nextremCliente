@@ -18,14 +18,20 @@
       }
     }
     &__profile {
-      border-bottom: 1px solid black;
-      &:hover{
+      // border-bottom: 1px solid black;
+      &:hover {
         background-color: #f1f1f1;
-        color:black;
+        color: black;
       }
     }
+
   }
 }
 .show {
   display: block;
+}
+.c-dropdow-content__line{
+  height: 1px;
+  background: black;
+  background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
 }

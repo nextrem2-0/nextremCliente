@@ -4,7 +4,11 @@ class DropDown {
     }
 
     draw() {
+
+       
         let func = this[this.type + "Drop"];
+
+
         return func.apply();
     }
 
@@ -18,7 +22,9 @@ class DropDown {
             "html": localStorage.getItem('username'),
             "class": "c-dropdown-content__profile",
             "style": "padding: 0; padding-left:15px"
-
+        });
+        let $line = $("<div>",{
+            "class": "c-dropdow-content__line"
         });
         let $link2 = $("<a>", {
             "html": "Config"
@@ -28,9 +34,22 @@ class DropDown {
         });
         $link3.on("click",logoutAction);
         $base.append($link1);
+        $base.append($line)
         $base.append($link2);
         $base.append($link3);
-        
+
+              
         return $base;
+    }
+
+    profileDropDown() {
+        $('body').click(function (evt) {
+            if (evt.target.className == "c-menu__option c-menu__option--register dropdown") {
+                var dropdowns = $(".c-dropdown-content");
+                dropdowns.toggleClass("show");
+            } else {
+                $(".c-dropdown-content").removeClass("show");
+            }
+        });
     }
 }
