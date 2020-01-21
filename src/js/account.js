@@ -9,7 +9,12 @@ function goToAccount(action) {
         "class": "form-image__img",
         "src": "assets/img/imgAccount.jpg"
     }));
+    
     let components = [form, $image];
+    if(action=="register"){
+        components=[$image,form];
+    }
+    
     section = new Section("l-dual", components, null, action.toUpperCase());
     $("#content").append(section.draw());
 }

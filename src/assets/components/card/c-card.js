@@ -48,7 +48,7 @@ class Card {
 
       let $cartBtn=$('<div>', { "class": "content__button content__button--" + this.sport});
       $cartBtn.on("click",function(){
-        let modal=new Modal("Resumen producto",self.imprimirProducto(),function(){self.comprar();});
+        let modal=new Modal("Resumen producto",self.imprimirProducto(),function(){self.comprar();},"Añadir al carrito");
         
         let $mod=modal.draw();
         $("#modal").append($mod);
@@ -66,7 +66,7 @@ class Card {
           ]),
           $cartBtn.append([
             $('<i>', { "class": 'fas fa-plus button__icono fa--claro', }),
-            $('<p>', { "class": "button-text", "html": '&nbsp Add cart', })
+            $('<p>', { "class": "button-text", "html": '&nbsp Ver más', })
           ])
         ])
 

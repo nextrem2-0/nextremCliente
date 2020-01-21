@@ -1,0 +1,66 @@
+.c-listView{
+    margin:0px 50px;
+    margin-top: 100px;
+    display: grid;
+    grid-template-areas: "head" "body" "foot";
+
+    .c-header{
+        grid-area: head;
+        &__title{
+            font-weight: bold;
+            width: 10%;
+            &--producto{
+                width: 50%;
+            }
+            &--precio{
+                width: 10%;
+            }
+            &--plazas{
+                width: 8%;
+            }
+            &--subtotal{
+                width: 22%;
+            }
+        }
+    }
+
+    .c-foot{
+        grid-area: foot;
+    }
+
+  
+}
+.list-item{
+    &_column{
+        width: 10%;
+        &--product{
+            width:50%;
+            display: grid;
+            grid-template-areas: "img title" "img desc";
+            .product-desc{
+                padding-left: 10px;
+                grid-area: desc;
+            }
+            .product-image{
+                width: 100px;
+                display: inline-block;
+                grid-area: img;
+            }
+            .product-title{
+                grid-area: desc;
+            }
+        }
+        &--precio{
+            width:10%;
+        }
+        &--plazas{
+            width:8%;
+            .product-plazas{
+                width: 50px;
+            }
+        }
+        &--subtotal{
+            width:22%;
+        }
+    }
+}

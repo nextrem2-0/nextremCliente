@@ -1,8 +1,9 @@
 class Modal{
-    constructor(title,body,action){
+    constructor(title,body,action,confirmMsg){
         this.title=title;
         this.body=body;
         this.action=action;
+        this.confirmMsg=confirmMsg;
     }
 
     draw(){
@@ -46,7 +47,7 @@ class Modal{
         });
         let $accept=$("<div>",{
             "class":"button button--highlight",
-            "html":"Aceptar"
+            "html":this.confirmMsg
         });
 
         $accept.on("click",function(){

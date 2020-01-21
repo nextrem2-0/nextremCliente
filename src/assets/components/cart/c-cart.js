@@ -16,18 +16,19 @@ class Cart{
         })));
 
         $base.on("click",function(){
-            let events="";
-            let total=0;
-            for(let ev of self.listaEventos){
-                events+=ev.title+"<br>";
-                total+=parseFloat(ev.price);
-            }
-            events+="<br>Total: "+total+"€";
-            let modal=new Modal("Carrito",events);
+            // let events="";
+            // let total=0;
+            // for(let ev of self.listaEventos){
+            //     events+=ev.title+"<br>";
+            //     total+=parseFloat(ev.price);
+            // }
+            // events+="<br>Total: "+total+"€";
+            // let modal=new Modal("Carrito",events,null,"Aceptar");
         
-            let $mod=modal.draw();
-            $("#modal").append($mod);
-            $mod.show();
+            // let $mod=modal.draw();
+            // $("#modal").append($mod);
+            // $mod.show();
+            verCarrito(self.listaEventos);
         });
 
         return $base;

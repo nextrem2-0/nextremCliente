@@ -20,7 +20,7 @@
 .content{
     &__header{
         display: flex;
-        padding: 10px;
+        padding-right: 10px;
         
     }
     &__title{
@@ -44,6 +44,7 @@
 }
 .button--close{
     margin-left: auto;
+    font-size: 32px;
     &:hover{
         cursor: pointer;
     }
@@ -52,7 +53,7 @@
     display: inline-block;
     padding:20px 40px;
     margin:5px;
-    border: 1px solid #7f0707;
+    // border: 1px solid #7f0707;
     &--highlight{
         background-color: #7f0707;
         color: white;
