@@ -3,16 +3,49 @@ let section;
 function goToAccount(action) {
     $("#content").empty();
     form = new Form(action);
-    $image = $("<div>", {
-        "class": "form-image"
-    }).append($("<img>", {
-        "class": "form-image__img",
-        "src": "assets/img/imgAccount.jpg"
-    }));
+    let other="register";
+    let txt="¿Ya tienes una cuenta?";
+    if(action==other){
+        other="Log In";
+    }else{
+        txt="¿Aun no tienes una cuenta?";
+    }
+
+    let $changeButton=$("<div>",{
+        "class":"button",
+        "html":other,
+        "id":"changebutton"
+    });
+
+    let $background=$("<img>", {
+        "class": "c-textOver__background",
+        "src": "assets/img/account2.jpg"
+    });
+    let $top=$("<div>",{}).append([$("<div>",{
+        "class":"text",
+        "id":"textChange",
+        "html":txt
+    }),$changeButton]);
+
+    let txtOver=new textOver($background,$top);
+
+
+    $changeButton.on("click",function(){
+        form.changeSide();
+        if(form.type=="register"){
+            other="Log In";
+            txt="¿Ya tienes una cuenta?";
+        }else if(form.type=="login"){
+            other="Register";
+            txt="¿Aun no tienes una cuenta?";
+        }  
+        $("#textChange").html(txt);
+        $("#changebutton").html(other);
+    });
     
-    let components = [form, $image];
+    let components = [form, txtOver];
     if(action=="register"){
-        components=[$image,form];
+        components=[txtOver,form];
     }
     
     section = new Section("l-dual", components, null, action.toUpperCase());

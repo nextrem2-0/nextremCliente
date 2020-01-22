@@ -1,0 +1,29 @@
+.c-textOver {
+    width: 100%;
+     display: flex;
+     justify-content: center;
+    
+    &__background {
+      width: 100%;
+    }
+    &__top{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      padding-top: 100px;
+    }
+    .text{ 
+        color: $colorCorporativo;
+        font-size: 32px;   
+    }
+    .button{
+      background-color: $colorCorporativo;
+      color: white;
+      font-size: 18px;
+      padding:20px 80px;
+      width: fit-content;
+      margin-top: 100px;
+      position: absolute;
+      border-radius: 3px;
+  }
+  }

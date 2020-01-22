@@ -86,10 +86,13 @@ class Menu {
             $base.addClass("c-menu--extended");
           }
         }, function () {
-          if (!$(".c-submenu--sports").is(":hover")) {
-            $base.removeClass("c-menu--extended");
-            $(".c-submenu--sports").hide();
-          }
+          
+            if (!$(".c-submenu--sports").is(":hover")) {
+              $base.removeClass("c-menu--extended");
+              $(".c-submenu--sports").hide();
+            }
+          
+          
         });
 
         $submenu.hover(function () {
@@ -98,10 +101,11 @@ class Menu {
             $base.addClass("c-menu--extended");
           }
         }, function () {
-          if (!$option.is(":hover")) {
-            $base.removeClass("c-menu--extended");
-            $(".c-submenu--sports").hide();
-          }
+            if (!$option.is(":hover")) {
+              $base.removeClass("c-menu--extended");
+              $(".c-submenu--sports").hide();
+            }
+         
         });
 
         $option.on("click", cargarDeportes);

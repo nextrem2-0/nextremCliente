@@ -5,17 +5,21 @@
     margin-top:70px;
     &__item{
         &--derecha{
-            grid-area: derecha;
+            grid-area: izquierda;
             display:flex;
             align-items: center;
             justify-content: center;
+            transition: 1s ;
+            transform: translate(100%);
         }
         &--izquierda{
             display:flex;
             align-items: center;
             justify-content: center;
             grid-area: izquierda;
-            
+            transition: 1s ;
+            transform: translate(0%);
         }
+        
     }
 }
