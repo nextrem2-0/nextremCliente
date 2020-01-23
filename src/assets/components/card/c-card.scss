@@ -122,11 +122,11 @@
       &__button {
         display: flex;
         top: 50px;
-        padding: 1.1em;
+        padding: 8px;
         opacity: 1;
         filter: alpha(opacity=100);
-        margin-top: 50%;
-        margin-left: 50%;
+        margin-top: 55%;
+        margin-left: 53%; 
       }
 
       @media screen and (max-width: 767px) {
@@ -228,9 +228,8 @@
         background-color: $color;
       }
     }
-    border: 1px solid black;
+    border: 1px solid #00000042;
     text-align: center;
-    text-transform: uppercase;
     padding: 5px 10px;
     margin: 10px;
     display: inline-block;
@@ -244,6 +243,7 @@
     transition: all 1.2s;
 
     transform: skewX(-10deg);
+    font-size: 14px;
 
     &:hover {
       cursor: pointer;
@@ -257,7 +257,6 @@
 
     .button-text {
       color: white;
-      text-transform: capitalize;
       transform: skewX(10deg);
     }
   }

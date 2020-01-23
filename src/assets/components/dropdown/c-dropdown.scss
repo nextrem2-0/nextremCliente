@@ -5,12 +5,16 @@
     background-color: #f1f1f1;
     min-width: 160px;
     overflow: auto;
+    text-align: center;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     right: 0;
     z-index: 111;
+
+    animation-duration: 0.3s;
+    animation-name: fadeIn;
     & a {
       color: black;
-      padding: 12px 16px;
+      padding: 5px 0px;
       text-decoration: none;
       display: block;
       &:hover {
@@ -24,14 +28,22 @@
         color: black;
       }
     }
-
   }
 }
 .show {
   display: block;
 }
-.c-dropdow-content__line{
+.c-dropdow-content__line {
   height: 1px;
   background: black;
   background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -19,7 +19,7 @@ function goToAccount(action) {
 
     let $background=$("<img>", {
         "class": "c-textOver__background",
-        "src": "assets/img/account2.jpg"
+        "src": "assets/img/account.jpg"
     });
     let $top=$("<div>",{}).append([$("<div>",{
         "class":"text",
@@ -51,6 +51,7 @@ function goToAccount(action) {
     section = new Section("l-dual", components, null, action.toUpperCase());
     $("#content").append(section.draw());
     window.scrollTo(0, 0);
+    $("#cart").hide();
 }
 
 function loginAction() {

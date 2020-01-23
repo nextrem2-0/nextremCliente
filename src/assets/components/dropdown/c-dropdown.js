@@ -20,8 +20,7 @@ class DropDown {
         });
         let $link1 = $("<a>", {
             "html": localStorage.getItem('username'),
-            "class": "c-dropdown-content__profile",
-            "style": "padding: 0; padding-left:15px"
+            "class": "c-dropdown-content__profile"
         });
         let $line = $("<div>",{
             "class": "c-dropdow-content__line"

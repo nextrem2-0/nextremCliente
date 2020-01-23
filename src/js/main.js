@@ -23,6 +23,7 @@ cargarInicio();
 
 function deleteContenido() {
     $("#content").empty();
+    $("#cart").show();
 }
 
 function cargarInicio() {

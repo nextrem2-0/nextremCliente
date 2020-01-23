@@ -1,5 +1,5 @@
 class Card {
-  constructor(image, title, sport, summary,price,material, iconos, level, modifier = null) {
+  constructor(image, title, sport, summary, price, material, iconos, level, modifier = null) {
     this.image = image;
     this.title = title;
     this.sport = sport;
@@ -7,8 +7,8 @@ class Card {
     this.iconos = iconos;
     this.level = level;
     this.modifier = modifier;
-    this.price=price;
-    this.material=material;
+    this.price = price;
+    this.material = material;
   }
 
   draw() {
@@ -16,7 +16,7 @@ class Card {
     let $base;
     let $card;
 
-    $base = $('<div>', { 
+    $base = $('<div>', {
       'class': 'l-card col-md-10 col-sm-6 col-xs-12',
     });
 
@@ -32,7 +32,7 @@ class Card {
 
     $base.append($card);
 
-    $card.append( 
+    $card.append(
       $('<h2>', { 'class': 'c-card__encabezado', }).append([
         $('<div>', { "class": "encabezado" }).append([
           $('<span>', { "class": "encabezado__titulo", "html": this.title }),
@@ -44,15 +44,15 @@ class Card {
       ])
     );
 
-      var self= this;
+    var self = this;
 
-      let $cartBtn=$('<div>', { "class": "content__button content__button--" + this.sport});
-      $cartBtn.on("click",function(){
-        let modal=new Modal("Resumen producto",self.imprimirProducto(),function(){self.comprar();},"Añadir al carrito");
-        
-        let $mod=modal.draw();
-        $("#modal").append($mod);
-        $mod.show();
+    let $cartBtn = $('<div>', { "class": "content__button content__button--" + this.sport });
+    $cartBtn.on("click", function () {
+      let modal = new Modal("Resumen producto", self.imprimirProducto(), function () { self.comprar(); }, "Añadir al carrito");
+
+      let $mod = modal.draw();
+      $("#modal").append($mod);
+      $mod.show();
     });
 
     $card.append(
@@ -73,30 +73,30 @@ class Card {
       ])
     );
 
-    let $btn=$('<div>', { 'class': 'c-card__btn', });
+    let $btn = $('<div>', { 'class': 'c-card__btn', });
     $btn.append($('<i>', { "class": 'fa fa-bars fa--claro' }));
     $card.append($btn);
 
-    $btn.on("click", function(){
+    $btn.on("click", function () {
       var card = $(this).parent(".c-card");
       var icon = $(this).children("i");
       var todasCartas = $(".c-card");
 
-      if(card.hasClass("c-card--active")){
-        cerrarCard(card,$(this));
+      if (card.hasClass("c-card--active")) {
+        cerrarCard(card, $(this));
 
-      }else{
+      } else {
         cerrarCard(todasCartas, $(".c-card__btn"));
         card.addClass("c-card--active");
 
-      window.setTimeout(function () {
-        icon
-          .removeClass("fa-bars")
-          .addClass("fa-arrow-left");
-      }, 800);
+        window.setTimeout(function () {
+          icon
+            .removeClass("fa-bars")
+            .addClass("fa-arrow-left");
+        }, 800);
       }
     });
-    
+
     function cerrarCard(carta, icono) {
       carta.removeClass("c-card--active");
 
@@ -108,9 +108,9 @@ class Card {
       }, 800);
     }
 
-    let $level=$('<div>', { "class": "footer__level" });
+    let $level = $('<div>', { "class": "footer__level" });
 
-    $card.append( 
+    $card.append(
       $('<div>', { 'class': 'c-card__footer', }).append([
         $('<div>', { "class": "footer" }).append([
           $('<h4>', { "class": 'footer__titulo', "html": 'Features' }),
@@ -137,17 +137,19 @@ class Card {
     return $base;
   }
 
-  imprimirProducto(){
-    return "Evento: "+this.title+"<br>"+
-           "Deporte: "+this.sport+"<br>"
-          +"Incluye material: "+this.material+"<br>"
-          +"Precio total: "+this.price+"€";
+  imprimirProducto() {
+    return "Evento: " + this.title + "<br>" +
+      "Deporte: " + this.sport + "<br>"
+      + "Incluye material: " + this.material + "<br>"
+      + "Precio total: " + this.price + "€";
   }
 
-  comprar(){
-    let card=new Card(this.image, this.title, this.sport, this.summary,this.price,this.material, this.iconos, this.level, this.modifier);
-    
+  comprar() {
+    let card = new Card(this.image, this.title, this.sport, this.summary, this.price, this.material, this.iconos, this.level, this.modifier);
+
     carrito.anyadirEvento(card);
+    let $not = new Notification("success", "Perfecto!", "Añadido correctamente");
+    $("#notificaciones").append($not.draw());
   }
 
 }
