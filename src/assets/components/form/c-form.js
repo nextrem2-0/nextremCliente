@@ -180,26 +180,8 @@ class Form {
             let $item1 = $(".l-dual__item--izquierda");
             let $item2 = $(".l-dual__item--derecha");
 
-            console.log($item1.css("transform"));
-            // if($item1.css("transform")=="none"){
-            //     $item1.css("transform","translateX(100%)");
-            //     $item2.css("transform","translateX(-100%)");
-            // }else{
-            //     $item1.css("transform","translateX(0%)");
-            //     $item2.css("transform","translateX(0%)");
-            // }
-            // setTimeout(() => {
-            //     $item1.removeClass("l-dual__item--izquierda");
-            // $item2.removeClass("l-dual__item--derecha");
-            //     $item1.addClass("l-dual__item--derecha");
-            //     $item2.addClass("l-dual__item--izquierda");
-            // }, 1000);
-            // $item1.on("webkitTransitionEnd",()=>{
                 $item1.removeClass("l-dual__item--izquierda").addClass("l-dual__item--derecha");
                 $item2.removeClass("l-dual__item--derecha").addClass("l-dual__item--izquierda");
-            // });
-            
-            
 
             let cambio = new Form("login");
             this.type="login";
@@ -210,14 +192,7 @@ class Form {
             console.log($item1.css("transform"));
             $item1.removeClass("l-dual__item--izquierda").addClass("l-dual__item--derecha");
             $item2.removeClass("l-dual__item--derecha").addClass("l-dual__item--izquierda");
-            // if($item1.css("transform")=="none"){
-            //     $item1.css("transform","translateX(100%)");
-            //     $item2.css("transform","translateX(-100%)");
-            // }else{
-            //     $item1.css("transform","translateX(0%)");
-            //     $item2.css("transform","translateX(0%)");
-            // }
-    
+           
             let cambio = new Form("register");
             this.type="register";
             $("#login").parent().empty().append(cambio.draw());

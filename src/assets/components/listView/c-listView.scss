@@ -60,7 +60,7 @@
     .total-price {
       margin-left: auto;
       font-weight: bold;
-      margin-right: 10%;
+      margin-right: 9%;
     }
 
     .button {
@@ -73,7 +73,7 @@
       font-size: 13px;
       font-family: $fuenteAccount;
 
-      &--buy {
+      &--shop {
         color:#535353;
       }
 
@@ -141,6 +141,7 @@
         color: #060606a1;
         &:hover {
           cursor: pointer;
+          color: #060606;
         }
       }
     }

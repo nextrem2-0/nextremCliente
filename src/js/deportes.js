@@ -15,16 +15,6 @@ function cargarDeportes() {
 
     $("#content").append($layout);
     window.scrollTo(0,0);
-
-    let $not1 = new Notification("success", "Success!", "Cargado con exito");
-    let $not2 = new Notification("danger", "Success!", "Cargado con exito");
-    let $not3 = new Notification("info", "Success!", "Cargado con exito");
-    let $not4 = new Notification("warning", "Success!", "Cargado con exito");
-    
-    $("#notificaciones").append($not1.draw());
-    $("#notificaciones").append($not2.draw());
-    $("#notificaciones").append($not3.draw());
-    $("#notificaciones").append($not4.draw());
 }
 
 function cargarSportPins() {

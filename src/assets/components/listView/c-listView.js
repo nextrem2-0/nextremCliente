@@ -1,5 +1,6 @@
 class ListView {
-    constructor(columns, rows, lastRow) {
+    constructor(carrito, columns, rows, lastRow) {
+        this.carrito = carrito;
         this.columns = columns;
         this.rows = rows;
         this.lastRow = lastRow;
@@ -81,14 +82,16 @@ class ListView {
                         $column = $("<div>", {
                             "class": "list-item__column--plazas"
                         });
-                        $column.append($("<input>", {
+                        $column.append($("<div>", {
                             "class": "product-plazas",
-                            "value": 1
+                            "html": row.plazas
                         }));
                     } else if (column.toLowerCase() == "subtotal") {
+
+                        let subtotal = row.plazas * parseFloat(row.price);
                         $column = $("<div>", {
                             "class": "list-item__column--subtotal",
-                            "html": row.price + "€"
+                            "html": subtotal + "€"
                         });
                     } else if (column.toLowerCase() == "") {
                         $column = $("<div>", {
@@ -100,14 +103,18 @@ class ListView {
                             "class": "fa fa-trash"
                         }));
 
+                        let self = this;
                         $delete.on("click", function () {
-                            console.log(this.total);
-                            this.total = this.total - parseFloat(row.price);
-                            console.log(parseFloat(row.price));
-                            console.log(this.total);
-                            console.log($(".total-price").text());
-                            $(".total-price").text(this.total);
+
+                            self.total = self.total - parseFloat(row.price);
+                            $(".total-price").text("Total " + self.total + "€");
                             $delete.parent().parent().parent().remove();
+
+                            self.carrito.eliminarEvento(row);
+                            $(".total-price").html("Total: " + self.calcularTotal() + "€");
+                            if (self.carrito.numEventos() == 0) {
+                                cargarInicio();
+                            }
                         });
 
                         let $modify = $("<div>", {
@@ -115,6 +122,33 @@ class ListView {
                         }).append($("<i>", {
                             "class": "fa fa-edit"
                         }));
+
+                        $modify.on("click", function () {
+                            let plazas = $modify.parent().parent().find($(".product-plazas"));
+
+                            let modal = new Modal("Editar Evento", row.imprimirProducto(), function () {
+                                console.log(parseInt($("#plazas").val()));
+                                
+                                
+                                plazas.html(parseInt($("#plazas").val()));
+
+                                let subtotal = parseFloat(plazas.text()) * parseFloat(row.price);
+                                let rowSubtotal = $modify.parent().parent().find($(".list-item__column--subtotal"));
+
+                                rowSubtotal.html(subtotal + "€");
+
+                                $(".total-price").html("Total: " + self.calcularTotal() + "€");
+                            }, "Guardar");
+
+                            let $mod = modal.draw();
+                            $("#modal").append($mod);
+                            $mod.show();
+
+
+
+
+                        });
+
                         $column.append([$modify, $delete]);
                     }
                 }
@@ -137,11 +171,13 @@ class ListView {
             });
             if (item.hasOwnProperty("html")) {
                 $item.html(item.html);
-            /* }
-            if (item.hasOwnProperty("icon")) {
-                $item.append($("<i>", {
-                    "class": item.icon
-                })) */
+                $item.attr('id', item.id);
+
+                let func = this[item.id + "Action"];
+                $item.on("click", function () {
+                    func.apply();
+                })
+
             } else {
                 $item = $("<div>", {
                     "class": item.class,
@@ -151,9 +187,35 @@ class ListView {
 
             $footer.append($item);
         }
+
+
+
         $base.append($line2);
         $base.append($footer);
         return $base;
 
+    }
+    seguirComprandoAction() {
+        cargarEventos();
+    }
+
+    tramitarPedidoAction() {
+        let $not = new Notification("success", "Completado!", "Pedido realizado");
+        $("#notificaciones").append($not.draw());
+
+        carrito.eliminarTodosEvento();
+        cargarInicio();
+    }
+
+    calcularTotal() {
+        let subtotalPrecio = $(".list-item__column--subtotal")
+        let subtotalTotal = 0;
+
+        $(subtotalPrecio).each(function () {
+            subtotalTotal += parseFloat($(this).html().slice(0, -1));
+        });
+
+        this.total = subtotalTotal;
+        return this.total
     }
 }

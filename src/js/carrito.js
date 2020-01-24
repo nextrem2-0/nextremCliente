@@ -16,7 +16,7 @@ function verCarrito(eventos){
     $("#content").empty();
     let columnas=["Producto","Precio","Plazas","Subtotal",""];
     
-    let listarProductos= new ListView(columnas,eventos,[{"class":"button button--shop","icon":"fa fa-angle-left","html": "◀  Seguir comprando"},{"class":"total-price"},{"class":"button button--buy","icon":"fa fa-angle-right","html": "Comprar  ▶"}]);
+    let listarProductos= new ListView(carrito, columnas, eventos, [{"class":"button button--shop","id": "seguirComprando","html": "◀  Seguir comprando"},{"class":"total-price"},{"class":"button button--buy","id": "tramitarPedido","html": "Tramitar Pedido  ▶"}]);
     let section = new Section("l-columns",[listarProductos],null,"l-columns--1-columns");
     $("#content").append(section.draw());
 

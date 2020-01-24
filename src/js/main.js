@@ -211,17 +211,3 @@ function cargarPins() {
         }
     });
 }
-
-function cargarCarrito(){
-    if(carrito instanceof Cart){
-        if($("#cart").children().length > 0){
-
-        }else{
-            $("#cart").append(carrito.draw());
-        }
-        
-    }else{
-        carrito= new Cart();
-        $("#cart").append(carrito.draw());
-    }
-}

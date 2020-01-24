@@ -72,6 +72,8 @@ function cargarCards(type) {
                 success: function (dataResult) {
                     var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
 
+                    dataResult.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0)); 
+
                     for (let key of dataResult) {
 
                         let deporte = sports.filter(function (sport) {
@@ -102,6 +104,7 @@ function cargarCards(type) {
         $.ajax({
             url: "http://localhost/nextrem/api/public/deportes/" + type + "/eventos",
             success: function (dataResult) {
+                dataResult.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0)); 
                 var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
 
                 for (let key of dataResult) {

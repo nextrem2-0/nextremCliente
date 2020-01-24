@@ -43,36 +43,51 @@ class Cart {
     }
 
     anyadirEvento(event) {
-        this.listaEventos.push(event);
-        this.getEventosyPlazas();
-        this.getPrecioTotal();
-        console.log(this.idEventosyPlazas);
         
-        $.ajax({
-            url: "http://localhost/nextrem/api/public/addCarrito",
-            data: { eventos: this.idEventosyPlazas, idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal },
-            headers: { 'Content-Type': 'application/json' },
-            success: function (dataResult) {
-                console.log(dataResult);
-                
-            },
-            error: function (error) {
-                console.log(error);
-                
-                let $not = new Notification("danger", "Error!", "No se ha podido guardar");
-                $("#notificaciones").append($not.draw());
-            }
-        });
+        if (this.existeEvento(event.id) != true) {
+            this.listaEventos.push(event);
+
+            let $not = new Notification("success", "Completado!", "Añadido correctamente");
+            $("#notificaciones").append($not.draw());
+
+            this.getEventosyPlazas();
+            this.getPrecioTotal();
+            $.ajax({
+                url: "http://localhost/nextrem/api/public/addCarrito",
+                data: { eventos: this.idEventosyPlazas, idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal },
+                headers: { 'Content-Type': 'application/json' },
+                success: function (dataResult) {
+                    console.log(dataResult);
+
+                },
+                error: function (error) {
+                    console.log(error);
+
+                    let $not = new Notification("danger", "Error!", "No se ha podido guardar");
+                    $("#notificaciones").append($not.draw());
+                }
+            });
+        }else{
+            let $not = new Notification("danger", "Error!", "Este evento ya está en el carrito");
+            $("#notificaciones").append($not.draw());
+        }
     }
 
-    eliminarevento(event) {
-        this.listaEventos.splice(event);
+    eliminarEvento(event) {
+        var deleteElement = this.listaEventos.indexOf(event);
+        this.listaEventos.splice(deleteElement, 1);
+    }
+
+    eliminarTodosEvento() {
+        this.listaEventos.length = 0;
+    }
+
+    numEventos() {
+        return this.listaEventos.length;
     }
 
     getEventosyPlazas() {
         for (const event of this.listaEventos) {
-            console.log(event.id);
-            
             this.idEventosyPlazas.push({"idEvento":event.id, "plazas":event.plazas});
         }
     }
@@ -84,5 +99,16 @@ class Cart {
             
         }
 
+    }
+
+    existeEvento(id) {
+        let existe = false;
+        this.listaEventos.forEach(evento => {
+          
+            if (evento.id == id) {
+                existe = true;
+            }
+        })
+        return existe;
     }
 }
