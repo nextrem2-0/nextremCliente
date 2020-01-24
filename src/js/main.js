@@ -99,7 +99,25 @@ function cargarInicio() {
 
     if (Array.isArray(imgSlider) && imgSlider.length) {
         let slider = new Slider(imgSlider);
-        $item1.append(slider.draw());
+        let $btnMas=$("<div>",{
+            "class":"button-saber-mas",
+            "html":"Saber más"
+        });
+
+        $btnMas.on("click",function(){                 
+            window.scrollTo(0,700);
+        });
+
+        let $over=$("<div>",{
+            "class":"c-textOver__top--small"
+        }).append([$("<img>",{
+            "src":"assets/img/sloganOver.png",
+            "class":"image-over-slider"
+        }),$btnMas.append($("<i>",{
+            "class":"fa fa-angle-down button-saber-mas__icon"
+        }))]);
+        let overSlider = new textOver(slider.draw(),$over);
+        $item1.append(overSlider.draw());
         var rutaBanner = "http://localhost/nextrem/api" + imgBanner[0];
         $ban.css('background-image', 'url(' + rutaBanner + ')');
     } else {

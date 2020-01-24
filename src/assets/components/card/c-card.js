@@ -51,9 +51,12 @@ class Card {
 
     let $cartBtn = $('<div>', { "class": "content__button content__button--" + this.sport });
     $cartBtn.on("click", function () {
+      
       let modal = new Modal("Resumen producto", self.imprimirProducto(), function () {
 
-        self.plazas = $("#plazas").value();
+        self.plazas = parseInt($("#plazas").val());
+
+        
         self.comprar();
 
       }, "Añadir al carrito");
@@ -154,22 +157,9 @@ class Card {
   }
 
   comprar() {
-    let card = new Card(this.image, this.title, this.sport, this.summary, this.plazas, this.price, this.material, this.iconos, this.level, this.modifier);
+    let card = new Card(this.image, this.title, this.sport, this.summary,this.capacidad, this.plazas, this.price, this.material, this.iconos, this.level, this.modifier);
 
-    carrito.anyadirEvento(card);
-    let precioTotal = this.price * this.plazas;
-    // $.ajax({
-    //   url: "http://localhost/nextrem/api/public/",
-    //   data: { idEvento: this.id, idUsuario: localStorage.getItem('idUser'), plazas: this.plazas, precio: precioTotal },
-    //   headers: { 'Content-Type': 'application/json' },
-    //   success: function (dataResult) {
-
-    //   },
-    //   error: function () {
-    //     let $not = new Notification("danger", "Error!", "No se ha podido guardar");
-    //     $("#notificaciones").append($not.draw());
-    //   }
-    // });
+    carrito.anyadirEvento(card); 
   }
 
 }

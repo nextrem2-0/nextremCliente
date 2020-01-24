@@ -1,6 +1,8 @@
 class Cart {
     constructor() {
-        this.listaEventos = new Array(); 
+        this.listaEventos = new Array();
+        this.idEventosyPlazas = new Array();
+        this.precioTotal = 0;
     }
 
     draw() {
@@ -15,7 +17,7 @@ class Cart {
             "class": "fas fa-shopping-cart"
         })));
 
-        $base.on("click",function(){
+        $base.on("click", function () {
             // let events="";
             // let total=0;
             // for(let ev of self.listaEventos){
@@ -24,7 +26,7 @@ class Cart {
             // }
             // events+="<br>Total: "+total+"€";
             // let modal=new Modal("Carrito",events,null,"Aceptar");
-        
+
             // let $mod=modal.draw();
             // $("#modal").append($mod);
             // $mod.show();
@@ -34,7 +36,7 @@ class Cart {
             } else {
                 verCarrito(self.listaEventos);
             }
-            
+
         });
 
         return $base;
@@ -42,9 +44,38 @@ class Cart {
 
     anyadirEvento(event) {
         this.listaEventos.push(event);
+        this.getEventosyPlazas();
+        this.getPrecioTotal();
+        $.ajax({
+            url: "http://localhost/nextrem/api/public/addCarrito",
+            data: { eventos: this.idEventosyPlazas, idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal },
+            headers: { 'Content-Type': 'application/json' },
+            success: function (dataResult) {
+                console.log(dataResult);
+                
+            },
+            error: function (error) {
+                console.log(error);
+                
+                let $not = new Notification("danger", "Error!", "No se ha podido guardar");
+                $("#notificaciones").append($not.draw());
+            }
+        });
     }
 
     eliminarevento(event) {
         this.listaEventos.splice(event);
+    }
+
+    getEventosyPlazas() {
+        for (const event of this.listaEventos) {
+            this.idEventosyPlazas[event.id] = event.plazas;
+        }
+    }
+    getPrecioTotal() {
+        this.precioTotal = 0;
+        for (const event of this.listaEventos) {
+            this.precioTotal += parseFloat(event.precio * event.plazas);
+        }
     }
 }

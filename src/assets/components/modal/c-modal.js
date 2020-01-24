@@ -54,6 +54,7 @@ class Modal{
 
         $accept.on("click",function(){
             self.action();
+            $("#modal").empty();
         });
 
         let $cancel=$("<div>",{
