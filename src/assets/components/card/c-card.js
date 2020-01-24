@@ -1,6 +1,6 @@
 class Card {
-  constructor(image, title, sport, summary, capacidad, plazas = 1, price, material, iconos, level, modifier = null) {
-    //this.id=id;
+  constructor(id, image, title, sport, summary, capacidad, plazas = 1, price, material, iconos, level, modifier = null) {
+    this.id=id;
     this.image = image;
     this.title = title;
     this.sport = sport;
@@ -157,7 +157,7 @@ class Card {
   }
 
   comprar() {
-    let card = new Card(this.image, this.title, this.sport, this.summary,this.capacidad, this.plazas, this.price, this.material, this.iconos, this.level, this.modifier);
+    let card = new Card(this.id,this.image, this.title, this.sport, this.summary,this.capacidad, this.plazas, this.price, this.material, this.iconos, this.level, this.modifier);
 
     carrito.anyadirEvento(card); 
   }

@@ -46,6 +46,8 @@ class Cart {
         this.listaEventos.push(event);
         this.getEventosyPlazas();
         this.getPrecioTotal();
+        console.log(this.idEventosyPlazas);
+        
         $.ajax({
             url: "http://localhost/nextrem/api/public/addCarrito",
             data: { eventos: this.idEventosyPlazas, idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal },
@@ -69,13 +71,18 @@ class Cart {
 
     getEventosyPlazas() {
         for (const event of this.listaEventos) {
-            this.idEventosyPlazas[event.id] = event.plazas;
+            console.log(event.id);
+            
+            this.idEventosyPlazas.push({"idEvento":event.id, "plazas":event.plazas});
         }
     }
     getPrecioTotal() {
         this.precioTotal = 0;
         for (const event of this.listaEventos) {
-            this.precioTotal += parseFloat(event.precio * event.plazas);
+            this.precioTotal += parseFloat(event.price) * parseInt(event.plazas);
+            
+            
         }
+
     }
 }
