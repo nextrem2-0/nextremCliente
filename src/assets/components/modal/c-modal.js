@@ -12,8 +12,10 @@ class Modal{
             "class":"c-modal"
         });
 
-        $base.on("click",function(){
-            $("#modal").empty();
+        $base.click(function (evt) {
+            if (evt.target.className == "c-modal") {
+                $("#modal").empty();
+            } 
         });
 
         let $dialog=$("<div>",{

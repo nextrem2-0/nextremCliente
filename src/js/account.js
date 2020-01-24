@@ -68,6 +68,7 @@ function loginAction() {
                 headers: { 'Authorization': 'Bearer ' + $token },
                 success: function (dataResult) {
                     localStorage.setItem('username', dataResult.user.username);
+                    localStorage.setItem('idUser', dataResult.user.id);
                     location.reload();
                 }
             });

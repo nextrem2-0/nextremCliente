@@ -1,5 +1,6 @@
 class Card {
-  constructor(image, title, sport, summary, price, material, iconos, level, modifier = null) {
+  constructor(image, title, sport, summary, capacidad, plazas = 1, price, material, iconos, level, modifier = null) {
+    //this.id=id;
     this.image = image;
     this.title = title;
     this.sport = sport;
@@ -9,6 +10,8 @@ class Card {
     this.modifier = modifier;
     this.price = price;
     this.material = material;
+    this.plazas = plazas;
+    this.capacidad = capacidad;
   }
 
   draw() {
@@ -48,7 +51,12 @@ class Card {
 
     let $cartBtn = $('<div>', { "class": "content__button content__button--" + this.sport });
     $cartBtn.on("click", function () {
-      let modal = new Modal("Resumen producto", self.imprimirProducto(), function () { self.comprar(); }, "Añadir al carrito");
+      let modal = new Modal("Resumen producto", self.imprimirProducto(), function () {
+
+        self.plazas = $("#plazas").value();
+        self.comprar();
+
+      }, "Añadir al carrito");
 
       let $mod = modal.draw();
       $("#modal").append($mod);
@@ -140,16 +148,28 @@ class Card {
   imprimirProducto() {
     return "Evento: " + this.title + "<br>" +
       "Deporte: " + this.sport + "<br>"
-      + "Incluye material: " + this.material + "<br>"
+      + "Incluye material: " + this.material + "<br>" +
+      "Plazas: <input type='number' value=1 id='plazas' min=1 max=" + this.capacidad + "></input><br>"
       + "Precio total: " + this.price + "€";
   }
 
   comprar() {
-    let card = new Card(this.image, this.title, this.sport, this.summary, this.price, this.material, this.iconos, this.level, this.modifier);
+    let card = new Card(this.image, this.title, this.sport, this.summary, this.plazas, this.price, this.material, this.iconos, this.level, this.modifier);
 
     carrito.anyadirEvento(card);
-    let $not = new Notification("success", "Perfecto!", "Añadido correctamente");
-    $("#notificaciones").append($not.draw());
+    let precioTotal = this.price * this.plazas;
+    // $.ajax({
+    //   url: "http://localhost/nextrem/api/public/",
+    //   data: { idEvento: this.id, idUsuario: localStorage.getItem('idUser'), plazas: this.plazas, precio: precioTotal },
+    //   headers: { 'Content-Type': 'application/json' },
+    //   success: function (dataResult) {
+
+    //   },
+    //   error: function () {
+    //     let $not = new Notification("danger", "Error!", "No se ha podido guardar");
+    //     $("#notificaciones").append($not.draw());
+    //   }
+    // });
   }
 
 }

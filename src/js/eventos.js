@@ -56,9 +56,9 @@ function cargarCards(type) {
         } else {
             var descrip = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.";
             var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
-            recomendedCards.push(new Card("evento1.jpg", "Liga de escuelas", "Escalada", descrip, 12, 1, iconos, 3, 'escalada'));
-            recomendedCards.push(new Card("evento2.jpg", "Torneo de Surf", "Surf", descrip, 15, 1, iconos, 2, 'surf'));
-            recomendedCards.push(new Card("evento3.jpg", "Clases de Esqui", "Esqui", descrip, 10, 0, iconos, 3, 'esqui'));
+            recomendedCards.push(new Card("evento1.jpg", "Liga de escuelas", "Escalada", descrip,7,null, 12, 1, iconos, 3, 'escalada'));
+            recomendedCards.push(new Card("evento2.jpg", "Torneo de Surf", "Surf", descrip,7,null, 15, 1, iconos, 2, 'surf'));
+            recomendedCards.push(new Card("evento3.jpg", "Clases de Esqui", "Esqui", descrip,7,null, 10, 0, iconos, 3, 'esqui'));
         }
         section = new Section("l-columns", recomendedCards, "RECOMENDADOS", "l-columns--3-columns");
     } else if (type == "todas") {
@@ -79,7 +79,7 @@ function cargarCards(type) {
                         })[0];
 
 
-                        listaCards.push(new Card("evento3.jpg", key.nombre, deporte.nombre, key.resumen, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
+                        listaCards.push(new Card("evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.capacidad,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                     }
                     section = new Section("l-columns", listaCards, null, "l-columns--3-columns", "l-columns--long");
@@ -111,7 +111,7 @@ function cargarCards(type) {
                     })[0];
 
 
-                    listaDeportesCards.push(new Card("evento3.jpg", key.nombre, deporte.nombre, key.resumen, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
+                    listaDeportesCards.push(new Card("evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.capacidad,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                 }
                 /* for (let key of dataResult) {

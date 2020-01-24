@@ -10,3 +10,21 @@
 .carousel-control-next, .carousel-control-prev{
   margin-top:-25%;
 }
+.image-over-slider{
+  height: 90%;
+  grid-area: foto;
+}
+.button-saber-mas{
+  color: white;
+  grid-area: boton;
+  display: flex;
+  justify-content: center;
+  &:hover{
+    cursor: pointer;
+  }
+  
+  &__icon{
+    position: absolute;
+    margin-top: 20px;
+  }
+}

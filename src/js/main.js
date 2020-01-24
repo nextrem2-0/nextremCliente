@@ -17,6 +17,17 @@ let numPeticionesHechas = 0;
 window.onload = function () {
     numPeticionesHechas = 0;
 };
+// document.addEventListener("scroll",function(eve){
+//     console.log($(document).scrollTop());
+    
+//     if($(document).scrollTop()==0){
+//         console.log("aaa");
+        
+//         $("html, body").animate({
+//             scrollTop: 700
+//         }, 10);
+//     }
+// });
 
 $(".l-page").hide();
 cargarInicio();
@@ -108,7 +119,25 @@ function cargarInicio() {
                 $ban.css('background-image', 'url(' + rutaBanner + ')');
 
                 let slider = new Slider(imgSlider);
-                $item1.append(slider.draw());
+                let $btnMas=$("<div>",{
+                    "class":"button-saber-mas",
+                    "html":"Saber más"
+                });
+
+                $btnMas.on("click",function(){                 
+                    window.scrollTo(0,700);
+                });
+
+                let $over=$("<div>",{
+                    "class":"c-textOver__top--small"
+                }).append([$("<img>",{
+                    "src":"assets/img/sloganOver.png",
+                    "class":"image-over-slider"
+                }),$btnMas.append($("<i>",{
+                    "class":"fa fa-angle-down button-saber-mas__icon"
+                }))]);
+                let overSlider = new textOver(slider.draw(),$over);
+                $item1.append(overSlider.draw());
                 $('.carousel').carousel({
                     interval: 5000,
                     "data-pause":false
