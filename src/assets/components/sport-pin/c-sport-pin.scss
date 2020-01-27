@@ -20,7 +20,7 @@
   }
 
   &__content {
-    height: 85px;
+    height: 11vh;
     background: white;
     position: relative;
     z-index: 2;
@@ -45,8 +45,8 @@
 
   &__mask {
     width: 99.7%;
-    padding: 50px;
-    margin-top: -136px;
+    padding: 22%;
+    margin-top: -66%;
     background-color: white;
     transform: skewY(-15deg);
     border-top: solid 2px black;

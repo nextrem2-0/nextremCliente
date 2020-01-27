@@ -2,7 +2,7 @@
   display: flex;
   margin: auto;
   background: rgba(255,255,255,0.7);
-  height: 70px;
+  height: 11%;
   width: 100%;
   transition: height 0.7s;
   position: fixed;
@@ -11,10 +11,11 @@
   &__option {
     padding-right: 2%;
     padding-left: 1%;
-    line-height: 70px;
+    line-height: 4.5em;
     display: inline-block;
     color: black;
-    height: 70px;
+    height: 100%;
+    max-height: 70px;
     text-decoration: none;
 
     &--right {
@@ -23,21 +24,22 @@
     &--login{
       border: 1px solid $colorCorporativo;
       color: rgb(83, 83, 83);
-      height: 50px;
-      line-height: 50px;
+      height: 70%;
+      
+      line-height: 3.2em;
       padding-right: 1%;
       margin-right: 1%;
-      margin-top: 10px; 
+      margin-top: 0.8%; 
       font-weight: 600;
     }
     &--register{
       background: rgba($color: $colorCorporativo, $alpha: 0.7);
       color: white;
-      height: 50px;
-      line-height: 50px;
+      height: 70%;
+      line-height: 3.2em;
       padding-right: 1%;
       margin-right: 1%;
-      margin-top: 10px;
+      margin-top: 0.8%;
       font-weight: 600;
     }
   }
@@ -47,8 +49,11 @@
   }
 
   &--extended {
-    height: 130px;
+    height: 18%;
     background: rgb(255,255,255);
+    .c-menu__option--register,.c-menu__option--login{
+      max-height: 70px;
+    }
   }
 
   

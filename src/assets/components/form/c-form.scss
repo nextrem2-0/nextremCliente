@@ -2,6 +2,7 @@
 
 .c-form {
   width: 75%;
+  height: 60%;
   // margin-top: 25%;
 
   &__campos--login {
@@ -10,7 +11,7 @@
   }
 
   &__campos {
-    height: 290px;
+    height: 100%;
   }
 
   &__avatar {
@@ -18,16 +19,16 @@
     overflow: hidden;
     display: inline-block;
     margin-top: 2%;
+    width:100%;
 
     .btn-avatar {
       border: 1px solid #b9b9b9;
       color: #666;
-      padding: 8px 20px;
-      font-size: 18px;
+      padding: 2% 9%;
+      font-size: 1.2rem;
     }
 
     .input-avatar {
-      font-size: 100px;
       position: absolute;
       left: 0;
       top: 0;
@@ -43,9 +44,9 @@
     font-family: $fuenteAccount;
     font-size: 20px;
     color: #555;
-    line-height: 1.2;
+    line-height: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.3rem;
     text-align: center;
     width: 100%;
     display: block;
@@ -57,16 +58,15 @@
     display: flex;
   }
   .textbox {
-    height: 65px;
+    height: 10vh;
     width: 100%;
     border: 1px solid #b9b9b9;
     display: block;
     background: 0 0;
     font-family: $fuenteAccount;
-    font-size: 18px;
+    font-size: 1.3rem;
     color: #666;
-    line-height: 1.2;
-    padding: 0 25px;
+    padding: 0 5%;
     margin-bottom: 2%;
   }
 
@@ -80,16 +80,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 5%;
     width: 100%;
-    height: 50px;
+    height: 18%;
     border-radius: 3px;
     background: $colorCorporativo;
     font-family: $fuenteAccount;
-    font-size: 15px;
+    font-size: 1.1rem;
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.07rem;
     transition: all 0.4s;
     font-weight: bold;
     margin-top: 2%;
@@ -97,24 +97,11 @@
     &:hover {
       cursor: pointer;
     }
-  }
-
-  &__undertext {
-    width: fit-content;
-    margin-top: 2%;
-    margin-left: 2%;
-    font-family: $fuenteAccount;
-    font-size: 15px;
-    line-height: 1.4;
-    color: $colorCorporativo;
-
-    &:hover {
-      cursor: pointer;
-    }
+  
   }
 
   &__msg{
-    font-size: 12px;
+    font-size: 0.8rem;
     color: #6c757d!important;
     margin-top: .25rem;
   }

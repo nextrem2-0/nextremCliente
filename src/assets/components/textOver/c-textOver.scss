@@ -14,23 +14,23 @@
       &--small{
         width: 100%;
         background: rgba($color: #000000, $alpha: 0.7);
-        height: 950px;
-        padding-top: 170px;
+        height: 136vh;
+        padding-top: 12%;
         display: grid;
         grid-template-areas: "foto" "boton";
       }
     }
     .text{ 
         color: $colorCorporativo;
-        font-size: 32px;   
+        font-size: 2rem;   
     }
     .button{
       background-color: $colorCorporativo;
       color: white;
-      font-size: 18px;
-      padding:20px 80px;
+      font-size: 1.4rem;
+      padding:6% 23%;
       width: fit-content;
-      margin-top: 100px;
+      margin-top: 25%;
       position: absolute;
       border-radius: 3px;
   }

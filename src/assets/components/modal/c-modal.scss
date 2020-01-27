@@ -10,7 +10,7 @@
         top:50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        width: 500px;
+        width: 36%;
         height: fit-content;
         background:  #ffffff;
         
@@ -20,23 +20,23 @@
 .content{
     &__header{
         display: flex;
-        padding-right: 10px;
+        padding-right: 2%;
         
     }
     &__title{
         display:block;
         font-weight: bold;
-        font-size: 24px;
+        font-size: 1.5em;
         text-align: center;
     }
     &__body{
         display: block;
         width: 100%;
-        padding:30px;
-        line-height: 24px;
+        padding:8%;
+        line-height: 1.6em;
     }
     &__footer{
-        padding:10px;
+        padding:2%;
         display: flex;
         width: 100%;
         justify-content: space-evenly;
@@ -44,15 +44,15 @@
 }
 .button--close{
     margin-left: auto;
-    font-size: 32px;
+    font-size: 2rem;
     &:hover{
         cursor: pointer;
     }
 }
 .button{
     display: inline-block;
-    padding:20px 40px;
-    margin:5px;
+    padding:4% 7%;
+    margin:1%;
     // border: 1px solid #7f0707;
     &--highlight{
         background-color: #7f0707;

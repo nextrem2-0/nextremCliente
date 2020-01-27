@@ -16,8 +16,8 @@
   }
   &__mask{
     position: absolute;
-    top: -150px;
-    bottom: -150px;
+    top: -26%;
+    bottom: -26%;
     right: 0px;
     left: 0px;
     z-index: 1;
@@ -33,24 +33,24 @@
     z-index: 2;
     background: $colorCorporativo;
     color:white; 
-    width: 600px;
-    margin-top: -400px;
-    height: 107px;
-    line-height: 107px;
+    width: 43%;
+    margin-top: -11em;
+    height: 18%;
+    line-height: 2.7em;
     font-size: 2.4rem;
     white-space:nowrap;
     overflow: hidden;
     
   }
-  @keyframes example {
-    0%{width:0%}
-    100%{width:600px;}
-  }
+  // @keyframes example {
+  //   0%{width:0%}
+  //   100%{width:600px;}
+  // }
   &__image{
     color: white;
     background-size: cover;
     height: 600px;
-    width: calc(100%+100px);
+    //width: calc(100%+100px);
     filter: grayscale(100%);
   }
 }

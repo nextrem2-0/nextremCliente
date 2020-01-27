@@ -4,15 +4,15 @@
   transition-duration: 0.5s;
 
   &__img {
-    width: 100px;
-    margin-top: 280px;
-    margin-bottom: -10px;
+    width: 9%;
+    margin-top: 25%;
+    //margin-bottom: -10px;
     animation-duration: 0.5s;
     animation-name: apareceLogo;
   }
   &__gif {    
     width: 40%;
-    margin-top: -315px;
+    margin-top: -25%;
     transition-duration: 0.5s;
   }
 }

@@ -2,7 +2,7 @@
     display: grid;
     grid-template-areas: "izquierda derecha";
     grid-template-columns: 1fr 1fr;
-    margin-top:70px;
+    margin-top:5%;
     &__item{
         &--derecha{
             grid-area: izquierda;
