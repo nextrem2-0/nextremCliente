@@ -1,8 +1,9 @@
 class Section {
-  constructor(layout, innerComponents, title, ...modifier) {
+  constructor(layout, innerComponents, title, sectionModifier = null,...modifier) {
     this.layout = layout;
     this.innerComponents = innerComponents;
     this.modifier = modifier;
+    this.sectionModifier = sectionModifier;
     this.title = title;
   }
 
@@ -10,13 +11,22 @@ class Section {
     let $base = $("<div>", {
       "class": "c-section"
     });
+
+    if(this.sectionModifier != null){
+      console.log(this.sectionModifier);
+      
+      $base = $("<div>", {
+        "class": "c-section " + this.sectionModifier
+      });
+    }
+
     let $title;
     if (this.title != null) {
       $title = $("<div>", {
         "html": this.title,
-        "class": "c-section__title"  
+        "class": "c-section__title"
       });
-    } 
+    }
 
     let $content = $("<div>", {
       "class": "c-section__content"
@@ -65,6 +75,37 @@ class Section {
 
       $layout.append($item1, $item2);
 
+    } else if (this.layout == "l-perfil") {
+
+      for (let component of this.innerComponents) {
+        let $litem = $("<div>", {
+          "class": this.layout + "__item"
+        });
+
+        if (component.hasClass("perfil-img")) {
+          $litem = $("<div>", {
+            "class": this.layout + "__item " + this.layout + "__item--img"
+          });
+        } else if (component.hasClass("perfil-gestion")) {
+          $litem = $("<div>", {
+            "class": this.layout + "__item " + this.layout + "__item--gestion"
+          });
+        }else if (component.hasClass("perfil-titulo")) {
+          $litem = $("<div>", {
+            "class": this.layout + "__item " + this.layout + "__item--titulo"
+          });
+        }else if (component.hasClass("perfil-content")) {
+          $litem = $("<div>", {
+            "class": this.layout + "__item " + this.layout + "__item--content"
+          });
+        }
+
+        $litem.append(component);
+        $layout.append($litem);
+      }
+
+      
+
     } else {
       for (let component of this.innerComponents) {
         let $litem = $("<div>", {
@@ -73,7 +114,6 @@ class Section {
 
         if (component instanceof jQuery) {
           $litem.append(component);
-
         } else {
           $litem.append(component.draw());
         }

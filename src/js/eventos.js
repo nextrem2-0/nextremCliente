@@ -60,11 +60,11 @@ function cargarCards(type) {
             recomendedCards.push(new Card(2000,"evento2.jpg", "Torneo de Surf", "Surf", descrip,7,null, 15, 1, iconos, 2, 'surf'));
             recomendedCards.push(new Card(3000,"evento3.jpg", "Clases de Esqui", "Esqui", descrip,7,null, 10, 0, iconos, 3, 'esqui'));
         }
-        section = new Section("l-columns", recomendedCards, "RECOMENDADOS", "l-columns--3-columns");
+        section = new Section("l-columns", recomendedCards, "RECOMENDADOS", null, "l-columns--3-columns");
     } else if (type == "todas") {
         if (Array.isArray(listaCards) && listaCards.length) {
             $load = 0;
-            section = new Section("l-columns", listaCards, null, "l-columns--3-columns", "l-columns--long");
+            section = new Section("l-columns", listaCards, null, "c-section--eventos", "l-columns--3-columns", "l-columns--long");
             $item1.append(section.draw());
         } else {
             $.ajax({
@@ -84,7 +84,7 @@ function cargarCards(type) {
                         listaCards.push(new Card(key.id,"evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.capacidad,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                     }
-                    section = new Section("l-columns", listaCards, null, "l-columns--3-columns", "l-columns--long");
+                    section = new Section("l-columns", listaCards, null, "c-section--eventos", "l-columns--3-columns", "l-columns--long");
                     $item1.append(section.draw());
 
                     $load.removeLoader();
@@ -120,7 +120,7 @@ function cargarCards(type) {
                 /* for (let key of dataResult) {
                     listaDeportesCards.push(new Card("evento3.jpg", key.nombre, "deporte", key.resumen, iconos, 3, 'buceo'));
                 } */
-                section = new Section("l-columns", listaDeportesCards, null, "l-columns--3-columns", "l-columns--long");
+                section = new Section("l-columns", listaDeportesCards, null, "c-section--evento", "l-columns--3-columns", "l-columns--long");
                 $item1.append(section.draw());
 
                 $load.removeLoader();

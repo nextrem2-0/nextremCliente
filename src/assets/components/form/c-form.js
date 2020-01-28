@@ -52,9 +52,6 @@ class Form {
             "html": "sign in"
         });
 
-
-        
-
         $base.append($title);
 
         $textbox.append($username);
@@ -149,8 +146,6 @@ class Form {
             "html": "Sign up"
         });
 
-       
-
         $base.append($title);
 
         $textbox.append($username);
@@ -166,9 +161,10 @@ class Form {
         $base.append($campos);
         $base.append($submit);
         
-
         $(function () {
-            $('.c-form__button').on("click", registerAction);
+            $('.c-form__button').on("click", function(){
+                validarCampos();
+            });
         });
 
         return $base;
@@ -198,6 +194,51 @@ class Form {
             $("#login").parent().empty().append(cambio.draw());
         }
     }
+}
 
+function validarCampos(){
+    let text = 0;
+    
+    if($("#user").val().length < 6 ){
+        text = "El nombre de usuario es muy corto";
+        $("#user").val("");
+        $("#user").css("border-color", "red");
+        $("#user").on("click",function(){
+            $("#user").css("border-color", "#b9b9b9");
+        });
+        
+    }else if(   validarEmail($("#email").val()) != true){
+        text = "El email es incorrecto";
+        $("#email").val("");
+        $("#email").css("border-color", "red");
+        $("#email").on("click",function(){
+            $("#email").css("border-color", "#b9b9b9");
+        });
 
+    }else if(   $("#pass_register").val() != $("#pass_confirm_register").val()  ){
+        text = "Las contraseñas no coinciden";
+        $("#pass_register").val("");
+        $("#pass_confirm_register").val("");
+
+        $("#pass_register").css("border-color", "red");
+        $("#pass_confirm_register").css("border-color", "red");
+        $("#pass_register").on("click",function(){
+            $("#pass_register").css("border-color", "#b9b9b9");
+        });
+        $("#pass_confirm_register").on("click",function(){
+            $("#pass_confirm_register").css("border-color", "#b9b9b9");
+        });
+    }
+
+    if(text != 0){
+        let $not = new Notification("danger", "Error!", text);
+        $("#notificaciones").append($not.draw());
+    }else{
+        registerAction();
+    }        
+}
+
+function validarEmail(email){
+    var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    return re.test(email);
 }

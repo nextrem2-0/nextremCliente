@@ -9,13 +9,18 @@ class Cart {
         var self = this;
         let $base = $("<div>", {
             "class": "c-cart"
-
         });
         $base.append($("<div>", {
             "class": "c-cart__icon"
-        }).append($("<i>", {
+        }).append(
+            $("<i>", {
             "class": "fas fa-shopping-cart"
-        })));
+            }),
+            $("<div>",{
+                "id": "numCart",
+                "html": 0
+            })
+        ));
 
         $base.on("click", function () {
             // let events="";
@@ -50,6 +55,7 @@ class Cart {
             let $not = new Notification("success", "Completado!", "Añadido correctamente");
             $("#notificaciones").append($not.draw());
 
+            this.aumentarCarrito();
             this.getEventosyPlazas();
             this.getPrecioTotal();
             $.ajax({
@@ -58,7 +64,7 @@ class Cart {
                 headers: { 'Content-Type': 'application/json' },
                 success: function (dataResult) {
                     console.log(dataResult);
-
+                   
                 },
                 error: function (error) {
                     console.log(error);
@@ -76,10 +82,12 @@ class Cart {
     eliminarEvento(event) {
         var deleteElement = this.listaEventos.indexOf(event);
         this.listaEventos.splice(deleteElement, 1);
+        this.restarCarrito();
     }
 
     eliminarTodosEvento() {
         this.listaEventos.length = 0;
+        $("#numCart").html(0);
     }
 
     numEventos() {
@@ -95,10 +103,7 @@ class Cart {
         this.precioTotal = 0;
         for (const event of this.listaEventos) {
             this.precioTotal += parseFloat(event.price) * parseInt(event.plazas);
-            
-            
         }
-
     }
 
     existeEvento(id) {
@@ -110,5 +115,20 @@ class Cart {
             }
         })
         return existe;
+    }
+
+    aumentarCarrito(){
+        let nCarrito = $("#numCart").html();
+        let nCarritoFloat = parseFloat(nCarrito);
+        nCarritoFloat++;
+        
+        $("#numCart").html(nCarritoFloat);
+    }
+    restarCarrito(){
+        let nCarrito = $("#numCart").html();
+        let nCarritoFloat = parseFloat(nCarrito);
+        nCarritoFloat--;
+        
+        $("#numCart").html(nCarritoFloat);
     }
 }

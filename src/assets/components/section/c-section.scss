@@ -6,6 +6,8 @@
     height: fit-content;
     min-height: 590px;
     position: relative;
+    
+  scroll-behavior: smooth;
 
   &__content{
     width:100%;
@@ -42,16 +44,46 @@
     overflow: hidden;
     
   }
-  // @keyframes example {
-  //   0%{width:0%}
-  //   100%{width:600px;}
-  // }
   &__image{
     color: white;
     background-size: cover;
     height: 600px;
-    //width: calc(100%+100px);
     filter: grayscale(100%);
+
+    &--profile{
+      filter: unset;
+      height: 460px;
+
+      & img{
+        width:100%;
+        height:120%;
+        padding-top: 6%;
+      }
+    }
+  }
+
+  &--perfil{
+
+    min-height: 311px;
+    .c-section__mask{
+      top: -50%;
+    }
+  }
+
+  &--eventos{
+    .c-section__mask{
+      bottom: -3%;
+    }
+  }
+  &--evento{
+    .c-section__mask{
+      bottom: -12%;
+    }
+  }
+  &--carrito{
+    .c-section__mask{
+      bottom: -14%;
+    }
   }
 }
 

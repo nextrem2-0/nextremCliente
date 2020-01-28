@@ -4,6 +4,7 @@ let recomendedCards = new Array();
 let listaDeportesCards = new Array();
 let listaPins = new Array();
 let listaSportPins = new Array();
+let listaElementosPerfil = new Array();
 let categories = new Array();
 let imgSlider = new Array();
 let imgBanner = new Array();
@@ -105,8 +106,16 @@ function cargarInicio() {
         });
 
         $btnMas.on("click",function(){                 
-            window.scrollTo(0,700);
+            window.scrollTo({
+                top:700,
+                behavior: "smooth"
+            });
         });
+        window.scroll({
+            top: 2500, 
+            left: 0, 
+            behavior: 'smooth'
+          });
 
         let $over=$("<div>",{
             "class":"c-textOver__top--small"

@@ -21,7 +21,7 @@ class DropDown {
         let $link1 = $("<a>", {
             "html": localStorage.getItem('username'),
             "class": "c-dropdown-content__profile"
-        });
+        }).on("click", cargarPerfil);
         let $line = $("<div>",{
             "class": "c-dropdow-content__line"
         });

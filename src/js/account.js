@@ -3,52 +3,52 @@ let section;
 function goToAccount(action) {
     $("#content").empty();
     form = new Form(action);
-    let other="register";
-    let txt="¿Ya tienes una cuenta?";
-    if(action==other){
-        other="Log In";
-    }else{
-        txt="¿Aun no tienes una cuenta?";
+    let other = "register";
+    let txt = "¿Ya tienes una cuenta?";
+    if (action == other) {
+        other = "Log In";
+    } else {
+        txt = "¿Aun no tienes una cuenta?";
     }
 
-    let $changeButton=$("<div>",{
-        "class":"button",
-        "html":other,
-        "id":"changebutton"
+    let $changeButton = $("<div>", {
+        "class": "button",
+        "html": other,
+        "id": "changebutton"
     });
 
-    let $background=$("<img>", {
+    let $background = $("<img>", {
         "class": "c-textOver__background",
         "src": "assets/img/account.jpg"
     });
-    let $top=$("<div>",{}).append([$("<div>",{
-        "class":"text",
-        "id":"textChange",
-        "html":txt
-    }),$changeButton]);
+    let $top = $("<div>", {}).append([$("<div>", {
+        "class": "text",
+        "id": "textChange",
+        "html": txt
+    }), $changeButton]);
 
-    let txtOver=new textOver($background,$top);
+    let txtOver = new textOver($background, $top);
 
 
-    $changeButton.on("click",function(){
+    $changeButton.on("click", function () {
         form.changeSide();
-        if(form.type=="register"){
-            other="Log In";
-            txt="¿Ya tienes una cuenta?";
-        }else if(form.type=="login"){
-            other="Register";
-            txt="¿Aun no tienes una cuenta?";
-        }  
+        if (form.type == "register") {
+            other = "Log In";
+            txt = "¿Ya tienes una cuenta?";
+        } else if (form.type == "login") {
+            other = "Register";
+            txt = "¿Aun no tienes una cuenta?";
+        }
         $("#textChange").html(txt);
         $("#changebutton").html(other);
     });
-    
+
     let components = [form, txtOver];
-    if(action=="register"){
-        components=[txtOver,form];
+    if (action == "register") {
+        components = [txtOver, form];
     }
-    
-    section = new Section("l-dual", components, null, action.toUpperCase());
+
+    section = new Section("l-dual", components, null, null,action.toUpperCase());
     $("#content").append(section.draw());
     window.scrollTo(0, 0);
     $("#cart").hide();
@@ -69,9 +69,17 @@ function loginAction() {
                 success: function (dataResult) {
                     localStorage.setItem('username', dataResult.user.username);
                     localStorage.setItem('idUser', dataResult.user.id);
+                    console.log(dataResult);
+                    
+                    cargarDatosPerfil(dataResult);
                     location.reload();
                 }
             });
+        },
+        error(){
+            let $not = new Notification("danger", "Error!", "Usuario o contraseña erroneo");
+            $("#notificaciones").append($not.draw());
+            limpiarCampos();
         }
     });
 }
@@ -87,7 +95,7 @@ function registerAction() {
             localStorage.setItem('username', dataResult.user.username);
             location.reload();
         },
-        error: function(){
+        error: function () {
             let $not = new Notification("danger", "Error!", "No se ha podido registrar");
             $("#notificaciones").append($not.draw());
         }
@@ -103,8 +111,28 @@ function logoutAction() {
         headers: { 'Authorization': 'Bearer ' + $token },
         success: function () {
             localStorage.removeItem('user_token');
+            localStorage.removeItem('idUser');
             localStorage.removeItem('username');
             location.reload();
         }
     });
+}
+
+function notificacionBienvenida() {
+    let $not = new Notification("success", "Bienvenido!", "Descubre tu próximo reto " + localStorage.getItem('username'));
+    $("#notificaciones").append($not.draw());
+}
+
+function limpiarCampos(){
+    $("#user_login").val("");
+    $("#pass_login").val("");
+
+    $("#user_login").css("border-color", "red");
+    $("#pass_login").css("border-color", "red");
+    $("#user_login").on("click",function(){
+        $("#user_login").css("border-color", "#b9b9b9");
+    });
+    $("#pass_login").on("click",function(){
+        $("#pass_login").css("border-color", "#b9b9b9");
+    })
 }
