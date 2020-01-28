@@ -74,17 +74,32 @@
 .perfil-content {
   padding: 2%;
   display:grid;
+  width: 90%;
   &__info{
-    padding: 3%;
+    padding: 2%;
     border: 1px solid #c5c5c5;
     margin:0.5%;
+  }
+  &__editar{
+    width: 30px;
+    height: 30px;
+    background-color: #cecece;
+    top: 25px;
+    position: absolute;
+    right: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+      cursor: pointer;
+    }
   }
 }
 
 .perfil-botones{
   display: flex;
   margin: 2%;
-  margin-left: 365%;
+  margin-left: 80%;
   &__btn{
     margin: 2px;
     padding: 9px;

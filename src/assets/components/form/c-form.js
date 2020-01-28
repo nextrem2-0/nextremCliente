@@ -217,17 +217,10 @@ function validarCampos(){
 
     }else if(   $("#pass_register").val() != $("#pass_confirm_register").val()  ){
         text = "Las contraseñas no coinciden";
-        $("#pass_register").val("");
-        $("#pass_confirm_register").val("");
-
-        $("#pass_register").css("border-color", "red");
-        $("#pass_confirm_register").css("border-color", "red");
-        $("#pass_register").on("click",function(){
-            $("#pass_register").css("border-color", "#b9b9b9");
-        });
-        $("#pass_confirm_register").on("click",function(){
-            $("#pass_confirm_register").css("border-color", "#b9b9b9");
-        });
+        errorPassword();
+    }else if(   $("#pass_register").val().length < 6 && $("#pass_confirm_register").val().length < 6 ){
+        text = "La contraseña es demasiado corta";
+        errorPassword();
     }
 
     if(text != 0){
@@ -236,6 +229,20 @@ function validarCampos(){
     }else{
         registerAction();
     }        
+}
+
+function errorPassword(){
+    $("#pass_register").val("");
+    $("#pass_confirm_register").val("");
+
+    $("#pass_register").css("border-color", "red");
+    $("#pass_confirm_register").css("border-color", "red");
+    $("#pass_register").on("click",function(){
+        $("#pass_register").css("border-color", "#b9b9b9");
+    });
+    $("#pass_confirm_register").on("click",function(){
+        $("#pass_confirm_register").css("border-color", "#b9b9b9");
+    });
 }
 
 function validarEmail(email){

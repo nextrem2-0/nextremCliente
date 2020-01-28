@@ -14,9 +14,9 @@ class Cart {
             "class": "c-cart__icon"
         }).append(
             $("<i>", {
-            "class": "fas fa-shopping-cart"
+                "class": "fas fa-shopping-cart"
             }),
-            $("<div>",{
+            $("<div>", {
                 "id": "numCart",
                 "html": 0
             })
@@ -48,32 +48,30 @@ class Cart {
     }
 
     anyadirEvento(event) {
-        
+
         if (this.existeEvento(event.id) != true) {
             this.listaEventos.push(event);
 
-            let $not = new Notification("success", "Completado!", "Añadido correctamente");
-            $("#notificaciones").append($not.draw());
 
             this.aumentarCarrito();
             this.getEventosyPlazas();
             this.getPrecioTotal();
+
             $.ajax({
                 url: "http://localhost/nextrem/api/public/addCarrito",
-                data: { eventos: this.idEventosyPlazas, idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal },
+                data: { eventos: {"idEvento":event.id,"plazas":event.plazas,"precioEvento":event.price}, idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal, confirmado:0},
                 headers: { 'Content-Type': 'application/json' },
                 success: function (dataResult) {
-                    console.log(dataResult);
-                   
+                    let $not = new Notification("success", "Completado!", "Añadido correctamente");
+                    $("#notificaciones").append($not.draw());
                 },
                 error: function (error) {
-                    console.log(error);
-
                     let $not = new Notification("danger", "Error!", "No se ha podido guardar");
                     $("#notificaciones").append($not.draw());
                 }
             });
-        }else{
+
+        } else {
             let $not = new Notification("danger", "Error!", "Este evento ya está en el carrito");
             $("#notificaciones").append($not.draw());
         }
@@ -95,8 +93,9 @@ class Cart {
     }
 
     getEventosyPlazas() {
+        this.idEventosyPlazas.length = 0;
         for (const event of this.listaEventos) {
-            this.idEventosyPlazas.push({"idEvento":event.id, "plazas":event.plazas});
+            this.idEventosyPlazas.push({ "idEvento": event.id, "plazas": event.plazas });
         }
     }
     getPrecioTotal() {
@@ -109,7 +108,7 @@ class Cart {
     existeEvento(id) {
         let existe = false;
         this.listaEventos.forEach(evento => {
-          
+
             if (evento.id == id) {
                 existe = true;
             }
@@ -117,18 +116,18 @@ class Cart {
         return existe;
     }
 
-    aumentarCarrito(){
+    aumentarCarrito() {
         let nCarrito = $("#numCart").html();
         let nCarritoFloat = parseFloat(nCarrito);
         nCarritoFloat++;
-        
+
         $("#numCart").html(nCarritoFloat);
     }
-    restarCarrito(){
+    restarCarrito() {
         let nCarrito = $("#numCart").html();
         let nCarritoFloat = parseFloat(nCarrito);
         nCarritoFloat--;
-        
+
         $("#numCart").html(nCarritoFloat);
     }
 }

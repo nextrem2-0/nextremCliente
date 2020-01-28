@@ -200,8 +200,19 @@ class ListView {
     }
 
     tramitarPedidoAction() {
-        let $not = new Notification("success", "Completado!", "Pedido realizado");
-        $("#notificaciones").append($not.draw());
+        $.ajax({
+            url: "http://localhost/nextrem/api/public/addCarrito",
+            data: {idUsuario: localStorage.getItem('idUser'), confirmado:1},
+            headers: { 'Content-Type': 'application/json' },
+            success: function (dataResult) {
+                let $not = new Notification("success", "Éxito!", "Has realizado el pedido");
+                $("#notificaciones").append($not.draw());
+            },
+            error: function (error) {
+                let $not = new Notification("danger", "Error!", "No se ha podido guardar");
+                $("#notificaciones").append($not.draw());
+            }
+        });
 
         carrito.eliminarTodosEvento();
         cargarInicio();

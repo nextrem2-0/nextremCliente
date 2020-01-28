@@ -136,3 +136,26 @@ function limpiarCampos(){
         $("#pass_login").css("border-color", "#b9b9b9");
     })
 }
+
+function datosPerfil(){
+    $token = localStorage.getItem('user_token');
+    $.ajax({
+        url: "http://localhost/nextrem/api/public/userLogged",
+        headers: { 'Authorization': 'Bearer ' + $token },
+        success: function (dataResult) { 
+            cargarElementosPerfil(dataResult.user);
+        }
+    });
+}
+
+function datosPerfilEventos(){
+    $token = localStorage.getItem('user_token');
+    $id = localStorage.getItem('idUser');
+    $.ajax({
+        url: "http://localhost/nextrem/api/public/user/" + $id + "/eventos",
+        headers: { 'Authorization': 'Bearer ' + $token },
+        success: function (dataResult) { 
+            setEvents(dataResult);
+        }
+    });
+}

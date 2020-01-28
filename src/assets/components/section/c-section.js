@@ -13,7 +13,6 @@ class Section {
     });
 
     if(this.sectionModifier != null){
-      console.log(this.sectionModifier);
       
       $base = $("<div>", {
         "class": "c-section " + this.sectionModifier

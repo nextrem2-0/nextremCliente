@@ -26,16 +26,12 @@ class DropDown {
             "class": "c-dropdow-content__line"
         });
         let $link2 = $("<a>", {
-            "html": "Config"
-        });
-        let $link3 = $("<a>", {
             "html": "Desconectar"
         });
-        $link3.on("click",logoutAction);
+        $link2.on("click",logoutAction);
         $base.append($link1);
         $base.append($line)
         $base.append($link2);
-        $base.append($link3);
 
               
         return $base;
