@@ -29,10 +29,10 @@ class Footer {
             $('<a>', { "class": "rrss" }).append([
               $('<i>', { "class": "fab fa-twitter" })
             ]),
-            $('<a>', { "class": "rrss" }).append([
+            $('<a>', { "class": "rrss", "href": "https://www.instagram.com/nextremspain/?hl=es" }).append([
               $('<i>', { "class": "fab fa-instagram" })
             ]),
-            $('<a>', { "class": "rrss" }).append([
+            $('<a>', { "class": "rrss", "href": "https://github.com/nextrem2-0" }).append([
               $('<i>', { "class": "fab fa-github" })
             ])
           ])
