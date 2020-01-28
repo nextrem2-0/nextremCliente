@@ -26,7 +26,7 @@ function cargarSportPins() {
             listaSportPins.push(new SportPin(sport));
         });
     }
-    s1 = new Section("l-sport", listaSportPins, null);
+    s1 = new Section("l-sport", listaSportPins, null,"c-section--evento");
     $item1.append(s1.draw());
 
 }

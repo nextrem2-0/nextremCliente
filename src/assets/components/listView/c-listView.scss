@@ -3,9 +3,7 @@
   margin-top: 100px;
   display: grid;
   grid-template-areas: "head" "line" "body" "lineF" "foot";
-  .grupo {
-    grid-area: body;
-  }
+  
 
   &__item {
     border-bottom: 1px solid #46464633;
@@ -15,73 +13,74 @@
       background-color: #f5f5f5;
     }
   }
+}
+.grupo {
+  grid-area: body;
+}
+.c-header {
+  grid-area: head;
+  display: flex;
+  padding: 12px 0px;
+  font-weight: bold;
 
-  .c-header {
-    grid-area: head;
-    display: flex;
-    padding: 12px 0px;
+  &__title {
     font-weight: bold;
-
-    &__title {
-      font-weight: bold;
-      width: 10%;
-      &--producto {
-        width: 49%;
-      }
-      &--precio {
-        width: 11%;
-      }
-      &--plazas {
-        width: 13%;
-      }
-      &--subtotal {
-        width: 27%;
-      }
+    width: 10%;
+    &--producto {
+      width: 49%;
+    }
+    &--precio {
+      width: 11%;
+    }
+    &--plazas {
+      width: 13%;
+    }
+    &--subtotal {
+      width: 27%;
     }
   }
+}
+.c-line {
+  grid-area: line;
+  height: 1px;
+  background: black;
+  background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(10%, black));
 
-  .c-line {
-    grid-area: line;
-    height: 1px;
-    background: black;
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(10%, black));
+  &--footer {
+    grid-area: lineF;
+    margin-bottom: 0.5%;
+  }
+}
+.c-foot {
+  grid-area: foot;
+  display: flex;
+  align-items: baseline;
 
-    &--footer {
-      grid-area: lineF;
-      margin-bottom: 0.5%;
-    }
+  
+}
+.total-price {
+  margin-left: auto;
+  font-weight: bold;
+  margin-right: 9%;
+}
+
+.button {
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #7f0707;
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: $fuenteAccount;
+
+  &--shop {
+    color:#535353;
   }
 
-  .c-foot {
-    grid-area: foot;
-    display: flex;
-    align-items: baseline;
-
-    .total-price {
-      margin-left: auto;
-      font-weight: bold;
-      margin-right: 9%;
-    }
-
-    .button {
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #7f0707;
-      border-radius: 3px;
-      font-size: 13px;
-      font-family: $fuenteAccount;
-
-      &--shop {
-        color:#535353;
-      }
-
-      &--buy {
-        background-color: rgb(127, 7, 7);
-        color: white;
-      }
-    }
+  &--buy {
+    background-color: rgb(127, 7, 7);
+    color: white;
   }
 }
 .list-item {
@@ -96,36 +95,14 @@
       grid-template-columns: 0.2fr 0.5fr;
       grid-template-areas:
         "img title"
-        "img desc";
-
-      .product-desc {
-        display: flex;
-        align-items: center;
-        grid-area: desc;
-        font-size: 12px;
-        width: 140%;
-      }
-      .product-image {
-        width: 100px;
-        display: inline-block;
-        grid-area: img;
-      }
-      .product-title {
-        display: flex;
-        align-items: center;
-        grid-area: title;
-        font-weight: bold;
-      }
+        "img desc"; 
     }
     &--precio {
       width: 10%;
     }
     &--plazas {
       width: 8%;
-      .product-plazas {
-        text-align: center;
-        width: 50px;
-      }
+      
     }
     &--subtotal {
       width: 22%;
@@ -135,15 +112,77 @@
     &--buttons {
       display: flex;
 
-      .but {
-        margin-left: 50%;
-        font-size: 20px;
-        color: #060606a1;
-        &:hover {
-          cursor: pointer;
-          color: #060606;
-        }
-      }
+      
     }
+  }
+}
+.product-desc {
+  display: flex;
+  align-items: center;
+  grid-area: desc;
+  font-size: 12px;
+  width: 140%;
+}
+.product-image {
+  width: 100px;
+  display: inline-block;
+  grid-area: img;
+}
+.product-title {
+  display: flex;
+  align-items: center;
+  grid-area: title;
+  font-weight: bold;
+}
+.but {
+  margin-left: 50%;
+  font-size: 20px;
+  color: #060606a1;
+  &:hover {
+    cursor: pointer;
+    color: #060606;
+  }
+}
+.product-plazas {
+  text-align: center;
+  width: 50px;
+}
+
+@media (max-width:600px){
+  .c-header__title{
+    &--subtotal{
+      display: none;
+    }
+    &--precio{
+      width: 20%;
+    }
+  
+  }
+  .list-item__column{
+    &--subtotal{
+      display: none;
+    }
+    &--precio{
+      width: 20%;
+    }
+    &--plazas{
+      text-align: left;
+    }
+  }
+  .button{
+    padding: 10px 16px;
+  }
+  .product-image{
+    width: 70px;
+  }
+  .product-desc{
+    padding-left: 5px;
+
+  }
+  .product-title{
+    padding-left: 5px;
+  }
+  .product-plazas{
+    text-align: left;
   }
 }

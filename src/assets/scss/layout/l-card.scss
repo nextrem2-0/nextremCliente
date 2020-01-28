@@ -2,4 +2,13 @@
 .l-card {
     margin-left: auto;
     margin-right: auto;
+    
+  }
+
+  @media only screen and (max-width:600px){
+    .l-card{
+      width:65%;
+      max-width: unset;
+      flex: unset;
+    }
   }

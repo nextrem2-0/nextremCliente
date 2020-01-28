@@ -5,7 +5,7 @@ class Slider {
 
   draw(){
     let $card=$("<div>",{
-      "class":"c-slider"
+      "class":"c-slider c-slider--size@mobile"
     });
     let $carousel=$("<div>",{
       "id":"carouselExampleControls",

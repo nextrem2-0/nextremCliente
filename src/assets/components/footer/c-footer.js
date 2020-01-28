@@ -8,10 +8,10 @@ class Footer {
     let currentYear = (new Date).getFullYear();
 
     $base = $('<div>', {
-      'class': 'c-footer'
+      'class': 'c-footer c-footer--size@mobile'
     });
 
-    var $links = $('<p>', { "class": "links" });
+    var $links = $('<p>', { "class": "links links--font-size-xxs@mobile" });
 
     this.categories.forEach(function (categ) {
       $links.append(

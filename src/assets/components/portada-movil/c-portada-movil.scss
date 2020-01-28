@@ -1,0 +1,10 @@
+.c-portada-movil{
+    display: none;
+}
+
+@media only screen and (max-width:600px){
+    .c-portada-movil{
+        display: block;
+        height: 116vh;
+    }
+}

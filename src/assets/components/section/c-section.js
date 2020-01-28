@@ -24,7 +24,7 @@ class Section {
     if (this.title != null) {
       $title = $("<div>", {
         "html": this.title,
-        "class": "c-section__title"
+        "class": "c-section__title c-section__title--font-size-m@mobile"  
       });
     }
 

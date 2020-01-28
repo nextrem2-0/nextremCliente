@@ -172,6 +172,7 @@ function cargarInicio() {
                 comprobarPeticiones();
             }
         });
+        cargarPortadaMovil();
     }
 
 
@@ -210,7 +211,7 @@ function cargarPins() {
                 listaPins.push(new InformationPin(dataResult[key].imagen, dataResult[key].titulo, dataResult[key].texto));
 
             }
-            s1 = new Section("l-horizontal", listaPins, "¿QUÉ ES NEXTREM?");
+            s1 = new Section("l-horizontal", listaPins, "¿QUÉ ES NEXTREM?",null,"l-horizontal--to-rows@mobile");
             $item2.append(s1.draw());
             comprobarPeticiones();
         },
@@ -219,4 +220,29 @@ function cargarPins() {
 
         }
     });
+}
+function cargarPortadaMovil(){
+    let $btnMas=$("<div>",{
+        "class":"button-saber-mas",
+        "html":"Saber más"
+    });
+    let $background=$("<img>",{
+        "src":"assets/img/fondoMovil.jpg"
+    });
+    let $over=$("<div>",{
+        "class":"c-textOver__top--small"
+    }).append([$("<div>",{
+        "class":"c-textOver__image-container"
+    }).append($("<img>",{
+        "src":"assets/img/sloganOver.png",
+        "class":"image-over-slider"
+    })),$btnMas.append($("<i>",{
+        "class":"fa fa-angle-down button-saber-mas__icon"
+    }))]);
+    let overMovil=new textOver($background,$over);
+    let $portadaMovil=$("<div>",{
+        "class":"c-portada-movil"
+    });
+    $portadaMovil.append(overMovil.draw());
+    $item1.append($portadaMovil);
 }

@@ -1,3 +1,6 @@
+
+
+
 .c-information-pin{
   width: fit-content;
   height: 100%;
@@ -52,4 +55,23 @@
 .blurAnimation{
   transition-duration: 0.5s;
   filter: blur(2px);
+}
+
+
+@each $size,$px in $font-sizes{
+  @media only screen and (max-width: 600px){
+  .c-information-pin__title--font-size-#{$size}\@mobile{
+    font-size: #{$px};
+  }
+  .c-information-pin__content--font-size-#{$size}\@mobile{
+    font-size: #{$px};
+  }
+}
+}
+@media only screen and (max-width: 600px){
+  .c-information-pin--no-borders\@mobile{
+    border: none;
+    box-shadow: none;
+
+  }
 }

@@ -25,3 +25,14 @@
     margin-top: 2%;
   }
 }
+
+@media only screen and (max-width: 600px){
+  .c-slider{
+    display: none;
+  }
+  .image-over-slider{
+    height: auto;
+    width:80%;
+    grid-area: foto;
+  }
+}

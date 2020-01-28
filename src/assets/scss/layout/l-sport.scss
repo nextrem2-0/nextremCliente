@@ -24,4 +24,11 @@
     }
 }
 
+@media only screen and (max-width:600px){
+    .l-sport{
+        grid-template-areas: "escalada""buceo""esqui""rafting""surf";
+        grid-template-columns: 1fr;
+    }
+}
+
 

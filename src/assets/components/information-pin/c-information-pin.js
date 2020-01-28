@@ -10,7 +10,7 @@ class InformationPin {
     let $base; 
     if(this.modifier==null){
       $base=$('<div>', {
-          'class' : 'c-information-pin',
+          'class' : 'c-information-pin c-information-pin--no-borders@mobile c-information-pin--size-s@mobile',
       });
     }else{
       $base=$('<div>', {
@@ -25,11 +25,11 @@ class InformationPin {
     })));
     $base.append($('<div>', {
         'html' : this.title,
-        'class' : 'c-information-pin__title',
+        'class' : 'c-information-pin__title c-information-pin__title--font-size-xs@mobile',
     }));
     $base.append($('<div>', {
         'html' : this.content,
-        'class' : 'c-information-pin__content',
+        'class' : 'c-information-pin__content c-information-pin__content--font-size-xs@mobile',
     }));
 
    

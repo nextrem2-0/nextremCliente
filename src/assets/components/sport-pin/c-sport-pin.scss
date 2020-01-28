@@ -100,3 +100,27 @@
   }
 }
 
+@media only screen and (max-width:600px){
+  .c-sport-pin{
+    margin-left: 20%;
+    margin-bottom: 10%;
+    &:hover{
+      box-shadow: none;
+    }
+  }
+  .c-sport-pin__mask{
+    width: 79.9%;
+    transform: skewY(-10deg);
+    padding: 16%;
+    margin-top: -40%;
+  }
+  .c-sport-pin__content{
+    width: 80%;
+  }
+  .c-sport-pin__img{
+    width: 80%;
+    filter: grayscale(0%);
+  }
+
+}
+

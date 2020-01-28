@@ -2,3 +2,16 @@
     display: flex;
     justify-content: space-evenly;
 }
+    @media only screen and (max-width:600px) {
+      .l-horizontal--to-rows\@mobile{
+        flex-direction: column;
+        align-items: center;
+      }
+      .l-horizontal__item{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+    
+  

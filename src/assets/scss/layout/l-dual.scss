@@ -23,3 +23,12 @@
         
     }
 }
+
+@media only screen and (max-width:600px){
+    .l-dual{
+        display: block;
+        &__item--derecha{
+            transform: translate(0%);
+        }
+    }
+}

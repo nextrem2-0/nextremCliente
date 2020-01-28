@@ -8,7 +8,9 @@
   position: fixed;
   z-index: 99;
   
-  &__option {
+  
+
+  &__option,&__hamburguer {
     padding-right: 2%;
     padding-left: 1%;
     line-height: 4.5em;
@@ -43,6 +45,9 @@
       font-weight: 600;
     }
   }
+  &__hamburguer{
+    display: none;
+  }
 
   &__option:hover{
     cursor: pointer;
@@ -55,7 +60,42 @@
       max-height: 70px;
     }
   }
+  &__option-container{
+    display: flex;
+  }
 
   
  
+}
+@media only screen and (max-width:600px){
+  .c-menu__option-container{
+    display: none;
+    margin-top: 70px;
+    flex-direction: column;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .c-menu__hamburguer{
+    display: block;
+    margin-left: auto;
+
+  }
+  .c-menu--extended{
+    height: fit-content;
+  }
+  .c-menu__option--inicio{
+    height: unset;
+  }
+  .c-menu__option--right{
+    margin-left: unset;
+  }
+  .c-menu__option--login{
+    border: none;
+    color: black;
+  }
+  .c-menu__option--register{
+    background: transparent;
+    color: rgb(83, 83, 83);
+  }
 }

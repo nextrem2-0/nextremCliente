@@ -27,7 +27,7 @@ function goToAccount(action) {
         "html": txt
     }), $changeButton]);
 
-    let txtOver = new textOver($background, $top);
+    let txtOver=new textOver($background,$top,"form");
 
 
     $changeButton.on("click", function () {
@@ -48,7 +48,7 @@ function goToAccount(action) {
         components = [txtOver, form];
     }
 
-    section = new Section("l-dual", components, null, null,action.toUpperCase());
+    section = new Section("l-dual", components, null, "c-section--evento",action.toUpperCase());
     $("#content").append(section.draw());
     window.scrollTo(0, 0);
     $("#cart").hide();

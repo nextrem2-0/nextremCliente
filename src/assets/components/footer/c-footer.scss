@@ -75,3 +75,21 @@
     -webkit-transform: scale(1.1);
   }
 }
+
+@each $size,$px in $font-sizes {
+  @media only screen and (max-width:600px) {
+    .links--font-size-#{$size}\@mobile{
+      font-size: $px;
+    }
+    
+  }
+  
+}
+@media only screen and (max-width:600px) {
+  
+  .c-footer--size\@mobile{
+    padding-top: 37%;
+    height: 305px;
+    margin-top:42%;
+  }
+}

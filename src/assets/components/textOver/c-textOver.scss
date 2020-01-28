@@ -2,7 +2,12 @@
     width: 100%;
      display: flex;
      justify-content: center;
-    
+     height: 100%;
+    &__image-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     &__background {
       width: 100%;
     }
@@ -35,3 +40,14 @@
       border-radius: 3px;
   }
   }
+
+  @media only screen and (max-width:600px){
+    .c-textOver__top{
+      padding-top: 0;
+    }
+    .c-textover--form{
+      display: none;
+    }
+  }
+  
+  

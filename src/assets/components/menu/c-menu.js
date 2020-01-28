@@ -9,6 +9,10 @@ class Menu {
     let $base = $('<div>', {
       'class': 'c-menu',
     });
+    let $optionContainer=$("<div>",{
+      "class": "c-menu__option-container"
+    });
+    
     for (let i = 0; i < this.categories.length; i++) {
       let $option = $('<i>', {
         'class': 'fas fa-search c-menu__option',
@@ -27,7 +31,7 @@ class Menu {
       } else if (this.categories[i].toLowerCase() == "inicio") {
         $option = $('<img>', {
           "src": "assets/img/nextrem.png",
-          'class': 'c-menu__option',
+          'class': 'c-menu__option c-menu__option--inicio',
         });
         $option.on("click", function () {
           cargarInicio();
@@ -123,8 +127,28 @@ class Menu {
         $option.on("click", cargarEventos);
       }
 
-      $base.append($option);
+      
+      if (this.categories[i].toLowerCase() == "inicio"){
+        $base.append($option);
+      }else{
+        $optionContainer.append($option);
+      }
     }
+    let $hamburguer=$("<div>",{
+      "class":"c-menu__hamburguer fas fa-bars"
+    });
+    $hamburguer.on("click",function(){
+      if (!$base.hasClass("c-menu--extended")) {
+        $(".c-menu__option-container").css("display","flex");
+        $base.addClass("c-menu--extended");
+      }else{
+        $base.removeClass("c-menu--extended");
+              $(".c-menu__option-container").hide();
+      }
+      
+    });
+    $base.append($optionContainer);
+    $base.append($hamburguer);
     $(".c-submenu--sports").hide();
     $(".c-submenu--events").hide();
     return $base;
