@@ -39,7 +39,9 @@ class DropDown {
 
     profileDropDown() {
         $('body').click(function (evt) {
-            if (evt.target.className == "c-menu__option c-menu__option--register dropdown") {
+            console.log(evt.target.className);
+            
+            if (evt.target.className == "c-menu__imgPerfil dropdown") {
                 var dropdowns = $(".c-dropdown-content");
                 dropdowns.toggleClass("show");
             } else {

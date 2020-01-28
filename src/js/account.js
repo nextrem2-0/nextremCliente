@@ -69,9 +69,6 @@ function loginAction() {
                 success: function (dataResult) {
                     localStorage.setItem('username', dataResult.user.username);
                     localStorage.setItem('idUser', dataResult.user.id);
-                    console.log(dataResult);
-                    
-                    cargarDatosPerfil(dataResult);
                     location.reload();
                 }
             });

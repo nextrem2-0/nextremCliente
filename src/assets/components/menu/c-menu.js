@@ -55,9 +55,13 @@ class Menu {
       } else if (this.categories[i].toLowerCase() == "registrar") {
         if (localStorage.getItem('user_token') != null) {
           $option = $('<div>', {
-            'html': 'Perfil',
-            'class': 'c-menu__option c-menu__option--register dropdown',
-          });;
+            'class': 'c-menu__option c-menu__option--register c-menu__option--registrado',
+          }).append(
+            $('<img>',{
+              'class': "c-menu__imgPerfil dropdown",
+              'src': 'assets/img/avatar.png'
+            })
+          );
 
           let drop = new DropDown("profile");
           $option.append(drop.draw());

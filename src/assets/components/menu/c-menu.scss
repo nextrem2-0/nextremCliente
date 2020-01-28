@@ -1,17 +1,16 @@
 .c-menu {
   display: flex;
   margin: auto;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.7);
   height: 70px;
   width: 100%;
   transition: height 0.7s;
   position: fixed;
   z-index: 99;
-  
-  
 
-  &__option,&__hamburguer {
-    padding-right: 2%;
+  &__option,
+  &__hamburguer {
+    padding-right: 4%;
     padding-left: 1%;
     line-height: 4.5em;
     display: inline-block;
@@ -19,56 +18,77 @@
     height: 100%;
     max-height: 70px;
     text-decoration: none;
+    width:100px;
+
+    &--inicio{
+      width:180px;
+    }
 
     &--right {
-      margin-left: auto;
+      text-align: right;
     }
-    &--login{
+    &--login {
       border: 1px solid $colorCorporativo;
-      color: rgb(83, 83, 83);
+      color: #535353;
       height: 50px;
-      
       line-height: 3.2em;
       padding-right: 1%;
       margin-right: 1%;
-      margin-top: 0.8%; 
+      margin-top: 2%;
       font-weight: 600;
+      width: 90px;
+      text-align: center;
     }
-    &--register{
+    &--register {
       background: rgba($color: $colorCorporativo, $alpha: 0.7);
       color: white;
       height: 50px;
       line-height: 3.2em;
-      padding-right: 1%;
-      margin-right: 1%;
-      margin-top: 0.8%;
+      padding-right: 4%;
+      padding-left: 4%;
+      margin-right: 10px;
+      margin-top: 2%;
       font-weight: 600;
+      width: 110px;
+      text-align: center;
+    }
+    &--registrado {
+      background-color: transparent;
+      color: unset;
+      line-height: unset;
+      margin-top: 3%;
+      padding-right: 8%;
     }
   }
-  &__hamburguer{
+
+  &__imgPerfil {
+    height: 100%;
+  }
+
+  &__hamburguer {
     display: none;
   }
 
-  &__option:hover{
+  &__option:hover {
     cursor: pointer;
   }
 
   &--extended {
     height: 18%;
-    background: rgb(255,255,255);
-    .c-menu__option--register,.c-menu__option--login{
+    background: rgb(255, 255, 255);
+    .c-menu__option--register,
+    .c-menu__option--login {
       max-height: 70px;
     }
   }
-  &__option-container{
+  &__option-container {
+    margin-left: auto;
     display: flex;
   }
-
-  
- 
 }
-@media only screen and (max-width:600px){
-  .c-menu__option-container{
+
+@media only screen and (max-width: 600px) {
+  .c-menu__option-container {
     display: none;
     margin-top: 70px;
     flex-direction: column;
@@ -76,25 +96,26 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .c-menu__hamburguer{
+  .c-menu__hamburguer {
     display: block;
     margin-left: auto;
-
+    text-align: right;
   }
-  .c-menu--extended{
+  .c-menu--extended {
     height: fit-content;
   }
-  .c-menu__option--inicio{
+  .c-menu__option--inicio {
     height: unset;
+    width:130px;
   }
-  .c-menu__option--right{
+  .c-menu__option--right {
     margin-left: unset;
   }
-  .c-menu__option--login{
+  .c-menu__option--login {
     border: none;
     color: black;
   }
-  .c-menu__option--register{
+  .c-menu__option--register {
     background: transparent;
     color: rgb(83, 83, 83);
   }

@@ -1,6 +1,7 @@
 .c-dropdown {
   &-content {
     display: none;
+    margin-right: 20px;
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
@@ -14,7 +15,7 @@
     animation-name: fadeIn;
     & a {
       color: black;
-      padding: 3% 0px;
+      padding: 18% 0px;
       text-decoration: none;
       display: block;
       &:hover {
