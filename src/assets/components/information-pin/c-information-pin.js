@@ -36,8 +36,8 @@ class InformationPin {
 
     $(document).on("mouseover", ".c-information-pin", function () {
       var pin = $(".c-information-pin");
-      pin.addClass("blurAnimation");
-      $(this).addClass("resaltarAnimation");
+      pin.addClass("blurAnimation blurAnimation@mobile");
+      $(this).addClass("resaltarAnimation resaltarAnimation@mobile");
       $(this).removeClass("blurAnimation");
         
     });

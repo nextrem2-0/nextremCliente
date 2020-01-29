@@ -94,16 +94,27 @@
       }
       
     }
+    
   }
   
 }
 @media only screen and (max-width:600px){
   .c-section__title{
-    margin-top: -25em;
+    margin-top: -28em;
     width: 66%;
   }
   .c-section__mask{
     top:-6%;
+  }
+  .c-section--account{
+    .c-section__mask{
+      bottom: -44%;
+    }
+  }
+  .c-section--recomendados{
+    .c-section__title{
+      margin-top: -32em;
+    }
   }
 }
 

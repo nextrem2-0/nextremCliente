@@ -116,7 +116,7 @@ function cargarInicio() {
             left: 0, 
             behavior: 'smooth'
           });
-
+          cargarPortadaMovil();
         let $over=$("<div>",{
             "class":"c-textOver__top--small"
         }).append([$("<img>",{
@@ -129,6 +129,7 @@ function cargarInicio() {
         $item1.append(overSlider.draw());
         var rutaBanner = "http://localhost/nextrem/api" + imgBanner[0];
         $ban.css('background-image', 'url(' + rutaBanner + ')');
+        
     } else {
         $.ajax({
             url: "http://localhost/nextrem/api/public/images",

@@ -18,7 +18,7 @@ function goToAccount(action) {
     });
 
     let $background = $("<img>", {
-        "class": "c-textOver__background",
+        
         "src": "assets/img/account.jpg"
     });
     let $top = $("<div>", {}).append([$("<div>", {
@@ -48,7 +48,7 @@ function goToAccount(action) {
         components = [txtOver, form];
     }
 
-    section = new Section("l-dual", components, null, "c-section--evento",action.toUpperCase());
+    section = new Section("l-dual", components, null, "c-section--account",action.toUpperCase());
     $("#content").append(section.draw());
     window.scrollTo(0, 0);
     $("#cart").hide();

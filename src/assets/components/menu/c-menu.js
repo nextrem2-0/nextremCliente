@@ -9,6 +9,10 @@ class Menu {
     let $base = $('<div>', {
       'class': 'c-menu',
     });
+    $base.hover(function(){},function(){
+      $(".c-menu__option-container").hide();
+        $base.removeClass("c-menu--extended");
+    });
     let $optionContainer=$("<div>",{
       "class": "c-menu__option-container"
     });
@@ -87,7 +91,10 @@ class Menu {
       if ($option.html().toLowerCase() == "deportes") {
         let $submenu = this.drawSports();
         $base.append($submenu);
-
+        $option = $('<div>', {
+          'html': this.categories[i],
+          'class': 'c-menu__option c-menu__option--deportes',
+        });
         $option.hover(function () {
           if (!$base.hasClass("c-menu--extended")) {
             $(".c-submenu--sports").show("fast");
@@ -95,7 +102,8 @@ class Menu {
           }
         }, function () {
           
-            if (!$(".c-submenu--sports").is(":hover")) {
+            if (!$(".c-submenu--sports").is(":hover") && $(".c-menu__hamburguer").css("display")=="none") {
+              console.log($(".c-menu__hamburguer").css("display"));
               $base.removeClass("c-menu--extended");
               $(".c-submenu--sports").hide();
             }
@@ -109,7 +117,10 @@ class Menu {
             $base.addClass("c-menu--extended");
           }
         }, function () {
-            if (!$option.is(":hover")) {
+          
+          
+            if (!$option.is(":hover") && $(".c-menu__hamburguer").css("display")=="none") {
+              console.log($(".c-menu__hamburguer").css("display"));
               $base.removeClass("c-menu--extended");
               $(".c-submenu--sports").hide();
             }

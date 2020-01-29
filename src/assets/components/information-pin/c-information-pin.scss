@@ -74,4 +74,15 @@
     box-shadow: none;
 
   }
+  .resaltarAnimation\@mobile{
+    transition-duration: 0;
+    transform: none;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  .blurAnimation\@mobile{
+    transition-duration: 0;
+    filter: none;
+  }
 }
