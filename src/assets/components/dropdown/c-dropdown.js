@@ -39,7 +39,7 @@ class DropDown {
 
     profileDropDown() {
         $('body').click(function (evt) {
-            console.log(evt.target.className);
+       
             
             if (evt.target.className == "c-menu__imgPerfil dropdown") {
                 var dropdowns = $(".c-dropdown-content");

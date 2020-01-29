@@ -6,12 +6,15 @@ class Menu {
   }
 
   draw() {
+    let self = this;
     let $base = $('<div>', {
       'class': 'c-menu',
     });
     $base.hover(function(){},function(){
+      if($(".c-menu__hamburguer").css("display")!="none"){
       $(".c-menu__option-container").hide();
         $base.removeClass("c-menu--extended");
+      }
     });
     let $optionContainer=$("<div>",{
       "class": "c-menu__option-container"
@@ -48,6 +51,7 @@ class Menu {
           });
           $option.on("click", function () {
             goToAccount("login");
+            self.hideMenuMobile();
           });
         } else {
           $option = $('<div>', {
@@ -79,6 +83,7 @@ class Menu {
           });
           $option.on("click", function () {
             goToAccount("register");
+            self.hideMenuMobile();
           });
         }
       } else {
@@ -102,8 +107,7 @@ class Menu {
           }
         }, function () {
           
-            if (!$(".c-submenu--sports").is(":hover") && $(".c-menu__hamburguer").css("display")=="none") {
-              console.log($(".c-menu__hamburguer").css("display"));
+            if (!$(".c-submenu--sports").is(":hover") && $(".c-menu__hamburguer").css("display")=="none") {    
               $base.removeClass("c-menu--extended");
               $(".c-submenu--sports").hide();
             }
@@ -120,14 +124,16 @@ class Menu {
           
           
             if (!$option.is(":hover") && $(".c-menu__hamburguer").css("display")=="none") {
-              console.log($(".c-menu__hamburguer").css("display"));
               $base.removeClass("c-menu--extended");
               $(".c-submenu--sports").hide();
             }
          
         });
 
-        $option.on("click", cargarDeportes);
+        $option.on("click", function(){
+          cargarDeportes();
+          self.hideMenuMobile();
+        });
 
       } else if ($option.html().toLowerCase() == "eventos") {
         // $base.append(this.drawEvents($base));
@@ -209,5 +215,12 @@ class Menu {
     let username = localStorage.getItem('username');
     console.log(username);
 
+  }
+
+  hideMenuMobile(){
+    if($(".c-menu__hamburguer").css("display")!="none"){
+      $(".c-menu").removeClass(".c-menu--extended");
+      $(".c-menu__option-container").hide();
+    }
   }
 }
