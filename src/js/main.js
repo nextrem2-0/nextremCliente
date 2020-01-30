@@ -1,4 +1,5 @@
 /* --------- VARIABLES --------- */
+//let rutaApi = "http://localhost/nextrem/api";
 let rutaApi = "192.268.59.104/nextrem/api";
 let rutaPublic = rutaApi + "/public/";
 let listaCards = new Array();
