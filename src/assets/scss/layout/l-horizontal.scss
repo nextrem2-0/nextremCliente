@@ -1,6 +1,10 @@
 .l-horizontal{
     display: flex;
     justify-content: space-evenly;
+    &__items-container{
+      display: flex;
+    justify-content: space-evenly;
+    }
     &__item{
       width: 100%;
       &--buttonRight,&--buttonLeft{
