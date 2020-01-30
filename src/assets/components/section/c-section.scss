@@ -66,7 +66,13 @@
 
     min-height: 311px;
     .c-section__mask{
-      top: -50%;
+      top: -170px;    
+      bottom: -100px;
+    }
+  }
+  &--deportes{
+    .c-section__mask{
+      bottom: -20%;
     }
   }
 
@@ -109,6 +115,18 @@
   .c-section--account{
     .c-section__mask{
       bottom: -44%;
+    }
+  }
+
+  .c-section--perfil{
+    .c-section__mask{
+      bottom: -285px;
+    }
+  }
+
+  .c-section--deportes{
+    .c-section__mask{
+      bottom: -12%;
     }
   }
   .c-section--recomendados{

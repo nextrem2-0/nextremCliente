@@ -39,8 +39,6 @@ class DropDown {
 
     profileDropDown() {
         $('body').click(function (evt) {
-       
-            
             if (evt.target.className == "c-menu__imgPerfil dropdown") {
                 var dropdowns = $(".c-dropdown-content");
                 dropdowns.toggleClass("show");

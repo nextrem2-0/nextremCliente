@@ -64,7 +64,7 @@ function cargarCards(type) {
     } else if (type == "todas") {
         if (Array.isArray(listaCards) && listaCards.length) {
             $load = 0;
-            section = new Section("l-columns", listaCards, null, "c-section--evento", "l-columns--3-columns", "l-columns--long");
+            section = new Section("l-columns", listaCards, null, "c-section--eventos", "l-columns--3-columns", "l-columns--long");
             $item1.append(section.draw());
         } else {
             $.ajax({
@@ -84,7 +84,7 @@ function cargarCards(type) {
                         listaCards.push(new Card(key.id,"evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.capacidad,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                     }
-                    section = new Section("l-columns", listaCards, null,"c-section--evento", "l-columns--3-columns", "l-columns--long","l-columns--1-columns@mobile");
+                    section = new Section("l-columns", listaCards, null,"c-section--eventos", "l-columns--3-columns", "l-columns--long","l-columns--1-columns@mobile");
                     $item1.append(section.draw());
 
                     $load.removeLoader();

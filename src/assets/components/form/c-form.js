@@ -71,9 +71,10 @@ class Form {
     }
 
     registerForm() {
-        let $base = $("<div>", {
+        let $base = $("<form>", {
             "class": "c-form",
-            "id": "register"
+            "id": "register",
+            "enctype":"multipart/form-data"
         });
 
         let $title = $("<div>", {
@@ -137,13 +138,15 @@ class Form {
         });
 
         let $inputAvatar = $("<input>", {
+            "id": "fileRegister",
             "type": "file",
             "class": "input-avatar",
             "placeholder": "avatar"
         });
-        let $submit = $("<div>", {
+        let $submit = $("<input>", {
+            "type": "submit",
             "class": "c-form__button",
-            "html": "Sign up"
+            "value": "Sign up"
         });
 
         $base.append($title);
@@ -162,7 +165,8 @@ class Form {
         $base.append($submit);
         
         $(function () {
-            $('.c-form__button').on("click", function(){
+            $('.c-form__button').on("click", function(e){
+                e.preventDefault();
                 validarCampos();
             });
         });

@@ -69,6 +69,7 @@ function loginAction() {
                 success: function (dataResult) {
                     localStorage.setItem('username', dataResult.user.username);
                     localStorage.setItem('idUser', dataResult.user.id);
+                    localStorage.setItem('avatar', dataResult.user.avatar);
                     location.reload();
                 }
             });
@@ -82,14 +83,35 @@ function loginAction() {
 }
 
 function registerAction() {
-    var boolBusiness = $("#cbIsbusiness:checkbox:checked").length > 0 == true ? 1 : 0;
+    
+    let $boolBusiness = $("#cbIsbusiness:checkbox:checked").length > 0 == true ? 1 : 0;
+    //$("#fileRegister")[0].files[0];
+
+    // var form = $('form')[0]; 
+    var formData = new FormData();
+    formData.append('isbusiness',$boolBusiness);
+    formData.append('username',$("#user").val());
+    formData.append('email',$("#email").val()); 
+    formData.append('password',$("#pass_register").val());
+    formData.append('password_confirmation',$("#pass_confirm_register").val());
+    formData.append('avatar',$("#fileRegister")[0].files[0]);
+
+    console.log(formData);
+    
+    
     $.ajax({
         url: rutaPublic+"register",
-        data: { isbusiness: boolBusiness, username: $("#user").val(), email: $("#email").val(), password: $("#pass_register").val(), password_confirmation: $("#pass_confirm_register").val() },
-        headers: { 'Content-Type': 'application/json' },
+        //data: { isbusiness: $boolBusiness, username: $("#user").val(), email: $("#email").val(), password: $("#pass_register").val(), password_confirmation: $("#pass_confirm_register").val(), avatar: $("#fileRegister")[0].files[0] },
+        type: 'post',
+        dataType : 'json',
+        contentType: false,
+        processData: false,
+        data: formData,
         success: function (dataResult) {
             localStorage.setItem('user_token', dataResult.token);
             localStorage.setItem('username', dataResult.user.username);
+            localStorage.setItem('idUser', dataResult.user.id);
+            localStorage.setItem('avatar', dataResult.user.avatar);
             location.reload();
         },
         error: function () {
@@ -97,7 +119,6 @@ function registerAction() {
             $("#notificaciones").append($not.draw());
         }
     });
-
 }
 
 function logoutAction() {
@@ -110,6 +131,7 @@ function logoutAction() {
             localStorage.removeItem('user_token');
             localStorage.removeItem('idUser');
             localStorage.removeItem('username');
+            localStorage.removeItem('avatar');
             location.reload();
         }
     });
@@ -148,11 +170,17 @@ function datosPerfil(){
 function datosPerfilEventos(){
     $token = localStorage.getItem('user_token');
     $id = localStorage.getItem('idUser');
+    let arrayCards = new Array();
     $.ajax({
         url: rutaPublic+"user/" + $id + "/eventos",
         headers: { 'Authorization': 'Bearer ' + $token },
         success: function (dataResult) { 
-            setEvents(dataResult);
+            let card;
+            dataResult.forEach(element => {
+                card = new Card(element.id, element.imagen, element.nombre, null, element.resumen, element.plazas_totales,1, element.precio, element.material, null, element.dificultad);
+                arrayCards.push(card);
+            });
+            setEvents(arrayCards);
         }
     });
 }

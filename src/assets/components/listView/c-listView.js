@@ -1,15 +1,16 @@
 class ListView {
-    constructor(carrito, columns, rows, lastRow) {
+    constructor(carrito, columns, rows, lastRow, modifier) {
         this.carrito = carrito;
         this.columns = columns;
         this.rows = rows;
         this.lastRow = lastRow;
         this.total = 0;
+        this.modifier = modifier;
     }
 
     draw() {
         let $base = $("<div>", {
-            "class": "c-listView"
+            "class": "c-listView " + this.modifier
         });
         let $titles = $("<div>", {
             "class": "c-header"
@@ -23,11 +24,14 @@ class ListView {
         });
 
         for (let i = 0; i < this.columns.length; i++) {
-            let $title = $("<div>", {
-                "class": "c-header__title--" + this.columns[i].toLowerCase(),
-                "html": this.columns[i]
-            });
-            $titles.append($title);
+            if (this.columns[i].toLowerCase() != "perfil") {
+                let $title = $("<div>", {
+                    "class": "c-header__title--" + this.columns[i].toLowerCase(),
+                    "html": this.columns[i]
+                });
+                $titles.append($title);
+            }
+
         }
         $base.append($titles);
         $base.append($line);
@@ -55,10 +59,18 @@ class ListView {
                     $column = $("<div>", {
                         "class": "list-item__column--product"
                     });
+
                     let $img = $("<img>", {
                         "class": "product-image",
-                        "src": "assets/img/" + row.image
+                        "src": "assets/img/" + "evento3.jpg"
                     });
+
+                    if (row.image != null) {
+                        $img = $("<img>", {
+                            "class": "product-image",
+                            "src": "assets/img/" + row.image
+                        });
+                    }
                     let $title = $("<div>", {
                         "class": "product-title",
                         "html": row.title
@@ -128,8 +140,8 @@ class ListView {
 
                             let modal = new Modal("Editar Evento", row.imprimirProducto(), function () {
                                 console.log(parseInt($("#plazas").val()));
-                                
-                                
+
+
                                 plazas.html(parseInt($("#plazas").val()));
 
                                 let subtotal = parseFloat(plazas.text()) * parseFloat(row.price);
@@ -166,26 +178,29 @@ class ListView {
         let text = "Total: " + this.total + "€";
         for (let item of this.lastRow) {
 
-            let $item = $("<div>", {
-                "class": item.class
-            });
-            if (item.hasOwnProperty("html")) {
-                $item.html(item.html);
-                $item.attr('id', item.id);
-
-                let func = this[item.id + "Action"];
-                $item.on("click", function () {
-                    func.apply();
-                })
-
-            } else {
-                $item = $("<div>", {
-                    "class": item.class,
-                    "html": text
+            if (item != null) {
+                let $item = $("<div>", {
+                    "class": item.class
                 });
+                if (item.hasOwnProperty("html")) {
+                    $item.html(item.html);
+                    $item.attr('id', item.id);
+
+                    let func = this[item.id + "Action"];
+                    $item.on("click", function () {
+                        func.apply();
+                    })
+
+                } else {
+                    $item = $("<div>", {
+                        "class": item.class,
+                        "html": text
+                    });
+                }
+                $footer.append($item);
             }
 
-            $footer.append($item);
+
         }
 
 

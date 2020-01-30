@@ -21,6 +21,7 @@ function cargarPerfil() {
 
     $("#content").append($layout);
     window.scrollTo(0, 0);
+    $("#cart").hide();
 }
 
 function cargarElementos() {
@@ -30,7 +31,7 @@ function cargarElementos() {
         let $imgPerfil = $("<div>", {
             "class": "perfil-img"
         }).append($("<img>", {
-            "src": "assets/img/avatar.png"
+            "src": 'http://localhost/nextrem/api/public/storage/avatars/' + localStorage.getItem('avatar')
         }));
 
         let $contentPerfil = $("<div>", {
@@ -71,6 +72,7 @@ function cargarElementos() {
 
 function cargarElementosPerfil(usuario) {
     deleteContent();
+    $(".perfil-content").css("width", "90%");
 
     $(".perfil-content").append(
         $('<input>', {
@@ -113,7 +115,7 @@ function cargarElementosPerfil(usuario) {
             "class": "perfil-botones__btn perfil-botones__btn--acept",
             "html": "Aceptar"
         }).on("click", function () {
-            guardarCambios();
+            guardarCambios(usuario);
         }),
         $('<div>', {
             "class": "perfil-botones__btn perfil-botones__btn--cancel",
@@ -128,7 +130,7 @@ function cargarElementosPerfil(usuario) {
 
 
 function cerrarEditar(usuario) {
-    $(".perfil-content__info").css("padding","2%");
+    $(".perfil-content__info").css("padding", "2%");
 
     let $nombre = $(".perfil-content__info--nombre");
     let $email = $(".perfil-content__info--email");
@@ -147,34 +149,37 @@ function cerrarEditar(usuario) {
     $newPassword.val("");
 }
 
-function guardarCambios() {
+function guardarCambios(usuario) {
     let $nombre = $(".perfil-content__info--nombre").val();
     let $email = $(".perfil-content__info--email").val();
     let $password = $(".perfil-content__info--password").val();
     let $newPassword = $(".perfil-content__info--newPassword").val();
 
     let $token = localStorage.getItem('user_token');
+    console.log(localStorage.getItem('idUser'));
+    
+    console.log($token);
     $.ajax({
         url: rutaPublic+"editarPerfil",
-        data: {id: localStorage.getItem('idUser'), nombre: $nombre, email: $email, password: $password, newPassword: $newPassword },
         headers: { 'Authorization': 'Bearer ' + $token },
+        data: { id: localStorage.getItem('idUser'), nombre: $nombre, email: $email, password: $password, newPassword: $newPassword },
         success: function (dataResult) {
-
+            location.reload();
         },
         error: function () {
             let $not = new Notification("danger", "Error!", "No se han podido guardar los cambios");
             $("#notificaciones").append($not.draw());
         }
     });
-}
 
+}
 
 function deleteContent() {
     $(".perfil-content").empty();
 }
 
 function activarEditar() {
-    $(".perfil-content__info").css("padding","1%");
+    $(".perfil-content__info").css("padding", "1%");
 
     $(".perfil-content__info--nombre").attr("disabled", false);
     $(".perfil-content__info--email").attr("disabled", false);
@@ -183,13 +188,16 @@ function activarEditar() {
     $(".perfil-botones").css('display', 'flex');
 }
 
-function cargarMisEventos(){
+function cargarMisEventos() {
     deleteContent();
     datosPerfilEventos();
 }
 
-function setEvents(eventos){
-    eventos.forEach(event => {
-        console.log(event);
-    });
+function setEvents(eventos) {
+    $(".perfil-content").css("width", "100%");
+
+    let columnas = ["Producto", "Precio", "Plazas", "Subtotal", "perfil"];
+    let listarProductos = new ListView(null, columnas, eventos, [null, { "class": "total-price" }, null], "c-listView--perfil");
+
+    $(".perfil-content").append(listarProductos.draw());
 }

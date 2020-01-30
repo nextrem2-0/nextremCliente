@@ -3,7 +3,6 @@
   margin-top: 100px;
   display: grid;
   grid-template-areas: "head" "line" "body" "lineF" "foot";
-  
 
   &__item {
     border-bottom: 1px solid #46464633;
@@ -11,6 +10,15 @@
 
     &:hover {
       background-color: #f5f5f5;
+    }
+  }
+
+  &--perfil {
+    margin: 30px 0px;
+    margin-top: 0px;
+
+    .product-image {
+      padding-right: 20px;
     }
   }
 }
@@ -55,8 +63,6 @@
   grid-area: foot;
   display: flex;
   align-items: baseline;
-
-  
 }
 .total-price {
   margin-left: auto;
@@ -75,7 +81,7 @@
   font-family: $fuenteAccount;
 
   &--shop {
-    color:#535353;
+    color: #535353;
   }
 
   &--buy {
@@ -95,14 +101,13 @@
       grid-template-columns: 0.2fr 0.5fr;
       grid-template-areas:
         "img title"
-        "img desc"; 
+        "img desc";
     }
     &--precio {
       width: 10%;
     }
     &--plazas {
       width: 8%;
-      
     }
     &--subtotal {
       width: 22%;
@@ -111,8 +116,6 @@
     }
     &--buttons {
       display: flex;
-
-      
     }
   }
 }
@@ -148,41 +151,39 @@
   width: 50px;
 }
 
-@media (max-width:600px){
-  .c-header__title{
-    &--subtotal{
+@media (max-width: 600px) {
+  .c-header__title {
+    &--subtotal {
       display: none;
     }
-    &--precio{
+    &--precio {
       width: 20%;
     }
-  
   }
-  .list-item__column{
-    &--subtotal{
+  .list-item__column {
+    &--subtotal {
       display: none;
     }
-    &--precio{
+    &--precio {
       width: 20%;
     }
-    &--plazas{
+    &--plazas {
       text-align: left;
     }
   }
-  .button{
+  .button {
     padding: 10px 16px;
   }
-  .product-image{
+  .product-image {
     width: 70px;
   }
-  .product-desc{
-    padding-left: 5px;
-
-  }
-  .product-title{
+  .product-desc {
     padding-left: 5px;
   }
-  .product-plazas{
+  .product-title {
+    padding-left: 5px;
+  }
+  .product-plazas {
     text-align: left;
   }
 }

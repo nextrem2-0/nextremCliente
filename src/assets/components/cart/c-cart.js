@@ -52,14 +52,15 @@ class Cart {
         if (this.existeEvento(event.id) != true) {
             this.listaEventos.push(event);
 
-
             this.aumentarCarrito();
             this.getEventosyPlazas();
             this.getPrecioTotal();
 
             $.ajax({
                 url: rutaPublic+"addCarrito",
-                data: { eventos: {"idEvento":event.id,"plazas":event.plazas,"precioEvento":event.price}, idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal, confirmado:0},
+
+                data: {idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal, confirmado: 0, eventos: [{ "id_evento": event.id, "plazas": event.plazas }] },
+                //data: datos,
                 headers: { 'Content-Type': 'application/json' },
                 success: function (dataResult) {
                     let $not = new Notification("success", "Completado!", "Añadido correctamente");

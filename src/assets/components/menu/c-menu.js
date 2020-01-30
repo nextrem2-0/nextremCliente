@@ -67,7 +67,7 @@ class Menu {
           }).append(
             $('<img>',{
               'class': "c-menu__imgPerfil dropdown",
-              'src': 'assets/img/avatar.png'
+              'src': 'http://localhost/nextrem/api/public/storage/avatars/' + localStorage.getItem('avatar')
             })
           );
 
@@ -102,7 +102,7 @@ class Menu {
         });
         $option.hover(function () {
           if (!$base.hasClass("c-menu--extended")) {
-            $(".c-submenu--sports").show("fast");
+            $(".c-submenu--sports").css("display","flex");
             $base.addClass("c-menu--extended");
           }
         }, function () {
@@ -117,7 +117,7 @@ class Menu {
 
         $submenu.hover(function () {
           if (!$base.hasClass("c-menu--extended")) {
-            $(".c-submenu--sports").show("fast");
+            $(".c-submenu--sports").css("display","flex");
             $base.addClass("c-menu--extended");
           }
         }, function () {
