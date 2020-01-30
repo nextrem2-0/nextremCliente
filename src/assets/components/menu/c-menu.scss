@@ -7,6 +7,10 @@
   transition: height 0.7s;
   position: fixed;
   z-index: 99;
+  &__option-container {
+    margin-left: auto;
+    display: flex;
+  }
 
   &__option,
   &__hamburguer {
@@ -87,10 +91,7 @@
       max-height: 70px;
     }
   }
-  &__option-container {
-    margin-left: auto;
-    display: flex;
-  }
+  
 }
 
 @media only screen and (max-width: 600px) {
@@ -106,6 +107,7 @@
   .c-menu__hamburguer {
     display: block;
     width: fit-content;
+    margin-left: auto;
     text-align: right;
   }
   .c-menu--extended {
@@ -130,7 +132,5 @@
     background: transparent;
     color: rgb(83, 83, 83);
   }
-  .c-menu__option--registrado{
-    margin-left: auto;
-  }
+  
 }

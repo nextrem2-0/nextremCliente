@@ -20,7 +20,9 @@ class Menu {
     let $optionContainer=$("<div>",{
       "class": "c-menu__option-container"
     });
-    
+    let $hamburguer=$("<div>",{
+      "class":"c-menu__hamburguer fas fa-bars"
+    });
     for (let i = 0; i < this.categories.length; i++) {
       let $option = $('<i>', {
         'class': 'fas fa-search c-menu__option',
@@ -155,14 +157,15 @@ class Menu {
         $base.append($option);
       }else if(logged && this.categories[i].toLowerCase() == "registrar"){
         $base.append($optionContainer);
+        $base.append($hamburguer);
         $base.append($option);
       }else{
         $optionContainer.append($option);
+        $base.append($optionContainer);
+        $base.append($hamburguer);
       }
     }
-    let $hamburguer=$("<div>",{
-      "class":"c-menu__hamburguer fas fa-bars"
-    });
+    
     $hamburguer.on("click",function(){
       if (!$base.hasClass("c-menu--extended")) {
         $(".c-menu__option-container").css("display","flex");
@@ -174,7 +177,7 @@ class Menu {
       
     });
     
-    $base.append($hamburguer);
+    
     $(".c-submenu--sports").hide();
     $(".c-submenu--events").hide();
     return $base;
