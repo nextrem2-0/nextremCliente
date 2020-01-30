@@ -7,6 +7,7 @@ class Menu {
 
   draw() {
     let self = this;
+    let logged=false;
     let $base = $('<div>', {
       'class': 'c-menu',
     });
@@ -62,6 +63,7 @@ class Menu {
 
       } else if (this.categories[i].toLowerCase() == "registrar") {
         if (localStorage.getItem('user_token') != null) {
+          logged=true;
           $option = $('<div>', {
             'class': 'c-menu__option c-menu__option--register c-menu__option--registrado',
           }).append(
@@ -151,6 +153,9 @@ class Menu {
       
       if (this.categories[i].toLowerCase() == "inicio"){
         $base.append($option);
+      }else if(logged && this.categories[i].toLowerCase() == "registrar"){
+        $base.append($optionContainer);
+        $base.append($option);
       }else{
         $optionContainer.append($option);
       }
@@ -168,7 +173,7 @@ class Menu {
       }
       
     });
-    $base.append($optionContainer);
+    
     $base.append($hamburguer);
     $(".c-submenu--sports").hide();
     $(".c-submenu--events").hide();

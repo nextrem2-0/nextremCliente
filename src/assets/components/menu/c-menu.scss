@@ -57,16 +57,11 @@
       background-color: transparent;
       color: unset;
       line-height: unset;
-      margin-top: 3%;
-      padding-right: 8%;
+      margin-top: 1%;
+      width: fit-content;
+      padding:0;
     }
-    &--registrado {
-      background-color: transparent;
-      color: unset;
-      line-height: unset;
-      margin-top: 3%;
-      padding-right: 8%;
-    }
+    
   }
 
   &__imgPerfil {
@@ -110,7 +105,7 @@
   }
   .c-menu__hamburguer {
     display: block;
-    margin-left: auto;
+    width: fit-content;
     text-align: right;
   }
   .c-menu--extended {
@@ -134,5 +129,8 @@
   .c-menu__option--register{
     background: transparent;
     color: rgb(83, 83, 83);
+  }
+  .c-menu__option--registrado{
+    margin-left: auto;
   }
 }

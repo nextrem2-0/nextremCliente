@@ -60,7 +60,7 @@ function loginAction() {
         url: rutaPublic+"login",
         data: { login: $("#user_login").val(), password: $("#pass_login").val() },
         success: function (dataResult) {
-            Storage.setItem('user_token', dataResult.token);
+            localStorage.setItem('user_token', dataResult.token);
             $token = localStorage.getItem('user_token');
             console.log($token);
             $.ajax({
