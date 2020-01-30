@@ -58,7 +58,7 @@ class Cart {
             this.getPrecioTotal();
 
             $.ajax({
-                url: "http://localhost/nextrem/api/public/addCarrito",
+                url: rutaPublic+"addCarrito",
                 data: { eventos: {"idEvento":event.id,"plazas":event.plazas,"precioEvento":event.price}, idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal, confirmado:0},
                 headers: { 'Content-Type': 'application/json' },
                 success: function (dataResult) {

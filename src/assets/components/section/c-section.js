@@ -25,6 +25,7 @@ class Section {
         "html": this.title,
         "class": "c-section__title c-section__title--font-size-m@mobile"  
       });
+      
     }
 
     let $content = $("<div>", {
@@ -105,6 +106,65 @@ class Section {
 
       
 
+    }else if(this.layout == "l-horizontal"){
+      
+      let visible = 1; //Set the number of items that will be visible
+      let index = 0; //Starting index
+      let endIndex = (3 / visible) - 1;
+      let $arRight=$("<div>",{
+        "id":"arrowR",
+        "html":">",
+        "class":this.layout+"__item--buttonRight"
+      });
+      $('div#arrowR').click(function() {
+        var $item = $('.l-horizontal__item');
+        if (index < endIndex) {
+            index++;
+            $item.animate({ 'left': '-=360px' });//Set width of your div here
+        }else if(index==endIndex){
+            index=0;
+            $item.animate({ 'left': '0px' });
+        }
+    });
+    let $arrLeft=$("<div>",{
+      
+      "id":"arrowL",
+      "html":"<",
+      "class":this.layout+"__item--buttonLeft"
+    });
+    $('div#arrowL').click(function() {
+      let $item = $('.l-horizontal__item');
+      if (index > 0) {
+          index--;
+          $item.animate({ 'left': '+=360px' });//Set width of your div here
+      }else if(index==0){
+        console.log($item.length);
+        
+        index=2;
+        $item.animate({ 'left': '-='+360*2+"px" });
+    }
+  });
+      $layout.append([$arrLeft]);
+      let $itemsContainer=$("<div>",{
+        "class":"l-horizontal__items-container"
+      });
+      for (let component of this.innerComponents) {
+        let $litem = $("<div>", {
+          "class": this.layout + "__item"
+        });
+
+        if (component instanceof jQuery) {
+          $litem.append(component);
+        } else {
+          $litem.append(component.draw());
+        }
+
+        $itemsContainer.append($litem);
+      }
+      
+      $layout.append($itemsContainer);
+      $layout.append([$arRight]);
+      
     } else {
       for (let component of this.innerComponents) {
         let $litem = $("<div>", {

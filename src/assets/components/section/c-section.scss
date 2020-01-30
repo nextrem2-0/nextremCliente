@@ -100,7 +100,7 @@
 }
 @media only screen and (max-width:600px){
   .c-section__title{
-    margin-top: -28em;
+    margin-top: -26em;
     width: 66%;
   }
   .c-section__mask{
@@ -113,7 +113,10 @@
   }
   .c-section--recomendados{
     .c-section__title{
-      margin-top: -32em;
+      margin-top: -14em;
+    }
+    .c-section__mask{
+      bottom: -45%;
     }
   }
 }

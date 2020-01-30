@@ -155,7 +155,7 @@ function guardarCambios() {
 
     let $token = localStorage.getItem('user_token');
     $.ajax({
-        url: "http://localhost/nextrem/api/public/editarPerfil",
+        url: rutaPublic+"editarPerfil",
         data: {id: localStorage.getItem('idUser'), nombre: $nombre, email: $email, password: $password, newPassword: $newPassword },
         headers: { 'Authorization': 'Bearer ' + $token },
         success: function (dataResult) {

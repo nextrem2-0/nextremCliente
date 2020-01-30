@@ -201,7 +201,7 @@ class ListView {
 
     tramitarPedidoAction() {
         $.ajax({
-            url: "http://localhost/nextrem/api/public/addCarrito",
+            url: rutaPublic+"addCarrito",
             data: {idUsuario: localStorage.getItem('idUser'), confirmado:1},
             headers: { 'Content-Type': 'application/json' },
             success: function (dataResult) {

@@ -57,14 +57,14 @@ function goToAccount(action) {
 function loginAction() {
     let $token;
     $.ajax({
-        url: "http://localhost/nextrem/api/public/login",
+        url: rutaPublic+"login",
         data: { login: $("#user_login").val(), password: $("#pass_login").val() },
         success: function (dataResult) {
-            localStorage.setItem('user_token', dataResult.token);
+            Storage.setItem('user_token', dataResult.token);
             $token = localStorage.getItem('user_token');
             console.log($token);
             $.ajax({
-                url: "http://localhost/nextrem/api/public/userLogged",
+                url: rutaPublic+"userLogged",
                 headers: { 'Authorization': 'Bearer ' + $token },
                 success: function (dataResult) {
                     localStorage.setItem('username', dataResult.user.username);
@@ -84,7 +84,7 @@ function loginAction() {
 function registerAction() {
     var boolBusiness = $("#cbIsbusiness:checkbox:checked").length > 0 == true ? 1 : 0;
     $.ajax({
-        url: "http://localhost/nextrem/api/public/register",
+        url: rutaPublic+"register",
         data: { isbusiness: boolBusiness, username: $("#user").val(), email: $("#email").val(), password: $("#pass_register").val(), password_confirmation: $("#pass_confirm_register").val() },
         headers: { 'Content-Type': 'application/json' },
         success: function (dataResult) {
@@ -103,7 +103,7 @@ function registerAction() {
 function logoutAction() {
     let $token = localStorage.getItem('user_token');
     $.ajax({
-        url: "http://localhost/nextrem/api/public/logout",
+        url: rutaPublic+"logout",
         data: { api_token: $token },
         headers: { 'Authorization': 'Bearer ' + $token },
         success: function () {
@@ -137,7 +137,7 @@ function limpiarCampos(){
 function datosPerfil(){
     $token = localStorage.getItem('user_token');
     $.ajax({
-        url: "http://localhost/nextrem/api/public/userLogged",
+        url: rutaPublic+"userLogged",
         headers: { 'Authorization': 'Bearer ' + $token },
         success: function (dataResult) { 
             cargarElementosPerfil(dataResult.user);
@@ -149,7 +149,7 @@ function datosPerfilEventos(){
     $token = localStorage.getItem('user_token');
     $id = localStorage.getItem('idUser');
     $.ajax({
-        url: "http://localhost/nextrem/api/public/user/" + $id + "/eventos",
+        url: rutaPublic+"user/" + $id + "/eventos",
         headers: { 'Authorization': 'Bearer ' + $token },
         success: function (dataResult) { 
             setEvents(dataResult);

@@ -1,4 +1,6 @@
 /* --------- VARIABLES --------- */
+let rutaApi = "192.268.59.104/nextrem/api"
+let rutaPublic = rutaApi + "/public/";
 let listaCards = new Array();
 let recomendedCards = new Array();
 let listaDeportesCards = new Array();
@@ -20,10 +22,10 @@ window.onload = function () {
 };
 // document.addEventListener("scroll",function(eve){
 //     console.log($(document).scrollTop());
-    
+
 //     if($(document).scrollTop()==0){
 //         console.log("aaa");
-        
+
 //         $("html, body").animate({
 //             scrollTop: 700
 //         }, 10);
@@ -73,7 +75,7 @@ function cargarInicio() {
 
     } else {
         $.ajax({
-            url: "http://localhost/nextrem/api/public/categorias",
+            url: rutaPublic + "categorias",
             success: function (dataResult) {
                 for (let key of dataResult) {
                     categories.push(key.nombre);
@@ -82,7 +84,7 @@ function cargarInicio() {
                 let footer = new Footer(categories);
                 $("#footer").append(footer.draw());
                 $.ajax({
-                    url: "http://localhost/nextrem/api/public/deportes",
+                    url: rutaPublic + "deportes",
                     success: function (dataResult) {
                         numPeticionesHechas++;
                         for (let key of dataResult) {
@@ -100,39 +102,39 @@ function cargarInicio() {
 
     if (Array.isArray(imgSlider) && imgSlider.length) {
         let slider = new Slider(imgSlider);
-        let $btnMas=$("<div>",{
-            "class":"button-saber-mas",
-            "html":"Saber más"
+        let $btnMas = $("<div>", {
+            "class": "button-saber-mas",
+            "html": "Saber más"
         });
 
-        $btnMas.on("click",function(){                 
+        $btnMas.on("click", function () {
             window.scrollTo({
-                top:700,
+                top: 700,
                 behavior: "smooth"
             });
         });
         window.scroll({
-            top: 2500, 
-            left: 0, 
+            top: 2500,
+            left: 0,
             behavior: 'smooth'
-          });
-          cargarPortadaMovil();
-        let $over=$("<div>",{
-            "class":"c-textOver__top--small"
-        }).append([$("<img>",{
-            "src":"assets/img/sloganOver.png",
-            "class":"image-over-slider"
-        }),$btnMas.append($("<i>",{
-            "class":"fa fa-angle-down button-saber-mas__icon"
+        });
+        cargarPortadaMovil();
+        let $over = $("<div>", {
+            "class": "c-textOver__top--small"
+        }).append([$("<img>", {
+            "src": "assets/img/sloganOver.png",
+            "class": "image-over-slider"
+        }), $btnMas.append($("<i>", {
+            "class": "fa fa-angle-down button-saber-mas__icon"
         }))]);
-        let overSlider = new textOver(slider.draw(),$over);
+        let overSlider = new textOver(slider.draw(), $over);
         $item1.append(overSlider.draw());
-        var rutaBanner = "http://localhost/nextrem/api" + imgBanner[0];
+        var rutaBanner = rutaApi + imgBanner[0];
         $ban.css('background-image', 'url(' + rutaBanner + ')');
-        
+
     } else {
         $.ajax({
-            url: "http://localhost/nextrem/api/public/images",
+            url: rutaPublic + "images",
             success: function (dataResult) {
                 numPeticionesHechas++;
                 for (let key of dataResult) {
@@ -143,32 +145,32 @@ function cargarInicio() {
                     }
                 }
 
-                var rutaBanner = "http://localhost/nextrem/api" + imgBanner[0];
+                var rutaBanner = rutaApi + imgBanner[0];
                 $ban.css('background-image', 'url(' + rutaBanner + ')');
 
                 let slider = new Slider(imgSlider);
-                let $btnMas=$("<div>",{
-                    "class":"button-saber-mas",
-                    "html":"Saber más"
+                let $btnMas = $("<div>", {
+                    "class": "button-saber-mas",
+                    "html": "Saber más"
                 });
 
-                $btnMas.on("click",function(){                 
-                    window.scrollTo(0,700);
+                $btnMas.on("click", function () {
+                    window.scrollTo(0, 700);
                 });
 
-                let $over=$("<div>",{
-                    "class":"c-textOver__top--small"
-                }).append([$("<img>",{
-                    "src":"assets/img/sloganOver.png",
-                    "class":"image-over-slider"
-                }),$btnMas.append($("<i>",{
-                    "class":"fa fa-angle-down button-saber-mas__icon"
+                let $over = $("<div>", {
+                    "class": "c-textOver__top--small"
+                }).append([$("<img>", {
+                    "src": "assets/img/sloganOver.png",
+                    "class": "image-over-slider"
+                }), $btnMas.append($("<i>", {
+                    "class": "fa fa-angle-down button-saber-mas__icon"
                 }))]);
-                let overSlider = new textOver(slider.draw(),$over);
+                let overSlider = new textOver(slider.draw(), $over);
                 $item1.append(overSlider.draw());
                 $('.carousel').carousel({
                     interval: 5000,
-                    "data-pause":false
+                    "data-pause": false
                 });
                 comprobarPeticiones();
             }
@@ -188,11 +190,11 @@ function cargarInicio() {
 
     $("#content").append($layout);
 
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
 
-function comprobarPeticiones(){
-    if(numPeticiones == numPeticionesHechas){
+function comprobarPeticiones() {
+    if (numPeticiones == numPeticionesHechas) {
         finPaginaCarga();
     }
 }
@@ -204,7 +206,7 @@ function cargarPins() {
     }
 
     $.ajax({
-        url: "http://localhost/nextrem/api/public/textInicio",
+        url: rutaPublic + "textInicio",
         success: function (dataResult) {
             numPeticionesHechas++;
             for (let key in dataResult) {
@@ -212,7 +214,7 @@ function cargarPins() {
                 listaPins.push(new InformationPin(dataResult[key].imagen, dataResult[key].titulo, dataResult[key].texto));
 
             }
-            s1 = new Section("l-horizontal", listaPins, "¿QUÉ ES NEXTREM?",null,"l-horizontal--to-rows@mobile");
+            s1 = new Section("l-horizontal", listaPins, "¿QUÉ ES NEXTREM?", null, "l-horizontal--to-rows@mobile");
             $item2.append(s1.draw());
             comprobarPeticiones();
         },
@@ -222,27 +224,33 @@ function cargarPins() {
         }
     });
 }
-function cargarPortadaMovil(){
-    let $btnMas=$("<div>",{
-        "class":"button-saber-mas",
-        "html":"Saber más"
+function cargarPortadaMovil() {
+    let $btnMas = $("<div>", {
+        "class": "button-saber-mas",
+        "html": "Saber más"
     });
-    let $background=$("<img>",{
-        "src":"assets/img/fondoMovil.jpg"
+    $btnMas.on("click", function () {
+        window.scrollTo({
+            top: 700,
+            behavior: "smooth"
+        });
     });
-    let $over=$("<div>",{
-        "class":"c-textOver__top--small"
-    }).append([$("<div>",{
-        "class":"c-textOver__image-container"
-    }).append($("<img>",{
-        "src":"assets/img/sloganOver.png",
-        "class":"image-over-slider"
-    })),$btnMas.append($("<i>",{
-        "class":"fa fa-angle-down button-saber-mas__icon"
+    let $background = $("<img>", {
+        "src": "assets/img/fondoMovil.jpg"
+    });
+    let $over = $("<div>", {
+        "class": "c-textOver__top--small"
+    }).append([$("<div>", {
+        "class": "c-textOver__image-container"
+    }).append($("<img>", {
+        "src": "assets/img/sloganOver.png",
+        "class": "image-over-slider"
+    })), $btnMas.append($("<i>", {
+        "class": "fa fa-angle-down button-saber-mas__icon"
     }))]);
-    let overMovil=new textOver($background,$over);
-    let $portadaMovil=$("<div>",{
-        "class":"c-portada-movil"
+    let overMovil = new textOver($background, $over);
+    let $portadaMovil = $("<div>", {
+        "class": "c-portada-movil"
     });
     $portadaMovil.append(overMovil.draw());
     $item1.append($portadaMovil);

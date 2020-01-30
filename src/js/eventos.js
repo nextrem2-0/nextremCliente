@@ -60,7 +60,7 @@ function cargarCards(type) {
             recomendedCards.push(new Card(2000,"evento2.jpg", "Torneo de Surf", "Surf", descrip,7,null, 15, 1, iconos, 2, 'surf'));
             recomendedCards.push(new Card(3000,"evento3.jpg", "Clases de Esqui", "Esqui", descrip,7,null, 10, 0, iconos, 3, 'esqui'));
         }
-        section = new Section("l-horizontal", recomendedCards, "RECOMENDADOS","c-section--recomendados", "l-horizontal--to-rows@mobile");
+        section = new Section("l-horizontal", recomendedCards, "RECOMENDADOS","c-section--recomendados", "l-horizontal--to-slide@mobile");
     } else if (type == "todas") {
         if (Array.isArray(listaCards) && listaCards.length) {
             $load = 0;
@@ -68,7 +68,7 @@ function cargarCards(type) {
             $item1.append(section.draw());
         } else {
             $.ajax({
-                url: "http://localhost/nextrem/api/public/eventos",
+                url: rutaPublic+"eventos",
                 success: function (dataResult) {
                     var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
 
@@ -102,7 +102,7 @@ function cargarCards(type) {
             $load = 0;
         }
         $.ajax({
-            url: "http://localhost/nextrem/api/public/deportes/" + type + "/eventos",
+            url: rutaPublic+"deportes/" + type + "/eventos",
             success: function (dataResult) {
                 dataResult.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0)); 
                 var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
