@@ -130,7 +130,7 @@ function cargarInicio() {
         }))]);
         let overSlider = new textOver(slider.draw(), $over);
         $item1.append(overSlider.draw());
-        var rutaBanner = rutaApi + imgBanner[0];
+        var rutaBanner = rutaApi + "/"+imgBanner[0];
         $ban.css('background-image', 'url(' + rutaBanner + ')');
 
     } else {
@@ -146,7 +146,7 @@ function cargarInicio() {
                     }
                 }
 
-                var rutaBanner = rutaApi + imgBanner[0];
+                var rutaBanner = rutaApi + "/"+imgBanner[0];
                 $ban.css('background-image', 'url(' + rutaBanner + ')');
 
                 let slider = new Slider(imgSlider);
