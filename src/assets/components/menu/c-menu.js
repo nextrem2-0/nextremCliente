@@ -71,7 +71,7 @@ class Menu {
           }).append(
             $('<img>',{
               'class': "c-menu__imgPerfil dropdown",
-              'src': 'http://localhost/nextrem/api/public/storage/avatars/' + localStorage.getItem('avatar')
+              'src': rutaPublic+'storage/avatars/' + localStorage.getItem('avatar')
             })
           );
 

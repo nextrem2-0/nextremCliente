@@ -31,7 +31,7 @@ function cargarElementos() {
         let $imgPerfil = $("<div>", {
             "class": "perfil-img"
         }).append($("<img>", {
-            "src": 'http://localhost/nextrem/api/public/storage/avatars/' + localStorage.getItem('avatar')
+            "src": rutaPublic+'storage/avatars/' + localStorage.getItem('avatar')
         }));
 
         let $contentPerfil = $("<div>", {
