@@ -1,5 +1,6 @@
 /* --------- VARIABLES --------- */
 let rutaApi = "http://api.nextrem.pve2.fpmislata.com";
+// let rutaApi = "http://localhost/nextrem"
 //let rutaApi = "192.268.59.104/nextrem/api";
 let rutaPublic = rutaApi+"/public/";
 let listaCards = new Array();
