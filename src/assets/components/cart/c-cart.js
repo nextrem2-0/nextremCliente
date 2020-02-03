@@ -48,7 +48,6 @@ class Cart {
     }
 
     anyadirEvento(event) {
-
         if (this.existeEvento(event.id) != true) {
             this.listaEventos.push(event);
 
@@ -57,9 +56,9 @@ class Cart {
             this.getPrecioTotal();
 
             $.ajax({
-                url: rutaPublic+"addCarrito",
+                url: rutaPublic + "addCarrito",
 
-                data: {idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal, confirmado: 0, eventos: [{ "id_evento": event.id, "plazas": event.plazas }] },
+                data: { idUsuario: localStorage.getItem('idUser'), precio: this.precioTotal, confirmado: 0, eventos: [{ "id_evento": event.id, "plazas": event.plazas }] },
                 //data: datos,
                 headers: { 'Content-Type': 'application/json' },
                 success: function (dataResult) {

@@ -1,6 +1,6 @@
 class Card {
   constructor(id, image, title, sport, summary, capacidad, plazas = 1, price, material, iconos, level, modifier = null) {
-    this.id=id;
+    this.id = id;
     this.image = image;
     this.title = title;
     this.sport = sport;
@@ -51,19 +51,33 @@ class Card {
 
     let $cartBtn = $('<div>', { "class": "content__button content__button--" + this.sport });
     $cartBtn.on("click", function () {
-      
-      let modal = new Modal("Resumen producto", self.imprimirProducto(), function () {
+      if (localStorage.getItem('user_token') != null) {
 
-        self.plazas = parseInt($("#plazas").val());
+        let modal = new Modal("Resumen producto", self.imprimirProducto(), function () {
 
-        
-        self.comprar();
+          self.plazas = parseInt($("#plazas").val());
 
-      }, "Añadir al carrito");
 
-      let $mod = modal.draw();
-      $("#modal").append($mod);
-      $mod.show();
+          self.comprar();
+
+        }, "Añadir al carrito");
+
+        let $mod = modal.draw();
+        $("#modal").append($mod);
+        $mod.show();
+
+      } else {
+        let modal = new Modal("¿Aún no te has registrado?", "Registrate ahora y disfruta de nuestros eventos de riesgo", function () {
+          goToAccount("register");
+        }, "Registrarse");
+
+        let $mod = modal.draw();
+        $("#modal").append($mod);
+        $mod.show();
+
+        let $not = new Notification("warning", "Hey!", "Todavía no te has registrado");
+        $("#notificaciones").append($not.draw());
+      }
     });
 
     $card.append(
@@ -157,9 +171,9 @@ class Card {
   }
 
   comprar() {
-    let card = new Card(this.id,this.image, this.title, this.sport, this.summary,this.capacidad, this.plazas, this.price, this.material, this.iconos, this.level, this.modifier);
+    let card = new Card(this.id, this.image, this.title, this.sport, this.summary, this.capacidad, this.plazas, this.price, this.material, this.iconos, this.level, this.modifier);
 
-    carrito.anyadirEvento(card); 
+    carrito.anyadirEvento(card);
   }
 
 }
