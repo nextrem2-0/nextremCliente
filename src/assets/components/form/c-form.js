@@ -59,7 +59,7 @@ class Form {
         $textbox.append($msg);
 
         $campos.append($textbox);
-        
+
         $base.append($campos)
         $base.append($submit);
 
@@ -74,7 +74,7 @@ class Form {
         let $base = $("<form>", {
             "class": "c-form",
             "id": "register",
-            "enctype":"multipart/form-data"
+            "enctype": "multipart/form-data"
         });
 
         let $title = $("<div>", {
@@ -137,17 +137,43 @@ class Form {
             "html": "Upload a file"
         });
 
+        let $txt = $("<p>", {
+            "class": "c-form__msg",
+        });
+        
         let $inputAvatar = $("<input>", {
             "id": "fileRegister",
             "type": "file",
             "class": "input-avatar",
-            "placeholder": "avatar"
+            "placeholder": "avatar",
+            "change": function () {
+                $txt.html($("#fileRegister")[0].files[0].name);
+                $avatar.append($txt);
+            }
         });
         let $submit = $("<input>", {
             "type": "submit",
             "class": "c-form__button",
             "value": "Sign up"
         });
+
+        /* $('#imageFile').on("change", function(){
+            console.log($("#fileRegister")[0].files[0]);
+        }); */
+
+        /* $("#fileRegister").onchange = function () {
+
+            
+        
+            if (input) {
+                let $txt = $("<p>", {
+                    "class": "text_img"
+                });
+    
+                $avatar.append($txt);
+            }
+        }; */
+
 
         $base.append($title);
 
@@ -163,9 +189,9 @@ class Form {
 
         $base.append($campos);
         $base.append($submit);
-        
+
         $(function () {
-            $('.c-form__button').on("click", function(e){
+            $('.c-form__button').on("click", function (e) {
                 e.preventDefault();
                 validarCampos();
             });
@@ -174,82 +200,84 @@ class Form {
         return $base;
     }
 
+
+
     changeSide() {
-        
-        if(this.type=="register"){
+
+        if (this.type == "register") {
             let $item1 = $(".l-dual__item--izquierda");
             let $item2 = $(".l-dual__item--derecha");
 
-                $item1.removeClass("l-dual__item--izquierda").addClass("l-dual__item--derecha");
-                $item2.removeClass("l-dual__item--derecha").addClass("l-dual__item--izquierda");
+            $item1.removeClass("l-dual__item--izquierda").addClass("l-dual__item--derecha");
+            $item2.removeClass("l-dual__item--derecha").addClass("l-dual__item--izquierda");
 
             let cambio = new Form("login");
-            this.type="login";
+            this.type = "login";
             $("#register").parent().empty().append(cambio.draw());
-        }else if(this.type=="login"){
+        } else if (this.type == "login") {
             let $item1 = $(".l-dual__item--izquierda");
             let $item2 = $(".l-dual__item--derecha");
             console.log($item1.css("transform"));
             $item1.removeClass("l-dual__item--izquierda").addClass("l-dual__item--derecha");
             $item2.removeClass("l-dual__item--derecha").addClass("l-dual__item--izquierda");
-           
+
             let cambio = new Form("register");
-            this.type="register";
+            this.type = "register";
             $("#login").parent().empty().append(cambio.draw());
         }
     }
 }
 
-function validarCampos(){
+function validarCampos() {
     let text = 0;
-    
-    if($("#user").val().length < 6 ){
+
+    if ($("#user").val().length < 6) {
         text = "El nombre de usuario es muy corto";
         $("#user").val("");
         $("#user").css("border-color", "red");
-        $("#user").on("click",function(){
+        $("#user").on("click", function () {
             $("#user").css("border-color", "#b9b9b9");
         });
-        
-    }else if(   validarEmail($("#email").val()) != true){
+
+    } else if (validarEmail($("#email").val()) != true) {
         text = "El email es incorrecto";
         $("#email").val("");
         $("#email").css("border-color", "red");
-        $("#email").on("click",function(){
+        $("#email").on("click", function () {
             $("#email").css("border-color", "#b9b9b9");
         });
 
-    }else if(   $("#pass_register").val() != $("#pass_confirm_register").val()  ){
+    } else if ($("#pass_register").val() != $("#pass_confirm_register").val()) {
         text = "Las contraseñas no coinciden";
         errorPassword();
-    }else if(   $("#pass_register").val().length < 6 && $("#pass_confirm_register").val().length < 6 ){
+    } else if ($("#pass_register").val().length < 6 && $("#pass_confirm_register").val().length < 6) {
         text = "La contraseña es demasiado corta";
         errorPassword();
     }
 
-    if(text != 0){
+    if (text != 0) {
         let $not = new Notification("danger", "Error!", text);
         $("#notificaciones").append($not.draw());
-    }else{
+    } else {
         registerAction();
-    }        
+    }
 }
 
-function errorPassword(){
+function errorPassword() {
     $("#pass_register").val("");
     $("#pass_confirm_register").val("");
 
     $("#pass_register").css("border-color", "red");
     $("#pass_confirm_register").css("border-color", "red");
-    $("#pass_register").on("click",function(){
+    $("#pass_register").on("click", function () {
         $("#pass_register").css("border-color", "#b9b9b9");
     });
-    $("#pass_confirm_register").on("click",function(){
+    $("#pass_confirm_register").on("click", function () {
         $("#pass_confirm_register").css("border-color", "#b9b9b9");
     });
 }
 
-function validarEmail(email){
+function validarEmail(email) {
     var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     return re.test(email);
 }
