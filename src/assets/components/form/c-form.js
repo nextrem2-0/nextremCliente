@@ -214,16 +214,20 @@ class Form {
             let cambio = new Form("login");
             this.type = "login";
             $("#register").parent().empty().append(cambio.draw());
+            $item1.css("z-index","1")
+            $item2.css("z-index","999")
         } else if (this.type == "login") {
             let $item1 = $(".l-dual__item--izquierda");
             let $item2 = $(".l-dual__item--derecha");
-            console.log($item1.css("transform"));
+
             $item1.removeClass("l-dual__item--izquierda").addClass("l-dual__item--derecha");
             $item2.removeClass("l-dual__item--derecha").addClass("l-dual__item--izquierda");
 
             let cambio = new Form("register");
             this.type = "register";
             $("#login").parent().empty().append(cambio.draw());
+            $item1.css("z-index","999")
+            $item2.css("z-index","1")
         }
     }
 }
