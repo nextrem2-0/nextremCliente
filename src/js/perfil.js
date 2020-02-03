@@ -31,7 +31,7 @@ function cargarElementos() {
         let $imgPerfil = $("<div>", {
             "class": "perfil-img"
         }).append($("<img>", {
-            "src": rutaPublic+'storage/avatars/' + localStorage.getItem('avatar')
+            "src": rutaPublic + 'storage/avatars/' + localStorage.getItem('avatar')
         }));
 
         let $contentPerfil = $("<div>", {
@@ -157,10 +157,10 @@ function guardarCambios(usuario) {
 
     let $token = localStorage.getItem('user_token');
     console.log(localStorage.getItem('idUser'));
-    
+
     console.log($token);
     $.ajax({
-        url: rutaPublic+"editarPerfil",
+        url: rutaPublic + "editarPerfil",
         headers: { 'Authorization': 'Bearer ' + $token },
         data: { id: localStorage.getItem('idUser'), nombre: $nombre, email: $email, password: $password, newPassword: $newPassword },
         success: function (dataResult) {
@@ -194,10 +194,17 @@ function cargarMisEventos() {
 }
 
 function setEvents(eventos) {
-    $(".perfil-content").css("width", "100%");
+    if (eventos.length == 0) {
+        let $not = new Notification("warning", "Hey!", "Todavía no has comprado ningún evento");
+        $("#notificaciones").append($not.draw());
+        datosPerfil();
+    } else {
+        $(".perfil-content").css("width", "100%");
 
-    let columnas = ["Producto", "Precio", "Plazas", "Subtotal", "perfil"];
-    let listarProductos = new ListView(null, columnas, eventos, [null, { "class": "total-price" }, null], "c-listView--perfil");
+        let columnas = ["Producto", "Precio", "Plazas", "Subtotal", "perfil"];
+        let listarProductos = new ListView(null, columnas, eventos, [null, null, null], "c-listView--perfil");
 
-    $(".perfil-content").append(listarProductos.draw());
+        $(".perfil-content").append(listarProductos.draw());
+    } 
+
 }

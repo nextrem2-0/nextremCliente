@@ -156,9 +156,6 @@ class ListView {
                             $("#modal").append($mod);
                             $mod.show();
 
-
-
-
                         });
 
                         $column.append([$modify, $delete]);
@@ -199,11 +196,7 @@ class ListView {
                 }
                 $footer.append($item);
             }
-
-
         }
-
-
 
         $base.append($line2);
         $base.append($footer);
@@ -220,17 +213,15 @@ class ListView {
             data: {idUsuario: localStorage.getItem('idUser'), confirmado:1},
             headers: { 'Content-Type': 'application/json' },
             success: function (dataResult) {
-                let $not = new Notification("success", "Éxito!", "Has realizado el pedido");
-                $("#notificaciones").append($not.draw());
+                localStorage.setItem('compra', 1);
+                carrito.eliminarTodosEvento();
+                location.reload();
             },
             error: function (error) {
                 let $not = new Notification("danger", "Error!", "No se ha podido guardar");
                 $("#notificaciones").append($not.draw());
             }
         });
-
-        carrito.eliminarTodosEvento();
-        cargarInicio();
     }
 
     calcularTotal() {
