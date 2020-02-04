@@ -154,7 +154,12 @@ function cerrarEditar(usuario) {
 
 function guardarCambios(usuario) {
     let $nombre = $(".perfil-content__info--nombre").val();
+    
     let $email = $(".perfil-content__info--email").val();
+    if($email == usuario.email){
+        $email = null;
+    } 
+
     let $password = $(".perfil-content__info--password").val();
     let $newPassword = $(".perfil-content__info--newPassword").val();
 
