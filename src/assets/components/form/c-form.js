@@ -215,7 +215,7 @@ class Form {
             this.type = "login";
             $("#register").parent().empty().append(cambio.draw());
             $item1.css("z-index","1")
-            $item2.css("z-index","999")
+            $item2.css("z-index","10")
         } else if (this.type == "login") {
             let $item1 = $(".l-dual__item--izquierda");
             let $item2 = $(".l-dual__item--derecha");
@@ -226,7 +226,7 @@ class Form {
             let cambio = new Form("register");
             this.type = "register";
             $("#login").parent().empty().append(cambio.draw());
-            $item1.css("z-index","999")
+            $item1.css("z-index","10")
             $item2.css("z-index","1")
         }
     }

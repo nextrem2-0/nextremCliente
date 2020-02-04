@@ -94,7 +94,11 @@ function registerAction() {
     formData.append('email',$("#email").val()); 
     formData.append('password',$("#pass_register").val());
     formData.append('password_confirmation',$("#pass_confirm_register").val());
-    formData.append('avatar',$("#fileRegister")[0].files[0]);
+    if($("#fileRegister")[0].files[0] !== undefined){
+      formData.append('avatar',$("#fileRegister")[0].files[0]);
+    }
+    
+    
 
     console.log(formData);
     

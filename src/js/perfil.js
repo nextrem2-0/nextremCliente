@@ -164,6 +164,7 @@ function guardarCambios(usuario) {
         headers: { 'Authorization': 'Bearer ' + $token },
         data: { id: localStorage.getItem('idUser'), nombre: $nombre, email: $email, password: $password, newPassword: $newPassword },
         success: function (dataResult) {
+            localStorage.setItem('editar', 1);
             location.reload();
         },
         error: function () {
@@ -207,4 +208,9 @@ function setEvents(eventos) {
         $(".perfil-content").append(listarProductos.draw());
     } 
 
+}
+
+function notificacionGuardarCambios(){
+    let $not = new Notification("success", "Guardado!", "Los cambios se han guardado con éxito");
+    $("#notificaciones").append($not.draw());
 }
