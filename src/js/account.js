@@ -62,7 +62,6 @@ function loginAction() {
         success: function (dataResult) {
             localStorage.setItem('user_token', dataResult.token);
             $token = localStorage.getItem('user_token');
-            console.log($token);
             $.ajax({
                 url: rutaPublic+"userLogged",
                 headers: { 'Authorization': 'Bearer ' + $token },
@@ -70,6 +69,7 @@ function loginAction() {
                     localStorage.setItem('username', dataResult.user.username);
                     localStorage.setItem('idUser', dataResult.user.id);
                     localStorage.setItem('avatar', dataResult.user.avatar);
+                   
                     location.reload();
                 }
             });
@@ -89,20 +89,16 @@ function registerAction() {
 
     // var form = $('form')[0]; 
     var formData = new FormData();
+    var fotoPerfil = imgPerfilPorDefecto;
     formData.append('isbusiness',$boolBusiness);
     formData.append('username',$("#user").val());
     formData.append('email',$("#email").val()); 
     formData.append('password',$("#pass_register").val());
     formData.append('password_confirmation',$("#pass_confirm_register").val());
     if($("#fileRegister")[0].files[0] !== undefined){
-      formData.append('avatar',$("#fileRegister")[0].files[0]);
+        formData.append('avatar',$("#fileRegister")[0].files[0]);
     }
-    
-    
-
-    console.log(formData);
-    
-    
+   
     $.ajax({
         url: rutaPublic+"register",
         //data: { isbusiness: $boolBusiness, username: $("#user").val(), email: $("#email").val(), password: $("#pass_register").val(), password_confirmation: $("#pass_confirm_register").val(), avatar: $("#fileRegister")[0].files[0] },
@@ -115,7 +111,12 @@ function registerAction() {
             localStorage.setItem('user_token', dataResult.token);
             localStorage.setItem('username', dataResult.user.username);
             localStorage.setItem('idUser', dataResult.user.id);
-            localStorage.setItem('avatar', dataResult.user.avatar);
+            if(dataResult.user.avatar == undefined){
+                localStorage.setItem('avatar', imgPerfilPorDefecto);
+            }else{
+                localStorage.setItem('avatar', dataResult.user.avatar);
+            }
+
             location.reload();
         },
         error: function () {

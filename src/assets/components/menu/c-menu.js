@@ -66,6 +66,7 @@ class Menu {
       } else if (this.categories[i].toLowerCase() == "registrar") {
         if (localStorage.getItem('user_token') != null) {
           logged=true;
+         
           $option = $('<div>', {
             'class': 'c-menu__option c-menu__option--register c-menu__option--registrado',
           }).append(
@@ -221,8 +222,6 @@ class Menu {
 
   cambiarDropTitulosPerfil($option) {
     let username = localStorage.getItem('username');
-    console.log(username);
-
   }
 
   hideMenuMobile(){

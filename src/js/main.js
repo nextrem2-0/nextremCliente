@@ -17,6 +17,7 @@ let events = new Array();
 let carrito = new Cart();
 let numPeticiones = 3;
 let numPeticionesHechas = 0;
+let imgPerfilPorDefecto = "user.png";
 
 /* --------- FUNCIONES --------- */
 window.onload = function () {

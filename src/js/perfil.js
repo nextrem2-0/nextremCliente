@@ -26,8 +26,8 @@ function cargarPerfil() {
 
 function cargarElementos() {
     if (Array.isArray(listaElementosPerfil) && listaElementosPerfil.length) {
-
-    } else {
+        listaElementosPerfil=[];
+     } //else {
         let $imgPerfil = $("<div>", {
             "class": "perfil-img"
         }).append($("<img>", {
@@ -44,7 +44,7 @@ function cargarElementos() {
             $("<div>", {
                 "class": "perfil-gestion__btn perfil-gestion__btn--eventos",
                 "html": "Mis eventos"
-            }).on("click", function () {
+            }).on("click", function(){ 
                 cargarMisEventos();
             }),
             $("<div>", {
@@ -64,8 +64,11 @@ function cargarElementos() {
             "html": "Perfil " + localStorage.getItem('username')
         });
 
+        
         listaElementosPerfil.push($imgPerfil, $gestionPerfil, $tituloPerfil, $contentPerfil);
-    }
+    /* 
+    
+    } */
     s1 = new Section("l-perfil", listaElementosPerfil, null, "c-section--perfil");
     $item1.append(s1.draw());
 }
@@ -156,9 +159,7 @@ function guardarCambios(usuario) {
     let $newPassword = $(".perfil-content__info--newPassword").val();
 
     let $token = localStorage.getItem('user_token');
-    console.log(localStorage.getItem('idUser'));
 
-    console.log($token);
     $.ajax({
         url: rutaPublic + "editarPerfil",
         headers: { 'Authorization': 'Bearer ' + $token },

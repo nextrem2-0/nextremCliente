@@ -125,7 +125,6 @@ class Section {
             index=0;
             $item.animate({ 'left': '0px' });
         }
-        console.log(index);
     });
     let $arrLeft=$("<div>",{
       
@@ -143,8 +142,6 @@ class Section {
         index=2;
         $item.animate({ 'left': '-='+360*2+"px" });
       }
-      console.log(index);
-      
   });
       $layout.append([$arrLeft]);
       let $itemsContainer=$("<div>",{

@@ -139,9 +139,6 @@ class ListView {
                             let plazas = $modify.parent().parent().find($(".product-plazas"));
 
                             let modal = new Modal("Editar Evento", row.imprimirProducto(), function () {
-                                console.log(parseInt($("#plazas").val()));
-
-
                                 plazas.html(parseInt($("#plazas").val()));
 
                                 let subtotal = parseFloat(plazas.text()) * parseFloat(row.price);
