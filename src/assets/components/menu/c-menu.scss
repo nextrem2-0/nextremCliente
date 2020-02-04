@@ -94,6 +94,8 @@
   
 }
 
+
+
 @media only screen and (max-width: 600px) {
   .c-menu__option-container {
     display: none;
@@ -133,4 +135,10 @@
     color: rgb(83, 83, 83);
   }
   
+}
+@media only screen and (max-width:1080px){
+  .c-menu__option-container {
+    margin-left: auto;
+    display: flex;
+  }
 }

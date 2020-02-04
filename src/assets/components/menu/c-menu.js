@@ -71,7 +71,7 @@ class Menu {
           }).append(
             $('<img>',{
               'class': "c-menu__imgPerfil dropdown",
-              'src': rutaPublic+'storage/avatars/' + localStorage.getItem('avatar')
+              'src': rutaImages+'avatars/' + localStorage.getItem('avatar')
             })
           );
 

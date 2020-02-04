@@ -31,7 +31,7 @@ function cargarElementos() {
         let $imgPerfil = $("<div>", {
             "class": "perfil-img"
         }).append($("<img>", {
-            "src": rutaPublic + 'storage/avatars/' + localStorage.getItem('avatar')
+            "src": rutaImages + 'avatars/' + localStorage.getItem('avatar')
         }));
 
         let $contentPerfil = $("<div>", {

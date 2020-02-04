@@ -1,6 +1,7 @@
 /* --------- VARIABLES --------- */
 let rutaApi = "http://api.nextrem.pve2.fpmislata.com";
 //let rutaApi = "192.268.59.104/nextrem/api"; 
+let rutaImages=rutaApi+"/storage/app/public/";
 let rutaPublic = rutaApi+"/public/";
 let listaCards = new Array();
 let recomendedCards = new Array();
@@ -130,7 +131,7 @@ function cargarInicio() {
         }))]);
         let overSlider = new textOver(slider.draw(), $over);
         $item1.append(overSlider.draw());
-        var rutaBanner = rutaApi + "/"+imgBanner[0];
+        var rutaBanner = rutaImages + "/"+imgBanner[0];
         $ban.css('background-image', 'url(' + rutaBanner + ')');
 
     } else {
@@ -146,7 +147,7 @@ function cargarInicio() {
                     }
                 }
 
-                var rutaBanner = rutaApi + "/"+imgBanner[0];
+                var rutaBanner = rutaImages + "/"+imgBanner[0];
                 $ban.css('background-image', 'url(' + rutaBanner + ')');
 
                 let slider = new Slider(imgSlider);
