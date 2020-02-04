@@ -199,7 +199,7 @@ function setEvents(eventos) {
         $("#notificaciones").append($not.draw());
         datosPerfil();
     } else {
-        $(".perfil-content").css("width", "100%");
+        //$(".perfil-content").css("width", "100%");
 
         let columnas = ["Producto", "Precio", "Plazas", "Subtotal", "perfil"];
         let listarProductos = new ListView(null, columnas, eventos, [null, null, null], "c-listView--perfil");

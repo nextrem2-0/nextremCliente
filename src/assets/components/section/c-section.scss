@@ -119,8 +119,9 @@
   }
 
   .c-section--perfil{
+    min-height: 590px;
     .c-section__mask{
-      bottom: -285px;
+      bottom: -360px;
     }
   }
 
@@ -136,6 +137,9 @@
     .c-section__mask{
       bottom: -45%;
     }
+  }
+  .c-section--perfil img{
+    padding-top: unset;
   }
 }
 

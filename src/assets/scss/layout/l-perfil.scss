@@ -112,3 +112,35 @@
     }
   }
 }
+@media only screen and (max-width:600px){
+  .perfil-gestion {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    margin-top: -550px;
+    margin-left: 215px;
+    &__btn {
+      padding: 16.6% 10%;
+
+    }
+  }
+  .perfil-titulo{
+    display: none;
+  }
+  .perfil-content{
+    position: absolute;
+    margin-left: -220px;
+    margin-top: -235px;
+    width: 90%;
+    &__editar{
+      top:-30px;
+      right: 40px;
+    }
+  }
+  .perfil-botones{
+    margin-left: 60%;
+  }
+  .l-perfil__item--img{
+    margin-top: -550px;
+  }
+}
