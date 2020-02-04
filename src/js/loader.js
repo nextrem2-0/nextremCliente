@@ -5,12 +5,9 @@ function finPaginaCarga() {
         if (localStorage.getItem('compra') == 1) {
             localStorage.setItem('compra', 0);
             notificacionCompra();
-<<<<<<< HEAD
         }else if(localStorage.getItem('editar') == 1) {
             localStorage.setItem('editar', 0);
             notificacionGuardarCambios();
-=======
->>>>>>> develop
         }else if(localStorage.getItem('user_token') != null) {
             notificacionBienvenida();
         }
