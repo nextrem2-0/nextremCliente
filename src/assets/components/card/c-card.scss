@@ -294,6 +294,9 @@
     justify-content: center;
     align-items: center;
   }
+  &__iconos a:hover {
+    color:white
+  }
 
   $tiempo: 0.5;
   @for $i from 1 through 5 {
