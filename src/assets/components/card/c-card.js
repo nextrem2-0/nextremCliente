@@ -53,21 +53,29 @@ class Card {
     let $cartBtn = $('<div>', { "class": "content__button content__button--" + this.sport });
     $cartBtn.on("click", function () {
       if (localStorage.getItem('user_token') != null) {
+        if(self.plazasOcupadas===self.capacidad){
+          console.log(self.plazasOcupadas+" "+self.capacidad);
+          
+          let $not = new Notification("warning", "Lo sentimos!", "No hay plazas disponibles");
+          $("#notificaciones").append($not.draw());
+        }else{
+          let modal = new Modal("Resumen producto", self.imprimirProducto(), function () {
 
-        let modal = new Modal("Resumen producto", self.imprimirProducto(), function () {
-
-          self.plazas = parseInt($("#plazas").val());
-
-
-          self.comprar();
-
-        }, "Añadir al carrito");
-
-        let $mod = modal.draw();
-        $("#modal").append($mod);
-        $mod.show();
+            self.plazas = parseInt($("#plazas").val());
+  
+  
+            self.comprar();
+  
+          }, "Añadir al carrito");
+  
+          let $mod = modal.draw();
+          $("#modal").append($mod);
+          $mod.show();
+        }
+        
 
       } else {
+        
         let modal = new Modal("¿Aún no te has registrado?", "Registrate ahora y disfruta de nuestros eventos de riesgo", function () {
           goToAccount("register");
         }, "Registrarse");
