@@ -9,6 +9,10 @@
   margin-bottom: 6.6em;
   margin-top: 2.4em;
 
+  &__icono-deporte{
+    width: 30px;
+  }
+
   &__encabezado {
     position: absolute;
     top: calc(100% - 16px);
@@ -286,7 +290,7 @@
     height: 52px;
     margin-left: 5px;
     margin-bottom: 15px;
-    font-size: 26px;
+    font-size: 20px;
     color: #fff;
     line-height: 52px;
     text-decoration: none;

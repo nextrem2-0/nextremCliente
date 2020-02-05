@@ -135,22 +135,23 @@ class Card {
     }
 
     let $level = $('<div>', { "class": "footer__level" });
-
+    let $iconos=$('<div>', { "class": "footer__iconos" });
+    $iconos.append($('<a>', {}).append([
+      $('<img>', { "src": rutaImages+"iconos/"+this.iconos[0],
+                    "class": "c-card__icono-deporte" 
+                  })
+    ]));
+    $iconos.append($('<a>', {}).append([
+      $('<i>', { "class": this.iconos[1] })
+    ]));
+    $iconos.append($('<a>', {}).append([
+      $('<div>', { "html": this.plazasOcupadas+"/"+this.capacidad })
+    ]));
     $card.append(
       $('<div>', { 'class': 'c-card__footer', }).append([
         $('<div>', { "class": "footer" }).append([
           $('<h4>', { "class": 'footer__titulo', "html": 'Features' }),
-          $('<div>', { "class": "footer__iconos" }).append([
-            $('<a>', {}).append([
-              $('<i>', { "class": "fa fa-mountain fa--claro" })
-            ]),
-            $('<a>', {}).append([
-              $('<i>', { "class": "fa fa-users fa--claro" })
-            ]),
-            $('<a>', {}).append([
-              $('<div>', { "html": this.plazasOcupadas+"/"+this.capacidad })
-            ])
-          ]),
+          $iconos,
           $level
         ])
       ])
