@@ -56,9 +56,9 @@ function cargarCards(type) {
         } else {
             var descrip = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.";
             var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
-            recomendedCards.push(new Card(1000,"evento1.jpg", "Liga de escuelas", "Escalada", descrip,7,null, 12, 1, iconos, 3, 'escalada'));
-            recomendedCards.push(new Card(2000,"evento2.jpg", "Torneo de Surf", "Surf", descrip,7,null, 15, 1, iconos, 2, 'surf'));
-            recomendedCards.push(new Card(3000,"evento3.jpg", "Clases de Esqui", "Esqui", descrip,7,null, 10, 0, iconos, 3, 'esqui'));
+            recomendedCards.push(new Card(1000,"evento1.jpg", "Liga de escuelas", "Escalada", descrip,7,2,null, 12, 1, iconos, 3, 'escalada'));
+            recomendedCards.push(new Card(2000,"evento2.jpg", "Torneo de Surf", "Surf", descrip,7,5,null, 15, 1, iconos, 2, 'surf'));
+            recomendedCards.push(new Card(3000,"evento3.jpg", "Clases de Esqui", "Esqui", descrip,7,4,null, 10, 0, iconos, 3, 'esqui'));
         }
         section = new Section("l-horizontal", recomendedCards, "RECOMENDADOS","c-section--recomendados", "l-horizontal--to-slide@mobile");
     } else if (type == "todas") {
@@ -81,7 +81,7 @@ function cargarCards(type) {
                         })[0];
 
 
-                        listaCards.push(new Card(key.id,"evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.capacidad,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
+                        listaCards.push(new Card(key.id,"evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.plazas_totales,key.plazas_ocupadas,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                     }
                     section = new Section("l-columns", listaCards, null,"c-section--eventos", "l-columns--3-columns", "l-columns--long","l-columns--1-columns@mobile");
@@ -114,7 +114,7 @@ function cargarCards(type) {
                     })[0];
 
 
-                    listaDeportesCards.push(new Card(key.id,"evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.capacidad,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
+                    listaDeportesCards.push(new Card(key.id,"evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.plazas_totales,key.plazas_ocupadas,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                 }
                 /* for (let key of dataResult) {

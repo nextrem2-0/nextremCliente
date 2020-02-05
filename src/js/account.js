@@ -182,7 +182,7 @@ function datosPerfilEventos(){
         success: function (dataResult) { 
             let card;
             dataResult.forEach(element => {
-                card = new Card(element.id, element.imagen, element.nombre, null, element.resumen, element.plazas_totales,1, element.precio, element.material, null, element.dificultad);
+                card = new Card(element.id, element.imagen, element.nombre, null, element.resumen, element.plazas_totales,element.plazas_ocupadas, 1, element.precio, element.material, null, element.dificultad);
                 arrayCards.push(card);
             });
             setEvents(arrayCards);

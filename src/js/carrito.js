@@ -24,7 +24,7 @@ function cargarCarrito() {
                 let arrayCards=new Array();
                 
                 for(let element of dataResult) {
-                card = new Card(element.id, element.imagen, element.nombre, null, element.resumen, element.plazas_totales,1, element.precio, element.material, null, element.dificultad);
+                card = new Card(element.id, element.imagen, element.nombre, null, element.resumen, element.plazas_totales,element.plazas_ocupadas, 1, element.precio, element.material, null, element.dificultad);
                 arrayCards.push(card);
                 };
                 carrito.cargarCarrito(arrayCards);
