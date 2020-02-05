@@ -84,7 +84,7 @@ function cargarCards(type) {
                             iconoMaterial="fa fa-ban"
                         }
 
-                        listaCards.push(new Card(key.id,"evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.plazas_totales,key.plazas_ocupadas,null, key.precio, key.material,  [deporte.icono,iconoMaterial], key.dificultad, deporte.nombre.toLowerCase()));
+                        listaCards.push(new Card(key.id,key.imagen, key.nombre, deporte.nombre, key.resumen,key.plazas_totales,key.plazas_ocupadas,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                     }
                     section = new Section("l-columns", listaCards, null,"c-section--eventos", "l-columns--3-columns", "l-columns--long","l-columns--1-columns@mobile");
@@ -120,7 +120,7 @@ function cargarCards(type) {
                         iconoMaterial="fa fa-ban"
                     }
 
-                    listaDeportesCards.push(new Card(key.id,"evento3.jpg", key.nombre, deporte.nombre, key.resumen,key.plazas_totales,key.plazas_ocupadas,null, key.precio, key.material, [deporte.icono,iconoMaterial], key.dificultad, deporte.nombre.toLowerCase()));
+                    listaDeportesCards.push(new Card(key.id,key.imagen, key.nombre, deporte.nombre, key.resumen,key.plazas_totales,key.plazas_ocupadas,null, key.precio, key.material, [deporte.icono,iconoMaterial], key.dificultad, deporte.nombre.toLowerCase()));
 
                 }
                 /* for (let key of dataResult) {

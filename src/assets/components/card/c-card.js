@@ -85,7 +85,7 @@ class Card {
       $('<div>', { 'class': 'c-card__contenido', }).append([
         $('<div>', { "class": "content" }).append([
           $('<div>', { "class": "content__img" }).append([
-            $('<img>', { "src": "assets/img/" + this.image })
+            $('<img>', { "src": rutaImages + "eventos/" + this.image })
           ]),
           $('<div>', { "class": "content__description" }).append([
             $('<div>', { "html": this.summary })
