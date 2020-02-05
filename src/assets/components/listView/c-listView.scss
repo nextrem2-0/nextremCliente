@@ -167,8 +167,11 @@
     &--precio {
       width: 20%;
     }
-    &--plazas {
-      text-align: left;
+    &--product{
+      grid-template-areas:
+        "img img"
+        "title title"
+        "desc desc";
     }
   }
   .button {
@@ -182,8 +185,5 @@
   }
   .product-title {
     padding-left: 5px;
-  }
-  .product-plazas {
-    text-align: left;
   }
 }

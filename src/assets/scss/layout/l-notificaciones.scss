@@ -9,3 +9,18 @@
     width: 365px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .l-notificaciones {
+    width: 100%;
+    bottom:unset;
+    left:unset;
+    top: 10%;
+
+    &__grupo{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

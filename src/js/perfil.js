@@ -49,7 +49,7 @@ function cargarElementos() {
             }),
             $("<div>", {
                 "class": "perfil-gestion__btn perfil-gestion__btn--editar",
-                "html": "Editar"
+                "html": "Mis datos"
             }).on("click", function () {
                 datosPerfil();
             }),

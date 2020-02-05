@@ -90,7 +90,7 @@ class Card {
     });
 
     $card.append(
-      $('<div>', { 'class': 'c-card__contenido', }).append([
+      $('<div>', { 'class': 'c-card__contenido', }).append([ 
         $('<div>', { "class": "content" }).append([
           $('<div>', { "class": "content__img" }).append([
             $('<img>', { "src": rutaImages + "eventos/" + this.image })

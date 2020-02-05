@@ -56,9 +56,9 @@ function cargarCards(type) {
         } else {
             var descrip = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.";
             
-            recomendedCards.push(new Card(1000,"evento1.jpg", "Liga de escuelas", "Escalada", descrip,7,2,null, 12, 1, ['icono-escalada.png', 'fa fa-tools'], 3, 'escalada'));
-            recomendedCards.push(new Card(2000,"evento2.jpg", "Torneo de Surf", "Surf", descrip,7,5,null, 15, 1, ['icono-surf.png', 'fa fa-tools'], 2, 'surf'));
-            recomendedCards.push(new Card(3000,"evento3.jpg", "Clases de Esqui", "Esqui", descrip,7,4,null, 10, 0, ['icono-esqui.png', 'fa fa-tools'], 3, 'esqui'));
+            recomendedCards.push(new Card(1000,"climb1.jpg", "Liga de escuelas", "Escalada", descrip,7,2,null, 12, 1, ['icono-escalada.png', 'fa fa-tools'], 3, 'escalada'));
+            recomendedCards.push(new Card(2000,"climb1.jpg", "Torneo de Surf", "Surf", descrip,7,5,null, 15, 1, ['icono-surf.png', 'fa fa-tools'], 2, 'surf'));
+            recomendedCards.push(new Card(3000,"climb1.jpg", "Clases de Esqui", "Esqui", descrip,7,4,null, 10, 0, ['icono-esqui.png', 'fa fa-tools'], 3, 'esqui'));
         }
         section = new Section("l-horizontal", recomendedCards, "RECOMENDADOS","c-section--recomendados", "l-horizontal--to-slide@mobile");
     } else if (type == "todas") {
@@ -70,20 +70,26 @@ function cargarCards(type) {
             $.ajax({
                 url: rutaPublic+"eventos",
                 success: function (dataResult) {
-                    var iconos = ['fa fa-mountain', 'fa fa-users', 'fa fa-hiking'];
+                    
 
                     dataResult.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0)); 
 
                     for (let key of dataResult) {
-
+                        var iconos = [];
+                        let iconoDeporte = "";
                         let deporte = sports.filter(function (sport) {
-                            return sport.id == key.deporte_id;
-                        })[0];
+                           if(sport.id == key.deporte_id){
+                                iconoDeporte = sport.icono;
+                                return sport;
+                           } 
+                        })[0];                        
+                        
                         let iconoMaterial="fa fa-tools";
                         if(key.material==0){
                             iconoMaterial="fa fa-ban"
                         }
 
+                        iconos.push(iconoDeporte, iconoMaterial);
                         listaCards.push(new Card(key.id,key.imagen, key.nombre, deporte.nombre, key.resumen,key.plazas_totales,key.plazas_ocupadas,null, key.precio, key.material, iconos, key.dificultad, deporte.nombre.toLowerCase()));
 
                     }

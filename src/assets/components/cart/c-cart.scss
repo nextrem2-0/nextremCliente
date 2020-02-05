@@ -36,3 +36,9 @@
   font-weight: bold;
   font-size: 12px;
 }
+
+@media only screen and (max-width:600px) {
+  #cart {
+    right: 8%;
+  }
+}

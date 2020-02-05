@@ -21,9 +21,8 @@
       justify-content: center;
     }
     &--titulo {
-        grid-area: titulo;
-        
-      }
+      grid-area: titulo;
+    }
     &--content {
       grid-area: content;
       width: 100%;
@@ -41,7 +40,7 @@
     height: 100%;
   }
 }
-.perfil-titulo{
+.perfil-titulo {
   background-color: #dddddd;
   color: black;
   font-size: 2.2rem;
@@ -73,14 +72,14 @@
 
 .perfil-content {
   padding: 2%;
-  display:grid;
+  display: grid;
   width: 90%;
-  &__info{
+  &__info {
     padding: 2%;
     border: 1px solid #c5c5c5;
-    margin:0.5%;
+    margin: 0.5%;
   }
-  &__editar{
+  &__editar {
     width: 30px;
     height: 30px;
     background-color: #cecece;
@@ -90,30 +89,79 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
 }
 
-.perfil-botones{
+.perfil-botones {
   display: flex;
   margin: 2%;
   margin-left: 80%;
-  &__btn{
+  &__btn {
     margin: 2px;
     padding: 9px;
-    &--acept{
-      background-color: rgb(127,7,7);
+    &--acept {
+      background-color: rgb(127, 7, 7);
       color: white;
     }
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
 }
-@media only screen and (max-width:600px){
+
+@media only screen and (max-width: 600px) {
+  .perfil-titulo {
+    display: none;
+  }
+
+  .l-perfil {
+    grid-template-areas:
+      "img"
+      "gestion"
+      "content";
+    grid-template-columns: 1fr;
+    justify-content: center;
+    margin-top: 20%;
+
+    &__item {
+      &--img {
+        margin-top: unset;
+        margin: auto;
+      }
+      &--gestion {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  }
+
   .perfil-gestion {
+    display: flex;
+    justify-content: center;
+    margin: 5% 0%;
+    &__btn {
+      display: block;
+      width: 100%;
+      padding: 4% 0%;
+      text-align: center;
+    }
+  }
+
+  .perfil-botones{
+    margin-left: 50%;
+  }
+
+  .perfil-content{
+    &__editar{
+      top: unset;
+        right: 12%;
+    } 
+  }
+  /*
     width: 200px;
     height: 250px;
     position: absolute;
@@ -123,9 +171,6 @@
       padding: 16.6% 10%;
 
     }
-  }
-  .perfil-titulo{
-    display: none;
   }
   .perfil-content{
     position: absolute;
@@ -142,5 +187,5 @@
   }
   .l-perfil__item--img{
     margin-top: -550px;
-  }
+  } */
 }

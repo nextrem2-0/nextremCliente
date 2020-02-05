@@ -1,22 +1,21 @@
-.c-section{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: fit-content;
-    min-height: 590px;
-    position: relative;
-    
+.c-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  min-height: 590px;
+  position: relative;
+
   scroll-behavior: smooth;
 
-  &__content{
-    width:100%;
+  &__content {
+    width: 100%;
     position: relative;
     z-index: 2;
     width: 100%;
-    
   }
-  &__mask{
+  &__mask {
     position: absolute;
     top: -26%;
     bottom: -26%;
@@ -27,122 +26,131 @@
     background-size: cover !important;
     transform: skewY(-7deg);
   }
-  &__title{
+  &__title {
     display: flex;
     justify-content: center;
     text-align: center;
     position: absolute;
     z-index: 2;
     background: $colorCorporativo;
-    color:white; 
+    color: white;
     width: 43%;
     margin-top: -11em;
     height: fit-content;
     line-height: 2.7em;
     font-size: 2.4rem;
-    white-space:nowrap;
+    white-space: nowrap;
     overflow: hidden;
-    
   }
-  &__image{
+  &__image {
     color: white;
     background-size: cover;
     height: 600px;
     filter: grayscale(100%);
 
-    &--profile{
+    &--profile {
       filter: unset;
       height: 460px;
 
-      & img{
-        width:100%;
-        height:120%;
+      & img {
+        width: 100%;
+        height: 120%;
         padding-top: 6%;
       }
     }
   }
 
-  &--perfil{
-
+  &--perfil {
     min-height: 311px;
-    .c-section__mask{
-      top: -170px;    
+    .c-section__mask {
+      top: -170px;
       bottom: -100px;
     }
   }
-  &--deportes{
-    .c-section__mask{
+  &--deportes {
+    .c-section__mask {
       bottom: -20%;
     }
   }
 
-  &--eventos{
-    .c-section__mask{
+  &--eventos {
+    .c-section__mask {
       bottom: -3%;
     }
   }
-  &--evento{
-    .c-section__mask{
+  &--evento {
+    .c-section__mask {
       bottom: -12%;
     }
   }
-  &--carrito{
-    .c-section__mask{
+  &--carrito {
+    .c-section__mask {
       bottom: -14%;
     }
   }
 }
-@each $size,$px in $font-sizes {
-  @media only screen and (max-width:600px) {
-    .c-section__title{
-      &--font-size-#{$size}\@mobile{
-      font-size: $px;
+@each $size, $px in $font-sizes {
+  @media only screen and (max-width: 600px) {
+    .c-section__title {
+      &--font-size-#{$size}\@mobile {
+        font-size: $px;
       }
-      
     }
-    
   }
-  
 }
-@media only screen and (max-width:600px){
-  .c-section__title{
+@media only screen and (max-width: 600px) {
+  .c-section__title {
     margin-top: -27em;
     width: 66%;
   }
-  .c-section__mask{
-    top:-6%;
+  .c-section {
+    &--eventos {
+      .c-section__mask {
+        bottom: -2%;
+      }
+    }
+    &--carrito{
+      .c-section__mask {
+        bottom: -240px;
+      }
+    }
+    &--perfil{
+      .c-section__mask {
+        bottom: -270px;
+      }
+    }
+
+    &__image{
+      &--profile{
+        display: none;
+      }
+    }
   }
-  .c-section--account{
-    .c-section__mask{
+
+  .c-section__mask {
+    top: -6%;
+  }
+  .c-section--account {
+    .c-section__mask {
       bottom: -44%;
     }
   }
 
-  .c-section--perfil{
-    min-height: 590px;
-    .c-section__mask{
-      bottom: -360px;
-    }
-  }
 
-  .c-section--deportes{
-    .c-section__mask{
+  .c-section--deportes {
+    .c-section__mask {
       bottom: -12%;
     }
   }
-  .c-section--recomendados{
-    .c-section__title{
+  .c-section--recomendados {
+    .c-section__title {
       margin-top: -14em;
     }
-    .c-section__mask{
+    .c-section__mask {
       bottom: -45%;
     }
   }
-  .c-section--perfil img{
+  .c-section--perfil img {
     padding-top: unset;
   }
 }
-
-
-
-

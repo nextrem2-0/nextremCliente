@@ -65,3 +65,17 @@
     -webkit-transform: translateY(0);
   }
 }
+
+@media screen and (max-width: 600px) {
+  .c-notification {
+    padding: 2% 2%;
+    min-width: unset;
+    width: 85%;
+
+    &__content{
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -68,7 +68,7 @@ class ListView {
                     if (row.image != null) {
                         $img = $("<img>", {
                             "class": "product-image",
-                            "src": "assets/img/" + row.image
+                            "src": rutaImages + "eventos/" + row.image 
                         });
                     }
                     let $title = $("<div>", {
