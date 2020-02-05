@@ -10,6 +10,31 @@ function cargarCarrito() {
         carrito = new Cart();
         $("#cart").append(carrito.draw());
     }
+
+
+    if(localStorage.getItem('user_token') != null){
+        let id=localStorage.getItem("idUser");
+        $token = localStorage.getItem('user_token');
+        $.ajax({
+            url: rutaPublic+"/cargarCarrito",
+            data: { "user_id":id },
+            headers: { 'Authorization': 'Bearer ' + $token },
+            success: function (dataResult) {
+                let card;
+                let arrayCards=new Array();
+                
+                for(let element of dataResult) {
+                card = new Card(element.id, element.imagen, element.nombre, null, element.resumen, element.plazas_totales,1, element.precio, element.material, null, element.dificultad);
+                arrayCards.push(card);
+                };
+                carrito.cargarCarrito(arrayCards);
+            },
+            error(){
+                let $not = new Notification("danger", "Error!", "No se han podido cargar tus articulos");
+                $("#notificaciones").append($not.draw());
+            }
+        });
+    }
 }
 
 function verCarrito(eventos) {

@@ -118,16 +118,20 @@ class Cart {
 
     aumentarCarrito() {
         let nCarrito = $("#numCart").html();
-        let nCarritoFloat = parseFloat(nCarrito);
+        let nCarritoFloat = parseInt(nCarrito);
         nCarritoFloat++;
 
         $("#numCart").html(nCarritoFloat);
     }
     restarCarrito() {
         let nCarrito = $("#numCart").html();
-        let nCarritoFloat = parseFloat(nCarrito);
+        let nCarritoFloat = parseInt(nCarrito);
         nCarritoFloat--;
 
         $("#numCart").html(nCarritoFloat);
+    }
+    cargarCarrito(listaEvents){
+        this.listaEventos=listaEvents;
+        $("#numCart").html(this.listaEventos.length);
     }
 }
