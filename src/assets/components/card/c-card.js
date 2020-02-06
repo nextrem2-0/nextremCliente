@@ -145,7 +145,7 @@ class Card {
     let $level = $('<div>', { "class": "footer__level" });
     let $iconos=$('<div>', { "class": "footer__iconos" });
     $iconos.append($('<a>', {}).append([
-      $('<img>', { "src": rutaImages+"iconos/"+this.iconos[0],
+      $('<img>', { "src": rutaImages+"iconos/"+this.iconos[0] + "?v=1",
                     "class": "c-card__icono-deporte" 
                   })
     ]));
@@ -153,7 +153,8 @@ class Card {
       $('<i>', { "class": this.iconos[1] })
     ]));
     $iconos.append($('<a>', {}).append([
-      $('<div>', { "html": this.plazasOcupadas+"/"+this.capacidad })
+      $('<div>', { "html": this.plazasOcupadas+"/"+this.capacidad,
+                   "class": "icono-capacidad" })
     ]));
     $card.append(
       $('<div>', { 'class': 'c-card__footer', }).append([

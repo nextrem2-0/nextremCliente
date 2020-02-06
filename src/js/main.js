@@ -72,10 +72,9 @@ function cargarInicio() {
         "class": "l-columns__item"
     });
     cargarPins();
-    s2 = cargarCards("recomended");
 
     if (Array.isArray(categories) && categories.length && Array.isArray(sports) && sports.length) {
-
+        s2 = cargarCards("recomended");
     } else {
         $.ajax({
             url: rutaPublic + "categorias",
@@ -96,6 +95,8 @@ function cargarInicio() {
                         let menu = new Menu(categories, sports, events);
                         $("#menu").append(menu.draw());
                         $(".c-submenu").hide();
+                        s2 = cargarCards("recomended");
+
                         comprobarPeticiones();
                     }
                 });
@@ -181,8 +182,6 @@ function cargarInicio() {
         cargarPortadaMovil();
     }
 
-
-    $item4.append(s2.draw());
 
     $layout.append($item1);
     $layout.append($item2);
