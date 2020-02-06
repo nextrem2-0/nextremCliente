@@ -57,7 +57,6 @@ function cargarCards(type) {
             $.ajax({
                 url: rutaPublic+"eventosRecomendados",
                 success: function (dataResult) {
-                    console.log(dataResult);
                     
                     for (let key of dataResult) {
                         var iconos = [];
@@ -166,7 +165,6 @@ function cargarCards(type) {
 
 
     }
-    console.log(section);
     
     return section;
 }

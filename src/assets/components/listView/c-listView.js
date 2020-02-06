@@ -40,7 +40,7 @@ class ListView {
             "class": "grupo"
         });
 
-        for (let row of this.rows) {
+        for (let row of this.rows) {          
 
             let $item = $("<div>", {
                 "class": "c-listView__item"
@@ -117,16 +117,33 @@ class ListView {
 
                         let self = this;
                         $delete.on("click", function () {
+                            
+                            $.ajax({
+                                                               
+                                url: rutaPublic + "deleteEventoCarrito",
+                
+                                data: {idUsuario: localStorage.getItem('idUser'), idEvento: row.id},
+                                headers: { 'Content-Type': 'application/json' },
+                                success: function (dataResult) {
+                                    self.total = self.total - parseFloat(row.price);
+                                    $(".total-price").text("Total " + self.total + "€");
+                                    $delete.parent().parent().parent().remove();
 
-                            self.total = self.total - parseFloat(row.price);
-                            $(".total-price").text("Total " + self.total + "€");
-                            $delete.parent().parent().parent().remove();
+                                    self.carrito.eliminarEvento(row);
+                                    $(".total-price").html("Total: " + self.calcularTotal() + "€");
+                                    if (self.carrito.numEventos() == 0) {
+                                        location.reload();
+                                    }
+                                    let $not = new Notification("success", "Completado!", "Borrado correctamente");
+                                    $("#notificaciones").append($not.draw());
+                                },
+                                error: function (error) {
+                                    let $not = new Notification("danger", "Error!", "No se ha podido borrar el evento");
+                                    $("#notificaciones").append($not.draw());
+                                }
+                            });
 
-                            self.carrito.eliminarEvento(row);
-                            $(".total-price").html("Total: " + self.calcularTotal() + "€");
-                            if (self.carrito.numEventos() == 0) {
-                                cargarInicio();
-                            }
+                            
                         });
 
                         let $modify = $("<div>", {
@@ -229,7 +246,7 @@ class ListView {
             subtotalTotal += parseFloat($(this).html().slice(0, -1));
         });
 
-        this.total = subtotalTotal;
+        this.total = subtotalTotal.toFixed(2);
         return this.total
     }
 }

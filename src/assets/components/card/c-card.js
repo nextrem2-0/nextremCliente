@@ -53,9 +53,7 @@ class Card {
     let $cartBtn = $('<div>', { "class": "content__button content__button--" + this.sport });
     $cartBtn.on("click", function () {
       if (localStorage.getItem('user_token') != null) {
-        if(self.plazasOcupadas===self.capacidad){
-          console.log(self.plazasOcupadas+" "+self.capacidad);
-          
+        if(self.plazasOcupadas===self.capacidad){          
           let $not = new Notification("warning", "Lo sentimos!", "No hay plazas disponibles");
           $("#notificaciones").append($not.draw());
         }else{
@@ -177,7 +175,7 @@ class Card {
     return "Evento: " + this.title + "<br>" +
       "Deporte: " + this.sport + "<br>"
       + "Incluye material: " + this.material + "<br>" +
-      "Plazas: <input type='number' value=1 id='plazas' min=1 max=" + this.capacidad + "></input><br>"
+      "Plazas: <input type='number' value=1 id='plazas' min=1 max=" + (this.capacidad - this.plazasOcupadas) + "></input><br>"
       + "Precio total: " + this.price + "€";
   }
 
